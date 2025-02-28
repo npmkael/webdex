@@ -116,3 +116,41 @@ body {
 .navbar-link:where(:hover, :focus) {
   color: var(--primary-red);
 }
+
+.navbar-link.active {
+  color: var(--primary-red);
+}
+
+.navbar-link.active::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  height: 3px;
+  width: 100%;
+  background-color: var(--primary-red);
+}
+
+.navbar-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  height: 25px;
+  width: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 83, 80, 0) 0%,
+    rgba(255, 83, 80, 0.15) 100%
+  );
+
+  animation: fadeIn 1.5s var(--transition-easing-quick);
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

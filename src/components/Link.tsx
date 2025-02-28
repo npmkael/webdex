@@ -1,18 +1,20 @@
+import { NavLink } from "react-router-dom";
+
 type Props = {
   label: string;
   icon?: string;
   path: string;
 };
 
-const NavLink = ({ label, icon, path }: Props) => {
+const Link = ({ label, icon, path }: Props) => {
   return (
     <li>
-      <a href={path} className="navbar-link">
+      <NavLink to={path} className="navbar-link">
         <span className="navbar-icon">{icon ? icon : "e"}</span>
         {label}
-      </a>
+      </NavLink>
     </li>
   );
 };
 
-export default NavLink;
+export default Link;

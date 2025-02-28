@@ -1,5 +1,5 @@
 import { navLinks } from "../../constants";
-import NavLink from "../NavLink";
+import Link from "../Link";
 
 const Header = () => {
   return (
@@ -7,7 +7,7 @@ const Header = () => {
       <nav className="navbar">
         <ul className="navbar-list">
           {navLinks.map((nav) => (
-            <NavLink label={nav.label} path={nav.path} icon={nav.icon} />
+            <Link label={nav.label} path={nav.path} icon={nav.icon} />
           ))}
         </ul>
       </nav>
