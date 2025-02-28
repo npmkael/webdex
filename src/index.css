@@ -5,3 +5,114 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+a,
+img,
+span,
+input,
+select,
+button {
+  display: block;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+:root {
+  --bg-primary: #f6f8fc;
+  --white: #ffffff;
+
+  --dark-grey: #767c7e;
+
+  --primary-red: #ff5350;
+
+  /* fonts */
+  --font-primary: "Montserrat", serif;
+  --pokemon-icon: "Pokemon";
+
+  /* shadows */
+  --shadow-1: rgba(149, 157, 165, 0.2) 0px 8px 12px;
+
+  /* border radius */
+  --rounded-1: 14px;
+
+  /* transition */
+  --transition-easing-quick: cubic-bezier(0, 0.7, 0.3, 1);
+  --transition-duration-quick: 200ms;
+  --transition-duration-smooth: 500ms;
+}
+
+@font-face {
+  font-family: "Pokemon";
+  src: url("./assets/fonts/Essentiarum Regular.ttf");
+}
+
+body {
+  background-color: var(--bg-primary);
+  font-family: var(--font-primary);
+}
+
+.main {
+  max-width: 1120px;
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 48px;
+}
+
+/* Header */
+.header {
+  background: var(--white);
+  box-shadow: var(--shadow-1);
+  border-radius: var(--rounded-1);
+  padding-inline: 18px;
+  margin-top: 18px;
+}
+
+.navbar-list {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+}
+
+.navbar-list li {
+  color: var(--dark-grey);
+}
+
+.navbar-icon {
+  font-family: "Pokemon";
+  font-size: 1.9rem;
+}
+
+.navbar-link {
+  font-size: 12px;
+  font-weight: 650;
+  height: 87px;
+  padding-inline: 4px;
+
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  transition: var(--transition-duration-smooth) var(--transition-easing-quick);
+
+  position: relative;
+}
+
+.navbar-link:hover::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  height: 3px;
+  width: 100%;
+  background-color: var(--primary-red);
+}
+
+.navbar-link:where(:hover, :focus) {
+  color: var(--primary-red);
+}
