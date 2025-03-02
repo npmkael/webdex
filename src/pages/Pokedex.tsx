@@ -87,6 +87,10 @@ const Pokedex = () => {
             <RotateCcw color="white" size={16} />
           </button>
         </div>
+
+        <div className="pokedex-grid">
+          <img src="/grass.png" alt="" />
+        </div>
       </section>
 
       {/* Right Section */}
