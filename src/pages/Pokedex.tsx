@@ -87,6 +87,22 @@ const Pokedex = () => {
             <RotateCcw color="white" size={16} />
           </button>
         </div>
+
+        <div className="pokemon-grid">
+          <div className="pokemon">
+            <div className="pokemon__img">
+              <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/1.gif" alt="" />
+            </div>
+
+            <div className="pokemon__info">
+              <p className="pokemon__no">N. 001</p>
+              <p className="pokemon__name">Bulbasaur</p>
+              <div className="pokemon__type">
+                <span className="pokemon__type-text">Grass</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Right Section */}
