@@ -52,6 +52,7 @@ select {
   --white: #ffffff;
 
   --dark-grey: #767c7e;
+  --dark-blue: #0b1d30;
 
   --primary-red: #ff5350;
   --neutral-100: #fafcff;
@@ -383,4 +384,31 @@ body {
 }
 
 .pokemon__info {
+  margin-top: 28px;
+}
+
+.pokemon__no,
+.pokemon__name {
+  text-align: center;
+}
+
+.pokemon__no {
+  margin-bottom: 12px;
+  color: var(--neutral-60);
+
+  font-weight: 800;
+}
+
+.pokemon__name {
+  font-size: 1.1rem;
+  color: var(--dark-blue);
+  font-weight: 700;
+
+  margin-bottom: 14px;
+}
+
+.pokemon__type {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
 }
