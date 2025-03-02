@@ -357,3 +357,30 @@ body {
   border-radius: 8px;
   width: 40px;
 }
+
+.pokemon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 24px;
+
+  /* padding: 16px; */
+}
+
+.pokemon {
+  background-color: var(--white);
+  border-radius: var(--rounded-1);
+  box-shadow: var(--shadow-4);
+  padding: 16px;
+
+  position: relative;
+}
+
+.pokemon__img {
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  translate: -50%;
+}
+
+.pokemon__info {
+}
