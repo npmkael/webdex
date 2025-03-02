@@ -1,10 +1,16 @@
-import Header from "./components/Header/Header";
+import { Routes, Route } from "react-router-dom";
+import MainLayout from "./layouts/MainLayout";
+import Home from "./pages/Home";
+import Pokedex from "./pages/Pokedex";
 
 function App() {
   return (
-    <main className="main">
-      <Header />
-    </main>
+    <Routes>
+      <Route element={<MainLayout />}>
+        <Route index element={<Home />} />
+        <Route path="/pokedex" element={<Pokedex />} />
+      </Route>
+    </Routes>
   );
 }
 

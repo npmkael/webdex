@@ -10,8 +10,7 @@ a,
 img,
 span,
 input,
-select,
-button {
+select {
   display: block;
 }
 
@@ -24,6 +23,30 @@ a {
   color: inherit;
 }
 
+input,
+button,
+select {
+  background: none;
+  border: none;
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+input {
+  width: 100%;
+  outline: none;
+}
+
+select {
+  /* appearance: none; */
+  /* -webkit-appearance: none; */
+  /* -moz-appearance: none; */
+  outline: none;
+}
+
 :root {
   --bg-primary: #f6f8fc;
   --white: #ffffff;
@@ -31,6 +54,18 @@ a {
   --dark-grey: #767c7e;
 
   --primary-red: #ff5350;
+  --neutral-100: #fafcff;
+  --neutral-98: #f2f5fa;
+  --neutral-95: #e9ecf2;
+  --neutral-90: #dadfe5;
+  --neutral-80: #c2c6cc;
+  --neutral-60: #919499;
+  --neutral-50: #797c80;
+  --neutral-40: #616366;
+  --neutral-30: #494a4d;
+  --neutral-20: #303133;
+  --neutral-10: #18191a;
+  --neutral-5: #0c0c0d;
 
   /* fonts */
   --font-primary: "Montserrat", serif;
@@ -38,6 +73,9 @@ a {
 
   /* shadows */
   --shadow-1: rgba(149, 157, 165, 0.2) 0px 8px 12px;
+  --shadow-2: 0px 10px 30px 0px rgba(66, 71, 97, 0.1);
+  --shadow-3: 0 8px 30px 0 rgba(65, 89, 214, 0.3);
+  --shadow-4: 0 8px 18px 0 rgba(65, 89, 214, 0.1);
 
   /* border radius */
   --rounded-1: 14px;
@@ -53,6 +91,10 @@ a {
   src: url("./assets/fonts/Essentiarum Regular.ttf");
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: var(--bg-primary);
   font-family: var(--font-primary);
@@ -65,13 +107,18 @@ body {
   padding-inline: 48px;
 }
 
+.pokemon-icon {
+  font-family: "Pokemon";
+}
+
 /* Header */
 .header {
   background: var(--white);
-  box-shadow: var(--shadow-1);
+  box-shadow: var(--shadow-4);
   border-radius: var(--rounded-1);
   padding-inline: 18px;
-  margin-top: 18px;
+  margin-top: 24px;
+  margin-bottom: 28px;
 }
 
 .navbar-list {
@@ -153,4 +200,160 @@ body {
   100% {
     opacity: 1;
   }
+}
+
+.pokedex-section__search-bar {
+  background-color: var(--white);
+  padding: 20px;
+  margin-bottom: 30px;
+
+  display: flex;
+  /* height: 60px; */
+
+  border-radius: var(--rounded-1);
+
+  box-shadow: var(--shadow-4);
+}
+
+.pokemon-section__search-bar-input::placeholder {
+  color: #aab2b4;
+}
+
+.search-btn {
+  background-color: var(--primary-red);
+  padding: 4px;
+  border-radius: 8px;
+  transition: var(--transition-duration-smooth) var(--transition-easing-quick);
+}
+
+.search-btn span {
+  font-family: var(--pokemon-icon);
+  color: var(--white);
+  font-size: 22px;
+}
+
+.search-btn:where(:hover, :focus) {
+  box-shadow: rgba(255, 83, 80, 0.5) 0px 0px 20px;
+}
+
+.sort-pagination-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-weight: 550;
+  font-size: 14px;
+
+  color: var(--neutral-20);
+
+  margin-bottom: 28px;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.from-pag,
+.to-pag {
+  border: 1px solid var(--neutral-50);
+  border-radius: 8px;
+
+  width: 65px;
+  padding: 8px;
+  font-weight: normal;
+}
+
+.sort-controls {
+  display: flex;
+  gap: 12px;
+
+  align-items: center;
+  height: 40px;
+
+  margin-bottom: 42px;
+}
+
+.sort-controls button {
+  height: 100%;
+}
+
+.type-select {
+  height: 100%;
+}
+
+.type-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+
+  position: relative;
+
+  padding-inline: 16px;
+  padding-block: 8px;
+  background-color: var(--white);
+
+  border-radius: 8px;
+  box-shadow: var(--shadow-4);
+
+  color: var(--dark-grey);
+}
+
+.type-dropdown div {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  font-size: 1.2rem;
+}
+
+.type-label {
+  font-weight: 600;
+  font-size: 14px;
+}
+.type-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.type-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 8px;
+  background-color: var(--white);
+  box-shadow: var(--shadow-4);
+
+  position: absolute;
+  width: 12rem;
+  margin-top: 14px;
+  left: 505px;
+  /* overflow: hidden; */
+}
+.type-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 6px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: var(--transition-duration-quick) var(--transition-easing-quick);
+}
+
+.type-option:hover {
+  background-color: var(--neutral-98);
+}
+
+.sort-controls__reset-btn {
+  background-color: #83919f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+
+  border-radius: 8px;
+  width: 40px;
 }
