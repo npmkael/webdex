@@ -85,6 +85,76 @@ select {
   --transition-easing-quick: cubic-bezier(0, 0.7, 0.3, 1);
   --transition-duration-quick: 200ms;
   --transition-duration-smooth: 500ms;
+
+  /* pokemon type colors */
+
+  /* normal */
+  --normal: #9198a2;
+  --normal-txt: #4d5052;
+
+  /* Fire */
+  --fire: #ff9d55;
+  --fire-txt: #605045;
+
+  /* electric */
+  --electric: #f4d33c;
+  --electric-txt: #5d5942;
+
+  /* grass */
+  --grass: rgb(168, 239, 144);
+  --grass-txt: #205c0e;
+
+  /* fire */
+  --fire: rgb(255, 153, 77);
+  --fire-txt: #651706;
+
+  /* ice */
+  --ice: #73cfbe;
+  --ice-txt: #475856;
+
+  /* fighting */
+  --fighting: #ce416a;
+  --fighting-txt: #57414a;
+
+  /* Poison */
+  --poison: #aa6ac8;
+  --poison-txt: #524956;
+
+  /* Ground */
+  --ground: #d97845;
+  --ground-txt: #5a4d42;
+
+  /* Psychic */
+  --psychic: #fa7178;
+  --psychic-txt: #5d494a;
+
+  /* Bug */
+  --bug: #91c12e;
+  --bug-txt: ;
+
+  /* Rock */
+  --rock: #c6b78b;
+  --rock-txt: #57554f;
+
+  /* Ghost */
+  --ghost: #5269ac;
+  --ghost-txt: #424952;
+
+  /* Dragon */
+  --dragon: #0b6dc3;
+  --dragon-txt: #364956;
+
+  /* Dark */
+  --dark: #6a6379;
+  --dark-txt: #45454a;
+
+  /* Steel */
+  --steel: #5a8ea2;
+  --steel-txt: #454d52;
+
+  /* Fairy */
+  --fairy: #ec8fe7;
+  --fairy-txt: #524956;
 }
 
 @font-face {
@@ -407,8 +477,129 @@ body {
   margin-bottom: 14px;
 }
 
-.pokemon__type {
+.pokemon__type-wrapper {
   display: flex;
   justify-content: center;
   gap: 4px;
+}
+
+.pokemon__type {
+  padding: 4px 11px;
+  border-radius: 4px;
+}
+
+.pokemon__type-text {
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.pokemon__type.normal {
+}
+
+.pokemon__type-text.normal {
+}
+
+.pokemon__type.fire {
+}
+
+.pokemon__type-text.fire {
+}
+
+.pokemon__type.water {
+}
+
+.pokemon__type-text.water {
+}
+
+.pokemon__type.electric {
+}
+
+.pokemon__type-text.eletric {
+}
+
+.pokemon__type.grass {
+  background-color: var(--grass);
+}
+
+.pokemon__type-text.grass {
+  color: var(--grass-txt);
+}
+
+.pokemon__type.ice {
+}
+
+.pokemon__type-text.ice {
+}
+
+.pokemon__type.fighting {
+}
+
+.pokemon__type-text.fighting {
+}
+
+.pokemon__type.poison {
+}
+
+.pokemon__type-text.poison {
+}
+
+.pokemon__type.ground {
+}
+
+.pokemon__type-text.ground {
+}
+
+.pokemon__type.flying {
+}
+
+.pokemon__type-text.flying {
+}
+
+.pokemon__type.psychic {
+}
+
+.pokemon__type-text.psychic {
+}
+
+.pokemon__type.bug {
+}
+
+.pokemon__type-text.bug {
+}
+
+.pokemon__type.rock {
+}
+
+.pokemon__type-text.rock {
+}
+
+.pokemon__type.ghost {
+}
+
+.pokemon__type-text.ghost {
+}
+
+.pokemon__type.dragon {
+}
+
+.pokemon__type-text.dragon {
+}
+
+.pokemon__type.dark {
+}
+
+.pokemon__type-text.dark {
+}
+
+.pokemon__type.steel {
+}
+
+.pokemon__type-text.steel {
+}
+
+.pokemon__type.fairy {
+}
+
+.pokemon__type-text.fairy {
 }

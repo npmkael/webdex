@@ -100,60 +100,10 @@ const Pokedex = () => {
             <div className="pokemon__info">
               <p className="pokemon__no">N&#176;001</p>
               <p className="pokemon__name">Bulbasaur</p>
-              <div className="pokemon__type">
-                <img src="/grass.png" alt="grass" width={75} height={30} />
-                <img src="/poison.png" alt="poison" width={75} height={30} />
-              </div>
-            </div>
-          </div>
-          <div className="pokemon">
-            <div className="pokemon__img">
-              <img
-                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/1.gif"
-                alt=""
-              />
-            </div>
-
-            <div className="pokemon__info">
-              <p className="pokemon__no">N&#176;001</p>
-              <p className="pokemon__name">Bulbasaur</p>
-              <div className="pokemon__type">
-                <img src="/grass.png" alt="grass" width={75} height={30} />
-                <img src="/poison.png" alt="poison" width={75} height={30} />
-              </div>
-            </div>
-          </div>
-          <div className="pokemon">
-            <div className="pokemon__img">
-              <img
-                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/1.gif"
-                alt=""
-              />
-            </div>
-
-            <div className="pokemon__info">
-              <p className="pokemon__no">N&#176;001</p>
-              <p className="pokemon__name">Bulbasaur</p>
-              <div className="pokemon__type">
-                <img src="/grass.png" alt="grass" width={75} height={30} />
-                <img src="/poison.png" alt="poison" width={75} height={30} />
-              </div>
-            </div>
-          </div>
-          <div className="pokemon">
-            <div className="pokemon__img">
-              <img
-                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/1.gif"
-                alt=""
-              />
-            </div>
-
-            <div className="pokemon__info">
-              <p className="pokemon__no">N&#176;001</p>
-              <p className="pokemon__name">Bulbasaur</p>
-              <div className="pokemon__type">
-                <img src="/grass.png" alt="grass" width={75} height={30} />
-                <img src="/poison.png" alt="poison" width={75} height={30} />
+              <div className="pokemon__type-wrapper">
+                <div className="pokemon__type grass">
+                  <span className="pokemon__type-text grass">Grass</span>
+                </div>
               </div>
             </div>
           </div>
