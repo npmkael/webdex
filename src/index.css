@@ -352,6 +352,8 @@ body {
 .dropdown {
   position: relative;
   height: 100%;
+
+  cursor: pointer;
 }
 
 .dropdown .dropdown-label {

@@ -4,10 +4,11 @@ import { motion } from "motion/react";
 // icons
 import { ChevronDown, RotateCcw, Scale } from "lucide-react";
 import { optionTypes } from "../constants";
+import { PokemonTextType } from "../types";
 
 const Pokedex = () => {
   const [open, setOpen] = useState(false);
-  const [selected, setSelected] = useState("");
+  const [selected, setSelected] = useState<PokemonTextType | null>(null);
 
   return (
     <section className="pokedex-section">
@@ -46,8 +47,17 @@ const Pokedex = () => {
           <motion.div animate={open ? "open" : "closed"} className="dropdown">
             <div className="dropdown-btn" onClick={() => setOpen((pv) => !pv)}>
               <div className="dropdown-label">
-                <span className="pokemon-icon">s</span>
-                <p>Type</p>
+                {selected ? (
+                  <>
+                    <span className="pokemon-icon">{selected.icon}</span>
+                    <p>{selected.label}</p>
+                  </>
+                ) : (
+                  <>
+                    <span className="pokemon-icon">s</span>
+                    <p>Type</p>
+                  </>
+                )}
               </div>
               <motion.span variants={iconVariants}>
                 <ChevronDown size={20} />
@@ -60,7 +70,16 @@ const Pokedex = () => {
               className="dropdown-content"
             >
               {optionTypes.map((option) => (
-                <div className="dropdown-item">
+                <div
+                  className="dropdown-item"
+                  onClick={() => {
+                    setSelected({
+                      icon: option.icon,
+                      label: option.label,
+                    });
+                    setOpen(false);
+                  }}
+                >
                   <span className="pokemon-icon">{option.icon}</span>
                   <p>{option.label}</p>
                 </div>
