@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion } from "motion/react";
 
 // icons
-import { ChevronDown, RotateCcw } from "lucide-react";
+import { ChevronDown, RotateCcw, Scale } from "lucide-react";
 import { optionTypes } from "../constants";
 
 const Pokedex = () => {
@@ -43,43 +43,29 @@ const Pokedex = () => {
 
         {/* sort controls */}
         <div className="sort-controls">
-          <motion.div
-            animate={open ? "open" : "closed"}
-            className="type-select"
-          >
-            {/* pv stands for "previous" */}
-            <button
-              className="type-dropdown"
-              onClick={() => setOpen((pv) => !pv)}
-            >
-              <div>
+          <motion.div animate={open ? "open" : "closed"} className="dropdown">
+            <div className="dropdown-btn" onClick={() => setOpen((pv) => !pv)}>
+              <div className="dropdown-label">
                 <span className="pokemon-icon">s</span>
-                <span className="type-label">Type</span>
+                <p>Type</p>
               </div>
-              <motion.span className="type-icon" variants={iconVariants}>
-                <ChevronDown size={18} />
+              <motion.span variants={iconVariants}>
+                <ChevronDown size={20} />
               </motion.span>
-            </button>
-
-            <motion.ul
+            </div>
+            <motion.div
               initial={wrapperVariants.closed}
+              animate={open ? "open" : "closed"}
               variants={wrapperVariants}
-              style={{ originY: "top", translateX: "-50%" }}
-              className="type-options-list"
+              className="dropdown-content"
             >
               {optionTypes.map((option) => (
-                <motion.li
-                  variants={itemVariants}
-                  onClick={() => setOpen(false)}
-                  className="type-option"
-                >
-                  <motion.span variants={actionIconVariants}>
-                    <span className="pokemon-icon">{option.icon}</span>
-                  </motion.span>
-                  <span>{option.label}</span>
-                </motion.li>
+                <div className="dropdown-item">
+                  <span className="pokemon-icon">{option.icon}</span>
+                  <p>{option.label}</p>
+                </div>
               ))}
-            </motion.ul>
+            </motion.div>
           </motion.div>
 
           {/* reset button */}
@@ -118,46 +104,16 @@ const Pokedex = () => {
 
 const wrapperVariants = {
   open: {
-    scaleY: 1,
-    transition: {
-      when: "beforeChildren",
-      staggerChildren: 0.1,
-    },
+    opacity: 1,
   },
   closed: {
-    scaleY: 0,
-    transition: {
-      when: "afterChildren",
-      staggerChildren: 0.1,
-    },
+    opacity: 0,
   },
 };
 
 const iconVariants = {
   open: { rotate: 180 },
   closed: { rotate: 0 },
-};
-
-const itemVariants = {
-  open: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      when: "beforeChildren",
-    },
-  },
-  closed: {
-    opacity: 0,
-    y: -15,
-    transition: {
-      when: "afterChildren",
-    },
-  },
-};
-
-const actionIconVariants = {
-  open: { scale: 1, y: 0 },
-  closed: { scale: 0, y: -7 },
 };
 
 export default Pokedex;

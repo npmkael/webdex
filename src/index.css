@@ -349,73 +349,69 @@ body {
   height: 100%;
 }
 
-.type-select {
+.dropdown {
+  position: relative;
   height: 100%;
 }
 
-.type-dropdown {
-  display: flex;
-  align-items: center;
-  gap: 1.6rem;
-
-  position: relative;
-
-  padding-inline: 16px;
-  padding-block: 8px;
-  background-color: var(--white);
-
-  border-radius: 8px;
-  box-shadow: var(--shadow-4);
-
-  color: var(--dark-grey);
-}
-
-.type-dropdown div {
+.dropdown .dropdown-label {
   display: flex;
   align-items: center;
   gap: 4px;
-
-  font-size: 1.2rem;
 }
 
-.type-label {
+.dropdown .dropdown-label span {
+  font-size: 1.1rem;
+}
+
+.dropdown .dropdown-label p {
   font-weight: 600;
-  font-size: 14px;
+  font-size: 16px;
 }
-.type-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.type-options-list {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 8px;
-  border-radius: 8px;
+
+.dropdown .dropdown-btn {
+  padding: 8px 12px;
   background-color: var(--white);
   box-shadow: var(--shadow-4);
+  border-radius: 6px;
 
-  position: absolute;
-  width: 12rem;
-  margin-top: 14px;
-  left: 505px;
-  /* overflow: hidden; */
-}
-.type-option {
   display: flex;
   align-items: center;
-  gap: 8px;
-  width: 100%;
-  padding: 6px;
-  font-size: 14px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: var(--transition-duration-quick) var(--transition-easing-quick);
+  gap: 1.5rem;
+  color: var(--neutral-60);
+
+  height: 100%;
 }
 
-.type-option:hover {
-  background-color: var(--neutral-98);
+.dropdown .dropdown-btn span {
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-content {
+  position: absolute;
+  top: 110%;
+  z-index: 4;
+
+  width: 100%;
+  border-radius: 6px;
+
+  background-color: var(--white);
+  box-shadow: var(--shadow-2);
+}
+
+.dropdown-item {
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.dropdown-item:hover {
+  background-color: var(--neutral-95);
 }
 
 .sort-controls__reset-btn {
@@ -435,6 +431,8 @@ body {
   gap: 24px;
 
   /* padding: 16px; */
+  position: relative;
+  z-index: 1;
 }
 
 .pokemon {
@@ -444,6 +442,7 @@ body {
   padding: 16px;
 
   position: relative;
+  z-index: 1;
 }
 
 .pokemon__img {
