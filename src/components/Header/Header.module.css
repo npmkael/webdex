@@ -1,0 +1,18 @@
+.header {
+  background: var(--white);
+  box-shadow: var(--shadow-4);
+  border-radius: var(--rounded-1);
+  padding-inline: 18px;
+  margin-top: 24px;
+  margin-bottom: 28px;
+}
+
+.navbar-list {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+}
+
+.navbar-list li {
+  color: var(--dark-grey);
+}

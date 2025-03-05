@@ -1,9 +1,16 @@
 import { useState } from "react";
 import { motion } from "motion/react";
 
+// components
+import Search from "../components/SearchBar/Search";
+
 // icons
-import { ChevronDown, RotateCcw, Scale } from "lucide-react";
+import { ChevronDown, Mars, RotateCcw, Venus } from "lucide-react";
+
+// constants
 import { optionTypes } from "../constants";
+
+// types
 import { PokemonTextType } from "../types";
 
 const Pokedex = () => {
@@ -15,16 +22,7 @@ const Pokedex = () => {
       {/* Left Section */}
       <section className="pokedex-section__left">
         {/* search bar */}
-        <div className="pokedex-section__search-bar">
-          <input
-            className="pokemon-section__search-bar-input"
-            type="text"
-            placeholder="Search your pokémon!"
-          />
-          <button type="submit" className="search-btn">
-            <span>s</span>
-          </button>
-        </div>
+        <Search />
 
         {/* ascending and pagination controls */}
         <div className="sort-pagination-controls">
@@ -116,7 +114,27 @@ const Pokedex = () => {
       </section>
 
       {/* Right Section */}
-      <section className="pokedex-section__right"></section>
+      <section className="pokedex-section__right">
+        <div className="pokemon__stat-container">
+          <div className="pokemon__img">
+            <img
+              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
+              alt="bulbasaur"
+              width={158}
+              height={158}
+            />
+          </div>
+
+          <div className="pokemon__gender">
+            <div className="pokemon__gender-male">
+              <Mars />
+            </div>
+            <div className="pokemon__gender-female">
+              <Venus />
+            </div>
+          </div>
+        </div>
+      </section>
     </section>
   );
 };

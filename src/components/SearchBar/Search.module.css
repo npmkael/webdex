@@ -1,0 +1,33 @@
+.pokedex-section__search-bar {
+  background-color: var(--white);
+  padding: 20px;
+  margin-bottom: 30px;
+
+  display: flex;
+  /* height: 60px; */
+
+  border-radius: var(--rounded-1);
+
+  box-shadow: var(--shadow-4);
+}
+
+.pokemon-section__search-bar-input::placeholder {
+  color: #aab2b4;
+}
+
+.search-btn {
+  background-color: var(--primary-red);
+  padding: 4px;
+  border-radius: 8px;
+  transition: var(--transition-duration-smooth) var(--transition-easing-quick);
+}
+
+.search-btn span {
+  font-family: var(--pokemon-icon);
+  color: var(--white);
+  font-size: 22px;
+}
+
+.search-btn:where(:hover, :focus) {
+  box-shadow: rgba(255, 83, 80, 0.5) 0px 0px 20px;
+}
