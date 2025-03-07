@@ -125,13 +125,37 @@ const Pokedex = () => {
             />
           </div>
 
-          <div className="pokemon__gender">
-            <div className="pokemon__gender-male">
-              <Mars />
+          <div className="pokemon__gender-wrapper">
+            <div className="pokemon__gender male">
+              <Mars color="#2e7591" size={18} />
             </div>
-            <div className="pokemon__gender-female">
-              <Venus />
+            <div className="pokemon__gender female">
+              <Venus color="#C23348" size={18} />
             </div>
+          </div>
+
+          <div className="pokemon__details-wrapper">
+            <p className="pokemon__number">#001</p>
+            <h2 className="pokemon__name font-large">Bulbasaur</h2>
+            <p className="pokemon__genera">Seed Pokemon</p>
+            <div className="pokemon__type-wrapper">
+              <div className="pokemon__type grass">
+                <span className="pokemon__type-text grass">Grass</span>
+              </div>
+            </div>
+            <div className="pokemon__entry-wrapper">
+              <h3>Pokedex Entry</h3>
+              <p className="pokemon__flavor-text">
+                The seed on its back is filled with nutrients. The seed grows
+                steadily larger as its body grows.
+              </p>
+            </div>
+            <div className="pokemon__signature-abilities-wrapper">
+              <h3>Abilities</h3>
+              <div className="ability-1">Overgrow</div>
+              <div className="ability-2">Chlorophyll</div>
+            </div>
+            <div></div>
           </div>
         </div>
       </section>
