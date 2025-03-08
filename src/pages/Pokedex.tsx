@@ -135,16 +135,18 @@ const Pokedex = () => {
           </div>
 
           <div className="pokemon__details-wrapper">
-            <p className="pokemon__number">#001</p>
-            <h2 className="pokemon__name font-large">Bulbasaur</h2>
-            <p className="pokemon__genera">Seed Pokemon</p>
-            <div className="pokemon__type-wrapper">
-              <div className="pokemon__type grass">
-                <span className="pokemon__type-text grass">Grass</span>
+            <div className="pokemon__intro-details">
+              <p className="pokemon__number">#001</p>
+              <h2 className="pokemon__name">Bulbasaur</h2>
+              <p className="pokemon__genera">Seed Pokémon</p>
+              <div className="pokemon__type-wrapper">
+                <div className="pokemon__type grass">
+                  <span className="pokemon__type-text grass">Grass</span>
+                </div>
               </div>
             </div>
             <div className="pokemon__entry-wrapper">
-              <h3>Pokedex Entry</h3>
+              <h3>Pokédex Entry</h3>
               <p className="pokemon__flavor-text">
                 The seed on its back is filled with nutrients. The seed grows
                 steadily larger as its body grows.
@@ -152,10 +154,40 @@ const Pokedex = () => {
             </div>
             <div className="pokemon__signature-abilities-wrapper">
               <h3>Abilities</h3>
-              <div className="ability-1">Overgrow</div>
-              <div className="ability-2">Chlorophyll</div>
+              <div className="pokemon__ability-wrapper">
+                <div className="ability-1">Overgrow</div>
+                <div className="ability-2">Chlorophyll</div>
+              </div>
             </div>
-            <div></div>
+            <div className="pokemon__stats-container">
+              <div className="pokemon__attributes">
+                <h3 className="pokemon__attribute-title">Height</h3>
+                <h3 className="pokemon__attribute-title">Weight</h3>
+              </div>
+              <div className="pokemon__attribute-values">
+                <div className="pokemon__attribute-value">
+                  <span className="pokemon__height">.7m</span>
+                </div>
+                <div className="pokemon__attribute-value">
+                  <span className="pokemon__weight">69 kg</span>
+                </div>
+              </div>
+              <div className="pokemon__header-titles">
+                <h3 className="pokemon__attribute-title">Weaknesses</h3>
+                <h3 className="pokemon__attribute-title">Base exp</h3>
+              </div>
+              <div className="pokemon__weaknesses-wrapper">
+                <div className="pokemon__weakness-multiplier">
+                  <span className="pokemon__multiplier">2x</span>
+                </div>
+                <div className="pokemon__weakness-icon">
+                  <span className="pokemon-icon"></span>
+                </div>
+              </div>
+              <div className="pokemon__base-exp">
+                <span className="pokemon__exp-value">64</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
