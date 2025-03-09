@@ -1,13 +1,13 @@
 type Props = {
   title: string;
-  value: string;
+  children: React.ReactNode;
 };
 
-const PokemonAttribute = ({ title, value }: Props) => {
+const PokemonAttribute = ({ title, children }: Props) => {
   return (
     <div className="pokemon__attribute">
       <h3 className="pokemon__attribute-title">{title}</h3>
-      <span className="pokemon__attribute-value">{value}</span>
+      <div className="pokemon__attribute-wrapper">{children}</div>
     </div>
   );
 };

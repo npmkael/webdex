@@ -631,11 +631,19 @@ body {
   flex: 1;
 }
 
-.pokemon__attribute-value {
-  color: var(--dark-blue);
+.pokemon__attribute-wrapper {
   background-color: var(--neutral-100);
   padding: 8px 16px;
   border-radius: 24px;
+
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+}
+
+.pokemon__attribute-value {
+  color: var(--dark-blue);
   font-weight: 600;
   font-size: 0.9rem;
   text-align: center;

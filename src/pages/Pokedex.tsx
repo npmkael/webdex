@@ -163,8 +163,12 @@ const Pokedex = () => {
             <div className="pokemon__stats-container">
               {/*  */}
               <div className="pokemon__attribute-values">
-                <PokemonAttribute title="Height" value=".7m" />
-                <PokemonAttribute title="Weight" value="69kg" />
+                <PokemonAttribute title="Height">
+                  <span className="pokemon__attribute-value">.7m</span>
+                </PokemonAttribute>
+                <PokemonAttribute title="Weight">
+                  <span className="pokemon__attribute-value">69kg</span>
+                </PokemonAttribute>
               </div>
 
               {/*  */}
@@ -173,7 +177,9 @@ const Pokedex = () => {
                   <h3 className="pokemon__attribute-title">Weaknesses</h3>
                   <span className="pokemon__attribute-value">N/A</span>
                 </div>
-                <PokemonAttribute title="Base Exp" value="64" />
+                <PokemonAttribute title="Base Exp">
+                  <span className="pokemon__attribute-value">64</span>
+                </PokemonAttribute>
               </div>
             </div>
           </div>
