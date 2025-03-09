@@ -55,7 +55,7 @@ select {
   --dark-blue: #0b1d30;
 
   --primary-red: #ff5350;
-  --neutral-100: #fafcff;
+  --neutral-100: #f6f8fc;
   --neutral-98: #f2f5fa;
   --neutral-95: #e9ecf2;
   --neutral-90: #dadfe5;
@@ -571,13 +571,13 @@ body {
   color: var(--dark-blue);
   letter-spacing: 1px;
   text-transform: uppercase;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 800;
   margin-bottom: 6px;
 }
 
 .pokemon__entry-wrapper .pokemon__flavor-text {
-  font-size: 0.85rem;
+  font-size: 0.79rem;
   line-height: 1.4;
 }
 
@@ -585,7 +585,7 @@ body {
   color: var(--dark-blue);
   letter-spacing: 1px;
   text-transform: uppercase;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 800;
   margin-bottom: 6px;
   text-align: center;
@@ -600,20 +600,43 @@ body {
 .ability-1,
 .ability-2 {
   color: var(--dark-blue);
-  background-color: var(--neutral-98);
+  background-color: var(--neutral-100);
   padding: 8px 16px;
   flex: 1;
   border-radius: 24px;
   font-weight: 600;
   font-size: 0.9rem;
-  border: 1px solid var(--neutral-80);
+  border: 1px solid var(--neutral-90);
 }
 
 .pokemon__attribute-title {
   color: var(--dark-blue);
   letter-spacing: 1px;
   text-transform: uppercase;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 800;
   margin-bottom: 6px;
+  text-align: center;
+}
+
+.pokemon__attribute-values {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-bottom: 14px;
+}
+
+.pokemon__attribute {
+  flex: 1;
+}
+
+.pokemon__attribute-value {
+  color: var(--dark-blue);
+  background-color: var(--neutral-100);
+  padding: 8px 16px;
+  border-radius: 24px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-align: center;
 }

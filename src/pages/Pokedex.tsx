@@ -12,6 +12,7 @@ import { optionTypes } from "../constants";
 
 // types
 import { PokemonTextType } from "../types";
+import PokemonAttribute from "../components/PokemonAttribute";
 
 const Pokedex = () => {
   const [open, setOpen] = useState(false);
@@ -160,32 +161,19 @@ const Pokedex = () => {
               </div>
             </div>
             <div className="pokemon__stats-container">
-              <div className="pokemon__attributes">
-                <h3 className="pokemon__attribute-title">Height</h3>
-                <h3 className="pokemon__attribute-title">Weight</h3>
-              </div>
+              {/*  */}
               <div className="pokemon__attribute-values">
-                <div className="pokemon__attribute-value">
-                  <span className="pokemon__height">.7m</span>
-                </div>
-                <div className="pokemon__attribute-value">
-                  <span className="pokemon__weight">69 kg</span>
-                </div>
+                <PokemonAttribute title="Height" value=".7m" />
+                <PokemonAttribute title="Weight" value="69kg" />
               </div>
-              <div className="pokemon__header-titles">
-                <h3 className="pokemon__attribute-title">Weaknesses</h3>
-                <h3 className="pokemon__attribute-title">Base exp</h3>
-              </div>
-              <div className="pokemon__weaknesses-wrapper">
-                <div className="pokemon__weakness-multiplier">
-                  <span className="pokemon__multiplier">2x</span>
+
+              {/*  */}
+              <div className="pokemon__attribute-values">
+                <div className="pokemon__attribute">
+                  <h3 className="pokemon__attribute-title">Weaknesses</h3>
+                  <span className="pokemon__attribute-value">N/A</span>
                 </div>
-                <div className="pokemon__weakness-icon">
-                  <span className="pokemon-icon"></span>
-                </div>
-              </div>
-              <div className="pokemon__base-exp">
-                <span className="pokemon__exp-value">64</span>
+                <PokemonAttribute title="Base Exp" value="64" />
               </div>
             </div>
           </div>
