@@ -160,7 +160,7 @@ const Pokedex = () => {
                 <div className="ability-2">Chlorophyll</div>
               </div>
             </div>
-            <div className="pokemon__stats-container">
+            <div className="pokemon__attribute-container">
               {/*  */}
               <div className="pokemon__attribute-values">
                 <PokemonAttribute title="Height">
@@ -180,6 +180,39 @@ const Pokedex = () => {
                 <PokemonAttribute title="Base Exp">
                   <span className="pokemon__attribute-value">64</span>
                 </PokemonAttribute>
+              </div>
+            </div>
+            <div className="pokemon__stats-container">
+              <h3>STATS</h3>
+              <div className="pokemon__stats-wrapper">
+                <div className="stat">
+                  <div className="label hp">HP</div>
+                  <span className="value">45</span>
+                </div>
+                <div className="stat">
+                  <div className="label attack">ATK</div>
+                  <span className="value">49</span>
+                </div>
+                <div className="stat">
+                  <div className="label defense">DEF</div>
+                  <span className="value">49</span>
+                </div>
+                <div className="stat">
+                  <div className="label special-attack">SpA</div>
+                  <span className="value">49</span>
+                </div>
+                <div className="stat">
+                  <div className="label special-defense">SpD</div>
+                  <span className="value">49</span>
+                </div>
+                <div className="stat">
+                  <div className="label speed">SPD</div>
+                  <span className="value">49</span>
+                </div>
+                <div className="stat">
+                  <div className="label attack">ATK</div>
+                  <span className="value">49</span>
+                </div>
               </div>
             </div>
           </div>
