@@ -183,7 +183,7 @@ const Pokedex = () => {
               </div>
             </div>
             <div className="pokemon__stats-container">
-              <h3>STATS</h3>
+              <h3>Stats</h3>
               <div className="pokemon__stats-wrapper">
                 <div className="stat">
                   <div className="label hp">HP</div>
@@ -213,6 +213,35 @@ const Pokedex = () => {
                   <div className="label attack">ATK</div>
                   <span className="value">49</span>
                 </div>
+              </div>
+            </div>
+            <div className="pokemon__evolution-container">
+              <h3>Evolution</h3>
+              <div className="pokemon__evolution-wrapper">
+                <img
+                  src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
+                  width={50}
+                  height={50}
+                  alt=""
+                />
+                <div className="min-level">
+                  <span>Lvl 16</span>
+                </div>
+                <img
+                  src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/2.png"
+                  width={50}
+                  height={50}
+                  alt=""
+                />
+                <div className="min-level">
+                  <span>Lvl 32</span>
+                </div>
+                <img
+                  src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/3.png"
+                  width={50}
+                  height={50}
+                  alt=""
+                />
               </div>
             </div>
           </div>
