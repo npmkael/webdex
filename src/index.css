@@ -96,6 +96,10 @@ select {
   --fire: #ff9d55;
   --fire-txt: #605045;
 
+  /* water */
+  --water: #97a9ff;
+  --water-txt: #032769;
+
   /* electric */
   --electric: #f4d33c;
   --electric-txt: #5d5942;
@@ -115,6 +119,10 @@ select {
   /* fighting */
   --fighting: #ce416a;
   --fighting-txt: #57414a;
+
+  /* flying */
+  --flying: #8fa9dd;
+  --flying-txt: #4d525a;
 
   /* Poison */
   --poison: #aa6ac8;
@@ -381,27 +389,35 @@ body {
 }
 
 .pokemon__type.normal {
+  background-color: var(--normal);
 }
 
 .pokemon__type-text.normal {
+  color: var(--normal-txt);
 }
 
 .pokemon__type.fire {
+  background-color: var(--fire);
 }
 
 .pokemon__type-text.fire {
+  color: var(--fire-txt);
 }
 
 .pokemon__type.water {
+  background-color: var(--water);
 }
 
 .pokemon__type-text.water {
+  color: var(--water-txt);
 }
 
 .pokemon__type.electric {
+  background-color: var(--electric);
 }
 
 .pokemon__type-text.eletric {
+  color: var(--electric-txt);
 }
 
 .pokemon__type.grass {
@@ -413,84 +429,107 @@ body {
 }
 
 .pokemon__type.ice {
+  background-color: var(--ice);
 }
 
 .pokemon__type-text.ice {
+  color: var(--ice-txt);
 }
 
 .pokemon__type.fighting {
+  background-color: var(--fighting);
 }
 
 .pokemon__type-text.fighting {
+  color: var(--fighting-txt);
 }
 
 .pokemon__type.poison {
+  background-color: var(--poison);
 }
 
 .pokemon__type-text.poison {
+  color: var(--poison-txt);
 }
 
 .pokemon__type.ground {
+  background-color: var(--ground);
 }
 
 .pokemon__type-text.ground {
+  color: var(--ground-txt);
 }
 
 .pokemon__type.flying {
+  background-color: var(--flying);
 }
 
 .pokemon__type-text.flying {
+  color: var(--flying-txt);
 }
 
 .pokemon__type.psychic {
+  background-color: var(--psychic);
 }
 
 .pokemon__type-text.psychic {
+  color: var(--psychic-txt);
 }
 
 .pokemon__type.bug {
+  background-color: var(--bug);
 }
 
 .pokemon__type-text.bug {
+  color: var(--bug-txt);
 }
 
 .pokemon__type.rock {
+  background-color: var(--rock);
 }
 
 .pokemon__type-text.rock {
+  color: var(--rock-txt);
 }
 
 .pokemon__type.ghost {
+  background-color: var(--ghost);
 }
 
 .pokemon__type-text.ghost {
+  color: var(--ghost-txt);
 }
 
 .pokemon__type.dragon {
+  background-color: var(--dragon);
 }
 
 .pokemon__type-text.dragon {
+  color: var(--dragon-txt);
 }
 
 .pokemon__type.dark {
+  background-color: var(--dark);
 }
 
 .pokemon__type-text.dark {
+  color: var(--dark-txt);
 }
 
 .pokemon__type.steel {
+  background-color: var(--steel);
 }
 
 .pokemon__type-text.steel {
+  color: var(--steel-txt);
 }
 
 .pokemon__type.fairy {
-}
-
-.pokemon-section__right {
+  background-color: var(--fairy);
 }
 
 .pokemon__type-text.fairy {
+  color: var(--fairy-txt);
 }
 
 .pokemon__stat-container {
