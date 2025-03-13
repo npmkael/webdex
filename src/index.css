@@ -498,7 +498,7 @@ body {
   margin-top: 100px;
 
   box-shadow: var(--shadow-4);
-  padding: 16px;
+  padding: 16px 8px 8px 8px;
   border-radius: 8px;
 
   position: relative;
@@ -517,6 +517,8 @@ body {
   align-items: flex-end;
   gap: 8px;
   margin-bottom: 6px;
+
+  margin-inline: 8px;
 }
 
 .pokemon__gender {
@@ -546,6 +548,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 6px;
+  margin-inline: 8px;
 }
 
 .pokemon__intro-details .pokemon__number {
@@ -565,6 +568,7 @@ body {
 
 .pokemon__entry-wrapper {
   text-align: center;
+  margin-inline: 8px;
 }
 
 .pokemon__entry-wrapper h3 {
@@ -581,6 +585,10 @@ body {
   line-height: 1.4;
 }
 
+.pokemon__signature-abilities-wrapper {
+  margin-inline: 8px;
+}
+
 .pokemon__signature-abilities-wrapper h3 {
   color: var(--dark-blue);
   letter-spacing: 1px;
@@ -589,6 +597,10 @@ body {
   font-weight: 800;
   margin-bottom: 6px;
   text-align: center;
+}
+
+.pokemon__attribute-container {
+  margin-inline: 8px;
 }
 
 .pokemon__ability-wrapper {
@@ -647,6 +659,10 @@ body {
   font-weight: 600;
   font-size: 0.9rem;
   text-align: center;
+}
+
+.pokemon__stats-container {
+  margin-inline: 8px;
 }
 
 .pokemon__stats-container h3 {
@@ -724,6 +740,10 @@ body {
   background-color: #fb94a8;
 }
 
+.pokemon__evolution-container {
+  margin-inline: 8px;
+}
+
 .pokemon__evolution-container h3 {
   color: var(--dark-blue);
   letter-spacing: 1px;
@@ -754,4 +774,36 @@ body {
   color: var(--neutral-60);
   font-size: 0.7rem;
   font-weight: 600;
+}
+
+.next-prev-container {
+  background-color: #eeeeef;
+  border-radius: 14px;
+}
+
+.next-pokemon-btn {
+  width: 100%;
+  height: 60px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border-radius: 14px;
+
+  transition: var(--transition-duration-smooth) var(--transition-easing-quick);
+}
+
+.next-pokemon-btn:hover {
+  background-color: #e2e2e2;
+}
+
+.next-pokemon-btn .pokemon__name {
+  margin-bottom: 0;
+  font-size: 0.85rem;
+}
+
+.next-pokemon-btn__pokemon-no {
+  font-size: 0.85rem;
+  font-weight: 500;
 }

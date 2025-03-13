@@ -5,7 +5,13 @@ import { motion } from "motion/react";
 import Search from "../components/SearchBar/Search";
 
 // icons
-import { ChevronDown, Mars, RotateCcw, Venus } from "lucide-react";
+import {
+  ChevronDown,
+  ChevronRight,
+  Mars,
+  RotateCcw,
+  Venus,
+} from "lucide-react";
 
 // constants
 import { optionTypes } from "../constants";
@@ -44,7 +50,10 @@ const Pokedex = () => {
         {/* sort controls */}
         <div className="sort-controls">
           <motion.div animate={open ? "open" : "closed"} className="dropdown">
-            <div className="dropdown-btn" onClick={() => setOpen((pv) => !pv)}>
+            <button
+              className="dropdown-btn"
+              onClick={() => setOpen((pv) => !pv)}
+            >
               <div className="dropdown-label">
                 {selected ? (
                   <>
@@ -61,11 +70,12 @@ const Pokedex = () => {
               <motion.span variants={iconVariants}>
                 <ChevronDown size={20} />
               </motion.span>
-            </div>
+            </button>
             <motion.div
               initial={wrapperVariants.closed}
               animate={open ? "open" : "closed"}
               variants={wrapperVariants}
+              style={{ originY: "top" }}
               className="dropdown-content"
             >
               {optionTypes.map((option) => (
@@ -87,7 +97,10 @@ const Pokedex = () => {
           </motion.div>
 
           {/* reset button */}
-          <button className="sort-controls__reset-btn">
+          <button
+            className="sort-controls__reset-btn"
+            onClick={() => setSelected(null)}
+          >
             <RotateCcw color="white" size={16} />
           </button>
         </div>
@@ -244,6 +257,20 @@ const Pokedex = () => {
                 />
               </div>
             </div>
+
+            <div className="next-prev-container">
+              <button className="next-pokemon-btn">
+                <span className="next-pokemon-btn__pokemon-no">#002</span>
+                <span className="pokemon__name">Ivysaur</span>
+                <img
+                  src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/2.gif"
+                  alt=""
+                  width={20}
+                  height={20}
+                />
+                <ChevronRight color="#85888b" size={18} />
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -254,9 +281,11 @@ const Pokedex = () => {
 const wrapperVariants = {
   open: {
     opacity: 1,
+    scaleY: 1,
   },
   closed: {
     opacity: 0,
+    scaleY: 0,
   },
 };
 
