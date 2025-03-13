@@ -9,7 +9,7 @@ type Props = {
 
 const PokemonBlock = ({ id, name, types, sprites }: Props) => {
   return (
-    <div className="pokemon">
+    <button className="pokemon">
       <div className="pokemon__img">
         <img
           src={`${sprites.versions?.["generation-v"]["black-white"].animated?.front_default}`}
@@ -32,7 +32,7 @@ const PokemonBlock = ({ id, name, types, sprites }: Props) => {
           ))}
         </div>
       </div>
-    </div>
+    </button>
   );
 };
 
