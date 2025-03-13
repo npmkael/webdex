@@ -14,6 +14,8 @@ const PokemonBlock = ({ id, name, types, sprites }: Props) => {
         <img
           src={`${sprites.versions?.["generation-v"]["black-white"].animated?.front_default}`}
           alt=""
+          width={45}
+          height={45}
         />
       </div>
 

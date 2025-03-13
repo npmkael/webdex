@@ -19,6 +19,7 @@ import { optionTypes } from "../constants";
 // types
 import { PokemonTextType } from "../types";
 import PokemonAttribute from "../components/PokemonAttribute";
+import PokemonGrid from "../components/PokemonBlock/PokemonGrid";
 
 const Pokedex = () => {
   const [open, setOpen] = useState(false);
@@ -105,26 +106,7 @@ const Pokedex = () => {
           </button>
         </div>
 
-        <div className="pokemon-grid">
-          <div className="pokemon">
-            <div className="pokemon__img">
-              <img
-                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/1.gif"
-                alt=""
-              />
-            </div>
-
-            <div className="pokemon__info">
-              <p className="pokemon__no">N&#176;001</p>
-              <p className="pokemon__name">Bulbasaur</p>
-              <div className="pokemon__type-wrapper">
-                <div className="pokemon__type grass">
-                  <span className="pokemon__type-text grass">Grass</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <PokemonGrid />
       </section>
 
       {/* Right Section */}

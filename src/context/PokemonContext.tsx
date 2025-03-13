@@ -5,7 +5,6 @@ type PokemonContextType = {
   pokemon: PokeAPIResponse[];
   loading: boolean;
   error: string | null;
-  fetchInitialPokemon: () => Promise<void>;
 };
 
 const PokemonContext = createContext<PokemonContextType | undefined>(undefined);
@@ -79,7 +78,6 @@ export const PokemonProvider = ({
     <PokemonContext.Provider
       value={{
         pokemon,
-        fetchInitialPokemon,
         loading,
         error,
       }}
