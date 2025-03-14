@@ -1,4 +1,5 @@
 import { Sprites, Type } from "../../types/pokeApi";
+import { formatPokemonId } from "../../utils/formatPokemonId";
 
 type Props = {
   id: number;
@@ -20,7 +21,7 @@ const PokemonBlock = ({ id, name, types, sprites }: Props) => {
       </div>
 
       <div className="pokemon__info">
-        <p className="pokemon__no">N&#176;{id}</p>
+        <p className="pokemon__no">N&#176;{formatPokemonId(id)}</p>
         <p className="pokemon__name">
           {name.charAt(0).toUpperCase() + name.slice(1)}
         </p>
