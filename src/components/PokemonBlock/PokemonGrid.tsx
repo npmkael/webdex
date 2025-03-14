@@ -1,4 +1,3 @@
-import React from "react";
 import { usePokemon } from "../../context/PokemonContext";
 import PokemonBlock from "./pokemon-block";
 

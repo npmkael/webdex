@@ -338,6 +338,11 @@ body {
 
   position: relative;
   z-index: 1;
+  transition: var(--transition-duration-smooth) var(--transition-easing-quick);
+}
+
+.pokemon:hover {
+  background-color: var(--neutral-95);
 }
 
 .pokemon__img {
@@ -539,8 +544,29 @@ body {
   box-shadow: var(--shadow-4);
   padding: 16px 8px 8px 8px;
   border-radius: 8px;
+  height: 787px;
 
   position: relative;
+}
+
+.pokeball-loading-container {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.pick--pokemon {
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pick--pokemon p {
+  text-transform: uppercase;
+  font-weight: 500;
 }
 
 .pokemon__stat-container .pokemon__img {

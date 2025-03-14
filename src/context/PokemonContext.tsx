@@ -74,6 +74,8 @@ export const PokemonProvider = ({
     }
   };
 
+  const fetchSpeciesPokemon = async (id: number): Promise<void> => {};
+
   return (
     <PokemonContext.Provider
       value={{
