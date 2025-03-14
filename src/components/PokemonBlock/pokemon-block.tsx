@@ -1,3 +1,4 @@
+import { usePokemon } from "../../context/PokemonContext";
 import { Sprites, Type } from "../../types/pokeApi";
 import { formatPokemonId } from "../../utils/formatPokemonId";
 
@@ -9,8 +10,10 @@ type Props = {
 };
 
 const PokemonBlock = ({ id, name, types, sprites }: Props) => {
+  const { fetchSpeciesPokemon } = usePokemon();
+
   return (
-    <button className="pokemon">
+    <button className="pokemon" onClick={() => fetchSpeciesPokemon(id)}>
       <div className="pokemon__img">
         <img
           src={`${sprites.versions?.["generation-v"]["black-white"].animated?.front_default}`}

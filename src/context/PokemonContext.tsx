@@ -1,10 +1,12 @@
 import { createContext, useState, useEffect, useContext } from "react";
 import { PokeAPIResponse } from "../types/pokeApi";
+import { PokemonSpecies } from "../types/pokemonSpeciesType";
 
 type PokemonContextType = {
   pokemon: PokeAPIResponse[];
   loading: boolean;
   error: string | null;
+  fetchSpeciesPokemon: (id: number) => Promise<void>;
 };
 
 const PokemonContext = createContext<PokemonContextType | undefined>(undefined);
@@ -28,6 +30,12 @@ export const PokemonProvider = ({
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [nextUrl, setNextUrl] = useState<string | null>(null);
+
+  const [pokemonSpecies, setPokemonSpecies] = useState<PokemonSpecies | null>(
+    null
+  );
+  const [speciesLoading, setSpeciesLoading] = useState(true);
+  const [speciesError, setSpeciesError] = useState<string | null>(null);
 
   useEffect(() => {
     fetchInitialPokemon();
@@ -59,7 +67,8 @@ export const PokemonProvider = ({
         })
       );
 
-      console.table(pokemonDetails);
+      // for debug purposes
+      // console.table(pokemonDetails);
       setPokemon(pokemonDetails);
     } catch (err) {
       if (err instanceof Error) {
@@ -74,7 +83,33 @@ export const PokemonProvider = ({
     }
   };
 
-  const fetchSpeciesPokemon = async (id: number): Promise<void> => {};
+  const fetchSpeciesPokemon = async (id: number): Promise<void> => {
+    try {
+      setSpeciesLoading(true);
+      setSpeciesError(null);
+
+      const response = await fetch(
+        `https://pokeapi.co/api/v2/pokemon-species/${id}`
+      );
+
+      if (!response.ok) throw new Error(`Error: ${response.status}`);
+
+      const data = await response.json();
+
+      console.table(data);
+      setPokemonSpecies(data);
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message);
+        console.error("Error fetching: ", err);
+      } else {
+        setError("An unknown error occurred");
+        console.error("Unknown error:", err);
+      }
+    } finally {
+      setSpeciesLoading(false);
+    }
+  };
 
   return (
     <PokemonContext.Provider
@@ -82,6 +117,7 @@ export const PokemonProvider = ({
         pokemon,
         loading,
         error,
+        fetchSpeciesPokemon,
       }}
     >
       {children}
