@@ -20,6 +20,7 @@ const PokemonGrid = () => {
           name={poke.name}
           sprites={poke.sprites}
           types={poke.types}
+          key={poke.id}
         />
       ))}
     </div>

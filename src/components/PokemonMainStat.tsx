@@ -1,17 +1,28 @@
-import { ChevronRight, Mars, Venus } from "lucide-react";
+import { ChevronRight, EyeOff, Mars, Venus } from "lucide-react";
 import PokemonAttribute from "./PokemonAttribute";
-
-type Props = {};
+import { usePokemon } from "../context/PokemonContext";
+import { formatPokemonId, formatPokemonWeight } from "../utils/utils";
+import { formatCapital } from "../utils/utils";
+import { getFlavorText } from "../utils/utils";
+import { formatPokemonHeight } from "../utils/utils";
 
 const PokemonMainStat = () => {
-  if (false)
+  const { pokemonSpecies, speciesLoading, speciesError, pokemon } =
+    usePokemon();
+
+  if (!pokemonSpecies)
     return (
       <div className="pick--pokemon">
         <p>Pick a Pokémon! </p>
       </div>
     );
 
-  if (false)
+  // console.table(pokemonSpecies);
+  const pokemonFilter = pokemon.filter(
+    (poke) => poke.id === pokemonSpecies?.id
+  );
+
+  if (speciesLoading)
     return (
       <div className="pokeball-loading-container">
         <img src="/pokeball-loading.gif" alt="pokeball loading" />
@@ -22,8 +33,10 @@ const PokemonMainStat = () => {
     <>
       <div className="pokemon__img">
         <img
-          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
-          alt="bulbasaur"
+          src={
+            pokemonFilter[0].sprites.other?.["official-artwork"].front_default
+          }
+          alt={pokemonSpecies.name}
           width={158}
           height={158}
         />
@@ -40,37 +53,52 @@ const PokemonMainStat = () => {
 
       <div className="pokemon__details-wrapper">
         <div className="pokemon__intro-details">
-          <p className="pokemon__number">#001</p>
-          <h2 className="pokemon__name">Bulbasaur</h2>
-          <p className="pokemon__genera">Seed Pokémon</p>
+          <p className="pokemon__number">
+            #{formatPokemonId(pokemonSpecies.id)}
+          </p>
+          <h2 className="pokemon__name">
+            {formatCapital(pokemonSpecies.name)}
+          </h2>
+          <p className="pokemon__genera">{pokemonSpecies.genera[7].genus}</p>
           <div className="pokemon__type-wrapper">
-            <div className="pokemon__type grass">
-              <span className="pokemon__type-text grass">Grass</span>
-            </div>
+            {pokemonFilter[0].types.map((pokeType) => (
+              <div className={`pokemon__type ${pokeType.type.name}`}>
+                <span className={`pokemon__type-text ${pokeType.type.name}`}>
+                  {pokeType.type.name}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
         <div className="pokemon__entry-wrapper">
           <h3>Pokédex Entry</h3>
           <p className="pokemon__flavor-text">
-            The seed on its back is filled with nutrients. The seed grows
-            steadily larger as its body grows.
+            {getFlavorText(pokemonSpecies)}
           </p>
         </div>
         <div className="pokemon__signature-abilities-wrapper">
           <h3>Abilities</h3>
           <div className="pokemon__ability-wrapper">
-            <div className="ability-1">Overgrow</div>
-            <div className="ability-2">Chlorophyll</div>
+            {pokemonFilter[0].abilities.map((ability) => (
+              <div className="ability">
+                <span>{formatCapital(ability.ability.name)}</span>
+                {ability.is_hidden ? <EyeOff size={18} color="#919499" /> : ""}
+              </div>
+            ))}
           </div>
         </div>
         <div className="pokemon__attribute-container">
           {/*  */}
           <div className="pokemon__attribute-values">
             <PokemonAttribute title="Height">
-              <span className="pokemon__attribute-value">.7m</span>
+              <span className="pokemon__attribute-value">
+                {formatPokemonHeight(pokemonFilter[0].height)}
+              </span>
             </PokemonAttribute>
             <PokemonAttribute title="Weight">
-              <span className="pokemon__attribute-value">69kg</span>
+              <span className="pokemon__attribute-value">
+                {formatPokemonWeight(pokemonFilter[0].weight)}
+              </span>
             </PokemonAttribute>
           </div>
 

@@ -7,6 +7,9 @@ type PokemonContextType = {
   loading: boolean;
   error: string | null;
   fetchSpeciesPokemon: (id: number) => Promise<void>;
+  pokemonSpecies: PokemonSpecies | null;
+  speciesLoading: boolean;
+  speciesError: string | null;
 };
 
 const PokemonContext = createContext<PokemonContextType | undefined>(undefined);
@@ -96,7 +99,7 @@ export const PokemonProvider = ({
 
       const data = await response.json();
 
-      console.table(data);
+      // console.table(data);
       setPokemonSpecies(data);
     } catch (err) {
       if (err instanceof Error) {
@@ -118,6 +121,9 @@ export const PokemonProvider = ({
         loading,
         error,
         fetchSpeciesPokemon,
+        pokemonSpecies,
+        speciesLoading,
+        speciesError,
       }}
     >
       {children}

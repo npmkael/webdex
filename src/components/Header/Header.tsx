@@ -9,7 +9,12 @@ const Header = () => {
       <nav className={styles.navbar}>
         <ul className={styles["navbar-list"]}>
           {navLinks.map((nav) => (
-            <Link label={nav.label} path={nav.path} icon={nav.icon} />
+            <Link
+              label={nav.label}
+              path={nav.path}
+              icon={nav.icon}
+              key={nav.label}
+            />
           ))}
         </ul>
       </nav>
