@@ -39,6 +39,7 @@ const PokemonMainStat = () => {
           alt={pokemonSpecies.name}
           width={158}
           height={158}
+          loading="lazy"
         />
       </div>
 
@@ -109,7 +110,9 @@ const PokemonMainStat = () => {
               <span className="pokemon__attribute-value">N/A</span>
             </div>
             <PokemonAttribute title="Base Exp">
-              <span className="pokemon__attribute-value">64</span>
+              <span className="pokemon__attribute-value">
+                {pokemonFilter[0].base_experience}
+              </span>
             </PokemonAttribute>
           </div>
         </div>

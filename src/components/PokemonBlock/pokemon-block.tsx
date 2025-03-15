@@ -1,6 +1,6 @@
 import { usePokemon } from "../../context/PokemonContext";
 import { Sprites, Type } from "../../types/pokeApi";
-import { formatPokemonId } from "../../utils/formatPokemonId";
+import { formatPokemonId } from "../../utils/utils";
 
 type Props = {
   id: number;
@@ -20,6 +20,7 @@ const PokemonBlock = ({ id, name, types, sprites }: Props) => {
           alt=""
           width={45}
           height={45}
+          loading="lazy"
         />
       </div>
 
