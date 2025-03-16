@@ -723,6 +723,9 @@ body {
   gap: 4px;
   align-items: center;
   justify-content: center;
+
+  max-height: 34px;
+  /* width: 100%; */
 }
 
 .pokemon__attribute-value {

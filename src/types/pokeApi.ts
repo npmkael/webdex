@@ -188,3 +188,13 @@ export type Type = {
   slot: number;
   type: Species;
 };
+
+type DamageRelations = {
+  double_damage_from: Species[];
+  half_damage_from: Species[];
+  no_damage_from: Species[];
+};
+
+export type TypeData = {
+  damage_relations: DamageRelations;
+};

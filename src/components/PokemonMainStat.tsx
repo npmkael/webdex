@@ -107,7 +107,20 @@ const PokemonMainStat = () => {
           <div className="pokemon__attribute-values">
             <div className="pokemon__attribute">
               <h3 className="pokemon__attribute-title">Weaknesses</h3>
-              <span className="pokemon__attribute-value">N/A</span>
+              <div className="pokemon__attribute-wrapper  weaknesses">
+                <div className="two-times">
+                  <span>2x</span>
+                </div>
+                <div className="fire-icon type">
+                  <span className="pokemon-icon">r</span>
+                </div>
+                <div className="ice-icon type">
+                  <span className="pokemon-icon">i</span>
+                </div>
+                <div className="electric-icon type">
+                  <span className="pokemon-icon">l</span>
+                </div>
+              </div>
             </div>
             <PokemonAttribute title="Base Exp">
               <span className="pokemon__attribute-value">
