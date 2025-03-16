@@ -5,10 +5,16 @@ import { formatPokemonId, formatPokemonWeight } from "../utils/utils";
 import { formatCapital } from "../utils/utils";
 import { getFlavorText } from "../utils/utils";
 import { formatPokemonHeight } from "../utils/utils";
+import PokemonType from "./PokemonType";
 
 const PokemonMainStat = () => {
-  const { pokemonSpecies, speciesLoading, speciesError, pokemon } =
-    usePokemon();
+  const {
+    pokemonSpecies,
+    speciesLoading,
+    speciesError,
+    pokemon,
+    pokemonWeakness,
+  } = usePokemon();
 
   if (!pokemonSpecies)
     return (
@@ -108,18 +114,9 @@ const PokemonMainStat = () => {
             <div className="pokemon__attribute">
               <h3 className="pokemon__attribute-title">Weaknesses</h3>
               <div className="pokemon__attribute-wrapper  weaknesses">
-                <div className="two-times">
-                  <span>2x</span>
-                </div>
-                <div className="fire-icon type">
-                  <span className="pokemon-icon">r</span>
-                </div>
-                <div className="ice-icon type">
-                  <span className="pokemon-icon">i</span>
-                </div>
-                <div className="electric-icon type">
-                  <span className="pokemon-icon">l</span>
-                </div>
+                {pokemonWeakness?.map((pw) => (
+                  <PokemonType type={pw} />
+                ))}
               </div>
             </div>
             <PokemonAttribute title="Base Exp">
