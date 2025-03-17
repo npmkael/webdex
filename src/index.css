@@ -89,7 +89,7 @@ select {
   /* pokemon type colors */
 
   /* normal */
-  --normal: #9198a2;
+  --normal: #bcc6d3;
   --normal-txt: #4d5052;
 
   /* Fire */
@@ -121,11 +121,11 @@ select {
   --fighting-txt: #57414a;
 
   /* flying */
-  --flying: #8fa9dd;
-  --flying-txt: #4d525a;
+  --flying: #a5c0f5;
+  --flying-txt: #4e5f79;
 
   /* Poison */
-  --poison: #aa6ac8;
+  --poison: #c77ee9;
   --poison-txt: #524956;
 
   /* Ground */
@@ -720,7 +720,7 @@ body {
   border-radius: 24px;
 
   display: flex;
-  gap: 4px;
+  /* gap: 4px; */
   align-items: center;
   justify-content: center;
 

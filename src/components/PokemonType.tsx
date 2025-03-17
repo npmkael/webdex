@@ -2,7 +2,7 @@ type Props = { type: string };
 
 const PokemonType = ({ type }: Props) => {
   return (
-    <div>
+    <div className="">
       <span className="pokemon-icon">{checkType(type)}</span>
     </div>
   );
