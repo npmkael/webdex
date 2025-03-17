@@ -814,6 +814,14 @@ body {
   background-color: #fb94a8;
 }
 
+.stat.total {
+  background-color: #8eb2ff;
+}
+
+.label.total {
+  background-color: #7a96d9;
+}
+
 .pokemon__evolution-container {
   margin-inline: 8px;
 }

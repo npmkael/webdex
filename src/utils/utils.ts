@@ -1,3 +1,4 @@
+import { Stat } from "../types/pokeApi";
 import { PokemonSpecies } from "../types/pokemonSpeciesType";
 
 export const getFlavorText = (species: PokemonSpecies): string => {
@@ -53,4 +54,14 @@ export const formatPokemonWeight = (weight: number): string => {
 
   // Otherwise format to 1 decimal place
   return `${weightInKg.toFixed(1)}kg`;
+};
+
+export const getTotalStat = (stats: Stat[]): number => {
+  let totalStat = 0;
+
+  for (let i = 0; i < stats.length; i++) {
+    totalStat += stats[i].base_stat;
+  }
+
+  return totalStat;
 };

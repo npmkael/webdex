@@ -1,11 +1,16 @@
 import { ChevronRight, EyeOff, Mars, Venus } from "lucide-react";
 import PokemonAttribute from "./PokemonAttribute";
 import { usePokemon } from "../context/PokemonContext";
-import { formatPokemonId, formatPokemonWeight } from "../utils/utils";
+import {
+  formatPokemonId,
+  formatPokemonWeight,
+  getTotalStat,
+} from "../utils/utils";
 import { formatCapital } from "../utils/utils";
 import { getFlavorText } from "../utils/utils";
 import { formatPokemonHeight } from "../utils/utils";
 import PokemonType from "./PokemonType";
+import PokemonStat from "./PokemonStat";
 
 const PokemonMainStat = () => {
   const {
@@ -129,33 +134,14 @@ const PokemonMainStat = () => {
         <div className="pokemon__stats-container">
           <h3>Stats</h3>
           <div className="pokemon__stats-wrapper">
-            <div className="stat">
-              <div className="label hp">HP</div>
-              <span className="value">45</span>
-            </div>
-            <div className="stat">
-              <div className="label attack">ATK</div>
-              <span className="value">49</span>
-            </div>
-            <div className="stat">
-              <div className="label defense">DEF</div>
-              <span className="value">49</span>
-            </div>
-            <div className="stat">
-              <div className="label special-attack">SpA</div>
-              <span className="value">49</span>
-            </div>
-            <div className="stat">
-              <div className="label special-defense">SpD</div>
-              <span className="value">49</span>
-            </div>
-            <div className="stat">
-              <div className="label speed">SPD</div>
-              <span className="value">49</span>
-            </div>
-            <div className="stat">
-              <div className="label attack">ATK</div>
-              <span className="value">49</span>
+            {pokemonFilter[0].stats.map((stat) => (
+              <PokemonStat base_stat={stat.base_stat} name={stat.stat.name} />
+            ))}
+            <div className="stat total">
+              <div className="label total">TOT</div>
+              <span className="value">
+                {getTotalStat(pokemonFilter[0].stats)}
+              </span>
             </div>
           </div>
         </div>

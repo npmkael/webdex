@@ -1,16 +1,13 @@
-import { Stat } from "../types/pokeApi";
-
 type Props = {
-  stats: Stat;
+  base_stat: number;
+  name: string;
 };
 
-const PokemonStat = ({ stats }: Props) => {
+const PokemonStat = ({ base_stat, name }: Props) => {
   return (
     <div className="stat">
-      <div className={`label ${stats.stat.name}`}>
-        {checkLabel(stats.stat.name)}
-      </div>
-      <span className="value">{stats.base_stat}</span>
+      <div className={`label ${name}`}>{checkLabel(name)}</div>
+      <span className="value">{base_stat}</span>
     </div>
   );
 };
