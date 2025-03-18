@@ -74,7 +74,10 @@ const PokemonMainStat = () => {
           <p className="pokemon__genera">{pokemonSpecies.genera[7].genus}</p>
           <div className="pokemon__type-wrapper">
             {pokemonFilter[0].types.map((pokeType) => (
-              <div className={`pokemon__type ${pokeType.type.name}`}>
+              <div
+                className={`pokemon__type ${pokeType.type.name}`}
+                key={pokeType.type.name}
+              >
                 <span className={`pokemon__type-text ${pokeType.type.name}`}>
                   {pokeType.type.name}
                 </span>
@@ -91,8 +94,8 @@ const PokemonMainStat = () => {
         <div className="pokemon__signature-abilities-wrapper">
           <h3>Abilities</h3>
           <div className="pokemon__ability-wrapper">
-            {pokemonFilter[0].abilities.map((ability) => (
-              <div className="ability">
+            {pokemonFilter[0].abilities.map((ability, index) => (
+              <div className="ability" key={index}>
                 <span>{formatCapital(ability.ability.name)}</span>
                 {ability.is_hidden ? <EyeOff size={18} color="#919499" /> : ""}
               </div>
@@ -119,8 +122,8 @@ const PokemonMainStat = () => {
             <div className="pokemon__attribute">
               <h3 className="pokemon__attribute-title">Weaknesses</h3>
               <div className="pokemon__attribute-wrapper  weaknesses">
-                {pokemonWeakness?.map((pw) => (
-                  <PokemonType type={pw} />
+                {pokemonWeakness?.map((pw, index) => (
+                  <PokemonType type={pw} key={index} />
                 ))}
               </div>
             </div>
@@ -135,7 +138,11 @@ const PokemonMainStat = () => {
           <h3>Stats</h3>
           <div className="pokemon__stats-wrapper">
             {pokemonFilter[0].stats.map((stat) => (
-              <PokemonStat base_stat={stat.base_stat} name={stat.stat.name} />
+              <PokemonStat
+                base_stat={stat.base_stat}
+                name={stat.stat.name}
+                key={stat.stat.name}
+              />
             ))}
             <div className="stat total">
               <div className="label total">TOT</div>

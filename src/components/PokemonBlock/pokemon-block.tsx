@@ -31,7 +31,10 @@ const PokemonBlock = ({ id, name, types, sprites }: Props) => {
         </p>
         <div className="pokemon__type-wrapper">
           {types.map((pokeType) => (
-            <div className={`pokemon__type ${pokeType.type.name}`}>
+            <div
+              className={`pokemon__type ${pokeType.type.name}`}
+              key={pokeType.type.name}
+            >
               <span className={`pokemon__type-text ${pokeType.type.name}`}>
                 {pokeType.type.name}
               </span>

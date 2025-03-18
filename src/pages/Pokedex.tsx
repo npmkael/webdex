@@ -83,6 +83,7 @@ const Pokedex = () => {
                     });
                     setOpen(false);
                   }}
+                  key={option.label}
                 >
                   <span className="pokemon-icon">{option.icon}</span>
                   <p>{option.label}</p>
