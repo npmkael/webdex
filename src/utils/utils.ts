@@ -57,11 +57,7 @@ export const formatPokemonWeight = (weight: number): string => {
 };
 
 export const getTotalStat = (stats: Stat[]): number => {
-  let totalStat = 0;
+  if (stats.length === 0 && !stats) return 0;
 
-  for (let i = 0; i < stats.length; i++) {
-    totalStat += stats[i].base_stat;
-  }
-
-  return totalStat;
+  return stats.reduce((total, stat) => total + stat.base_stat, 0);
 };
