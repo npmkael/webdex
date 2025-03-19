@@ -1,4 +1,5 @@
-export type PokemonTextType = {
-  icon: string;
+export type DropdownType = {
+  icon?: string;
   label: string;
+  value?: string;
 };

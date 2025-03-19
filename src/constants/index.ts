@@ -124,3 +124,14 @@ export const optionTypes = [
     icon: "y",
   },
 ];
+
+export const sortValues = [
+  {
+    value: "asc",
+    label: "Ascending",
+  },
+  {
+    value: "desc",
+    label: "Descending",
+  },
+];

@@ -5,19 +5,25 @@ import { motion } from "motion/react";
 import Search from "../components/SearchBar/Search";
 
 // icons
-import { ChevronDown, RotateCcw } from "lucide-react";
+import { RotateCcw } from "lucide-react";
 
 // constants
-import { optionTypes } from "../constants";
+import { optionTypes, sortValues } from "../constants";
 
 // types
-import { PokemonTextType } from "../types";
 import PokemonGrid from "../components/PokemonBlock/PokemonGrid";
 import PokemonMainStat from "../components/PokemonMainStat";
+import Dropdown from "../components/Dropdown/Dropdown";
+import { DropdownType } from "../types";
 
 const Pokedex = () => {
-  const [open, setOpen] = useState(false);
-  const [selected, setSelected] = useState<PokemonTextType | null>(null);
+  const [selectType, setSelectType] = useState<DropdownType | null>(null);
+  const [selectSort, setSelectSort] = useState<DropdownType | null>(null);
+
+  const resetSelect = () => {
+    setSelectType(null);
+    setSelectSort(null);
+  };
 
   return (
     <section className="pokedex-section">
@@ -26,76 +32,25 @@ const Pokedex = () => {
         {/* search bar */}
         <Search />
 
-        {/* ascending and pagination controls */}
-        <div className="sort-pagination-controls">
-          <div>
-            <select>
-              <option value="asc">Ascending </option>
-              <option value="desc">Descending</option>
-            </select>
-          </div>
-          <div className="pagination">
-            <span>from</span>
-            <input type="text" className="from-pag" />
-            <span>to</span>
-            <input type="text" className="to-pag" />
-          </div>
-        </div>
-
         {/* sort controls */}
         <div className="sort-controls">
-          <motion.div animate={open ? "open" : "closed"} className="dropdown">
-            <button
-              className="dropdown-btn"
-              onClick={() => setOpen((pv) => !pv)}
-            >
-              <div className="dropdown-label">
-                {selected ? (
-                  <>
-                    <span className="pokemon-icon">{selected.icon}</span>
-                    <p>{selected.label}</p>
-                  </>
-                ) : (
-                  <>
-                    <span className="pokemon-icon">s</span>
-                    <p>Type</p>
-                  </>
-                )}
-              </div>
-              <motion.span variants={iconVariants}>
-                <ChevronDown size={20} />
-              </motion.span>
-            </button>
-            <motion.div
-              initial={wrapperVariants.closed}
-              animate={open ? "open" : "closed"}
-              variants={wrapperVariants}
-              style={{ originY: "top" }}
-              className="dropdown-content"
-            >
-              {optionTypes.map((option) => (
-                <div
-                  className="dropdown-item"
-                  onClick={() => {
-                    setSelected({
-                      icon: option.icon,
-                      label: option.label,
-                    });
-                    setOpen(false);
-                  }}
-                  key={option.label}
-                >
-                  <span className="pokemon-icon">{option.icon}</span>
-                  <p>{option.label}</p>
-                </div>
-              ))}
-            </motion.div>
-          </motion.div>
+          <Dropdown
+            placeholder="Type"
+            options={optionTypes}
+            selected={selectType}
+            onSelect={setSelectType}
+          />
+          <Dropdown
+            placeholder="Sort"
+            options={sortValues}
+            selected={selectSort}
+            onSelect={setSelectSort}
+          />
 
           {/* reset button */}
           <button
             className="sort-controls__reset-btn"
-            onClick={() => setSelected(null)}
+            onClick={() => resetSelect()}
           >
             <RotateCcw color="white" size={16} />
           </button>
@@ -113,21 +68,4 @@ const Pokedex = () => {
     </section>
   );
 };
-
-const wrapperVariants = {
-  open: {
-    opacity: 1,
-    scaleY: 1,
-  },
-  closed: {
-    opacity: 0,
-    scaleY: 0,
-  },
-};
-
-const iconVariants = {
-  open: { rotate: 180 },
-  closed: { rotate: 0 },
-};
-
 export default Pokedex;
