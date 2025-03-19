@@ -1,6 +1,11 @@
 import { createContext, useState, useEffect, useContext } from "react";
 import { PokeAPIResponse, TypeData } from "../types/pokeApi";
-import { PokemonSpecies } from "../types/pokemonSpeciesType";
+import {
+  EvolutionChain,
+  EvolutionChainLink,
+  PokemonEvolution,
+  PokemonSpecies,
+} from "../types/pokemonSpeciesType";
 
 type PokemonContextType = {
   pokemon: PokeAPIResponse[];
@@ -38,6 +43,7 @@ export const PokemonProvider = ({
   const [pokemonSpecies, setPokemonSpecies] = useState<PokemonSpecies | null>(
     null
   );
+  const [evolutionChain, setEvolutionChain] = useState<PokemonEvolution[]>([]);
   const [pokemonWeakness, setPokemonWeakness] = useState<string[] | null>(null);
   const [speciesLoading, setSpeciesLoading] = useState(true);
   const [speciesError, setSpeciesError] = useState<string | null>(null);
@@ -52,7 +58,7 @@ export const PokemonProvider = ({
       setError(null);
 
       const response = await fetch(
-        "https://pokeapi.co/api/v2/pokemon?limit=25"
+        "https://pokeapi.co/api/v2/pokemon?limit=50"
       );
 
       if (!response.ok) {
@@ -101,8 +107,42 @@ export const PokemonProvider = ({
 
       const data = await response.json();
 
+      const evolutionResponse = await fetch(data.evolution_chain.url);
+
+      if (!evolutionResponse.ok)
+        throw new Error(`Erro: ${evolutionResponse.status}`);
+
+      const evolutionData: EvolutionChain = await evolutionResponse.json();
+
+      const evolutionChain: PokemonEvolution[] = [];
+
+      const processEvolutionChain = (
+        chain: EvolutionChainLink,
+        details?: any
+      ) => {
+        evolutionChain.push({
+          id,
+          name: chain.species.name,
+          image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`,
+          evolutionDetails: details,
+        });
+
+        chain.evolves_to.forEach((evolution) => {
+          const evolutionDetails = evolution.evolution_details[0];
+          const details = {
+            trigger: evolutionDetails.trigger.name,
+            minLevel: evolutionDetails.min_level,
+          };
+
+          processEvolutionChain(evolution, details);
+        });
+      };
+
+      processEvolutionChain(evolutionData.chain);
+
       // console.table(data);
       const weaknessesData = await fetchWeaknessesPokemon(data.name);
+      setEvolutionChain(evolutionChain);
       setPokemonWeakness(weaknessesData);
       setPokemonSpecies(data);
     } catch (err) {

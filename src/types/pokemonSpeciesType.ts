@@ -64,7 +64,36 @@ export interface PokedexNumber {
 
 // Evolution chain link
 export interface EvolutionChain {
-  url: string;
+  chain: EvolutionChainLink;
+}
+
+export interface EvolutionChainLink {
+  species: {
+    name: string;
+    url: string;
+  };
+  evolution_details: Array<{
+    min_level?: number;
+    item?: {
+      name: string;
+    };
+    trigger: {
+      name: string;
+    };
+    // There are many more possible evolution details
+  }>;
+  evolves_to: EvolutionChainLink[];
+}
+
+export interface PokemonEvolution {
+  id: number;
+  name: string;
+  image: string;
+  evolutionDetails?: {
+    trigger: string;
+    minLevel?: number;
+    item?: string;
+  };
 }
 
 // Main Pokemon Species interface
