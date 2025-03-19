@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { motion } from "motion/react";
 
 // components
 import Search from "../components/SearchBar/Search";
