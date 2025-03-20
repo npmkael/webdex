@@ -18,6 +18,7 @@ const DropdownItem = ({ setSelected, setOpen, option }: Props) => {
         setSelected({
           icon: option.icon,
           label: option.label,
+          value: option.value,
         });
         setOpen(false);
       }}

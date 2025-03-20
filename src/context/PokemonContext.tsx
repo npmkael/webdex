@@ -3,6 +3,7 @@ import { PokeAPIResponse, TypeData } from "../types/pokeApi";
 import {
   EvolutionChain,
   EvolutionChainLink,
+  ItemData,
   PokemonEvolution,
   PokemonSpecies,
 } from "../types/pokemonSpeciesType";
@@ -115,36 +116,72 @@ export const PokemonProvider = ({
       const evolutionData: EvolutionChain = await evolutionResponse.json();
 
       const evolutionChain: PokemonEvolution[] = [];
+      let currentChain = evolutionData.chain;
 
-      const processEvolutionChain = (
-        chain: EvolutionChainLink,
-        details?: any
-      ) => {
-        evolutionChain.push({
+      const getIdFromUrl = (url: string) => {
+        const urlParts = url.split("/");
+        return parseInt(urlParts[urlParts.length - 2]);
+      };
+      // base form
+      const baseId = getIdFromUrl(currentChain.species.url);
+      evolutionChain.push({
+        id: baseId,
+        name: currentChain.species.name,
+        image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${baseId}.png`,
+      });
+
+      while (currentChain.evolves_to.length > 0) {
+        const nextEvolution = currentChain.evolves_to[0];
+        const evolutionDetails = nextEvolution.evolution_details[0];
+
+        const id = getIdFromUrl(nextEvolution.species.url);
+        const evolutionInfo: PokemonEvolution = {
           id,
-          name: chain.species.name,
+          name: nextEvolution.species.name,
           image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`,
-          evolutionDetails: details,
-        });
-
-        chain.evolves_to.forEach((evolution) => {
-          const evolutionDetails = evolution.evolution_details[0];
-          const details = {
+          evolutionDetails: {
             trigger: evolutionDetails.trigger.name,
             minLevel: evolutionDetails.min_level,
-          };
+            item: evolutionDetails.item?.name,
+          },
+        };
 
-          processEvolutionChain(evolution, details);
-        });
-      };
+        if (evolutionDetails.item) {
+          const itemName = evolutionDetails.item.name;
 
-      processEvolutionChain(evolutionData.chain);
+          try {
+            const itemResponse = await fetch(
+              `https://pokeapi.co/api/v2/item/${itemName}`
+            );
+
+            if (itemResponse.ok) {
+              const itemData: ItemData = await itemResponse.json();
+
+              if (evolutionInfo.evolutionDetails) {
+                evolutionInfo.evolutionDetails.itemSprite =
+                  itemData.sprites.default;
+              }
+            }
+          } catch (itemErr) {
+            console.error(
+              `Failed to fetch item sprite for ${itemName}`,
+              itemErr
+            );
+          }
+        }
+
+        evolutionChain.push(evolutionInfo);
+
+        currentChain = nextEvolution;
+      }
 
       // console.table(data);
       const weaknessesData = await fetchWeaknessesPokemon(data.name);
       setEvolutionChain(evolutionChain);
       setPokemonWeakness(weaknessesData);
       setPokemonSpecies(data);
+
+      console.log(evolutionChain);
     } catch (err) {
       if (err instanceof Error) {
         setError(err.message);

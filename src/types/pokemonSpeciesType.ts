@@ -93,6 +93,14 @@ export interface PokemonEvolution {
     trigger: string;
     minLevel?: number;
     item?: string;
+    itemSprite?: string;
+  };
+}
+
+export interface ItemData {
+  name: string;
+  sprites: {
+    default: string;
   };
 }
 
