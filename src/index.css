@@ -117,12 +117,12 @@ select {
   --ice-txt: #475856;
 
   /* fighting */
-  --fighting: #ce416a;
-  --fighting-txt: #57414a;
+  --fighting: #e64b76;
+  --fighting-txt: #422733;
 
   /* flying */
   --flying: #a5c0f5;
-  --flying-txt: #4e5f79;
+  --flying-txt: #3d4b61;
 
   /* Poison */
   --poison: #c77ee9;
@@ -130,7 +130,7 @@ select {
 
   /* Ground */
   --ground: #d97845;
-  --ground-txt: #5a4d42;
+  --ground-txt: #473d34;
 
   /* Psychic */
   --psychic: #fa7178;
@@ -145,7 +145,7 @@ select {
   --rock-txt: #57554f;
 
   /* Ghost */
-  --ghost: #5269ac;
+  --ghost: #6a88e2;
   --ghost-txt: #424952;
 
   /* Dragon */
@@ -157,8 +157,8 @@ select {
   --dark-txt: #45454a;
 
   /* Steel */
-  --steel: #5a8ea2;
-  --steel-txt: #454d52;
+  --steel: #6ca8c0;
+  --steel-txt: #293a44;
 
   /* Fairy */
   --fairy: #ec8fe7;
