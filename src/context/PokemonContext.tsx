@@ -17,6 +17,7 @@ type PokemonContextType = {
   speciesLoading: boolean;
   speciesError: string | null;
   pokemonWeakness: string[] | null;
+  evolutionChain: PokemonEvolution[];
 };
 
 const PokemonContext = createContext<PokemonContextType | undefined>(undefined);
@@ -59,7 +60,7 @@ export const PokemonProvider = ({
       setError(null);
 
       const response = await fetch(
-        "https://pokeapi.co/api/v2/pokemon?limit=50"
+        "https://pokeapi.co/api/v2/pokemon?limit=100"
       );
 
       if (!response.ok) {
@@ -248,6 +249,7 @@ export const PokemonProvider = ({
         speciesLoading,
         speciesError,
         pokemonWeakness,
+        evolutionChain,
       }}
     >
       {children}
