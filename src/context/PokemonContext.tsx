@@ -182,7 +182,7 @@ export const PokemonProvider = ({
       setPokemonWeakness(weaknessesData);
       setPokemonSpecies(data);
 
-      console.log(evolutionChain);
+      // console.log(evolutionChain);
     } catch (err) {
       if (err instanceof Error) {
         setError(err.message);

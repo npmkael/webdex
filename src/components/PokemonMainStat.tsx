@@ -1,4 +1,4 @@
-import { ChevronRight, EyeOff, Mars, Venus } from "lucide-react";
+import { ChevronLeft, ChevronRight, EyeOff, Mars, Venus } from "lucide-react";
 import PokemonAttribute from "./PokemonAttribute";
 import { usePokemon } from "../context/PokemonContext";
 import {
@@ -12,6 +12,7 @@ import { formatPokemonHeight } from "../utils/utils";
 import PokemonType from "./PokemonType";
 import PokemonStat from "./PokemonStat";
 import PokemonEvolutionChain from "./PokemonEvolutionChain";
+import { PokeAPIResponse } from "../types/pokeApi";
 
 const PokemonMainStat = () => {
   const {
@@ -21,6 +22,7 @@ const PokemonMainStat = () => {
     pokemon,
     pokemonWeakness,
     evolutionChain,
+    fetchSpeciesPokemon,
   } = usePokemon();
 
   if (!pokemonSpecies)
@@ -34,6 +36,24 @@ const PokemonMainStat = () => {
   const pokemonFilter = pokemon.filter(
     (poke) => poke.id === pokemonSpecies?.id
   );
+
+  const getAdjacentPokemon = (
+    target: number = 1,
+    pokemon: PokeAPIResponse[]
+  ) => {
+    const pokemonIndex = pokemon.findIndex((poke) => poke.id === target);
+
+    if (pokemonIndex === -1) return null;
+
+    const prevPokemon = (pokemonIndex - 1 + pokemon.length) % pokemon.length;
+    const nextPokemon = (pokemonIndex + 1) % pokemon.length;
+
+    return [pokemon[prevPokemon], pokemon[nextPokemon]];
+  };
+
+  const pokemonAdjacent = getAdjacentPokemon(pokemonSpecies.id, pokemon);
+
+  console.log(pokemonAdjacent);
 
   if (speciesLoading)
     return (
@@ -160,12 +180,55 @@ const PokemonMainStat = () => {
         </div>
 
         <div className="next-prev-container">
-          <button className="next-pokemon-btn">
-            <span className="next-pokemon-btn__pokemon-no">#002</span>
-            <span className="pokemon__name">Ivysaur</span>
+          <button
+            className="prev pokemon-btn"
+            onClick={() =>
+              fetchSpeciesPokemon(
+                pokemonSpecies.id - 1 ? pokemonSpecies.id - 1 : pokemon.length
+              )
+            }
+          >
+            <ChevronLeft color="#85888b" size={18} />
             <img
-              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/2.gif"
-              alt=""
+              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${
+                pokemonAdjacent ? pokemonAdjacent[0].id : ""
+              }.gif`}
+              alt={`${pokemonAdjacent ? pokemonAdjacent[0].name : ""}`}
+              width={20}
+              height={20}
+            />
+
+            <span className="pokemon__name">
+              {pokemonAdjacent ? formatCapital(pokemonAdjacent[0].name) : "N/A"}
+            </span>
+            <span className="prev pokemon-btn__pokemon-no">
+              #
+              {pokemonAdjacent ? formatPokemonId(pokemonAdjacent[0].id) : "N/A"}
+            </span>
+          </button>
+
+          <div className="divider" />
+
+          <button
+            className="next pokemon-btn"
+            onClick={() => {
+              fetchSpeciesPokemon(
+                pokemonSpecies.id >= pokemon.length ? 1 : pokemonSpecies.id + 1
+              );
+            }}
+          >
+            <span className="next pokemon-btn__pokemon-no">
+              #
+              {pokemonAdjacent ? formatPokemonId(pokemonAdjacent[1].id) : "N/A"}
+            </span>
+            <span className="pokemon__name">
+              {pokemonAdjacent ? formatCapital(pokemonAdjacent[1].name) : "N/A"}
+            </span>
+            <img
+              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${
+                pokemonAdjacent ? pokemonAdjacent[1].id : ""
+              }.gif`}
+              alt={`${pokemonAdjacent ? pokemonAdjacent[1].name : ""}`}
               width={20}
               height={20}
             />

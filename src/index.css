@@ -861,31 +861,51 @@ body {
 .next-prev-container {
   background-color: #eeeeef;
   border-radius: 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.next-pokemon-btn {
-  width: 100%;
+.next-prev-container .pokemon-btn {
   height: 60px;
 
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
-  border-radius: 14px;
 
   transition: var(--transition-duration-smooth) var(--transition-easing-quick);
+
+  flex: 1;
 }
 
-.next-pokemon-btn:hover {
+.next.pokemon-btn {
+  border-top-right-radius: 14px;
+  border-bottom-right-radius: 14px;
+}
+
+.prev.pokemon-btn {
+  border-top-left-radius: 14px;
+  border-bottom-left-radius: 14px;
+}
+
+.pokemon-btn:hover {
   background-color: #e2e2e2;
 }
 
-.next-pokemon-btn .pokemon__name {
+.pokemon-btn .pokemon__name {
   margin-bottom: 0;
-  font-size: 0.85rem;
+  font-size: 0.73rem;
 }
 
-.next-pokemon-btn__pokemon-no {
-  font-size: 0.85rem;
+.pokemon-btn__pokemon-no {
+  font-size: 0.73rem;
   font-weight: 500;
+}
+
+.divider {
+  width: 1px;
+  height: 20px;
+  background-color: var(--neutral-50);
 }

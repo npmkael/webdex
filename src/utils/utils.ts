@@ -26,7 +26,12 @@ export const formatCapital = (name: string): string => {
   return name.charAt(0).toUpperCase() + name.slice(1);
 };
 
-export const formatPokemonId = (id: number, digits: number = 3): string => {
+export const formatPokemonId = (
+  id: number | null,
+  digits: number = 3
+): string => {
+  if (!id) return "No set ID";
+
   return id.toString().padStart(digits, "0");
 };
 
