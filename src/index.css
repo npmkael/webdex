@@ -551,17 +551,19 @@ body {
 
 .pokeball-loading-container {
   display: flex;
-  height: 100%;
+  height: 200px;
   align-items: center;
   justify-content: center;
 }
 
 .pick--pokemon {
-  height: 100%;
+  height: 200px;
 
   display: flex;
   align-items: center;
   justify-content: center;
+
+  flex-direction: column;
 }
 
 .pick--pokemon p {
@@ -908,4 +910,10 @@ body {
   width: 1px;
   height: 20px;
   background-color: var(--neutral-50);
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

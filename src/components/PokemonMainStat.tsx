@@ -28,7 +28,8 @@ const PokemonMainStat = () => {
   if (!pokemonSpecies)
     return (
       <div className="pick--pokemon">
-        <p>Pick a Pokémon! </p>
+        <img src="/choose-pokemon.jpg" width={150} height={150} />
+        <p>Choose a Pokémon!</p>
       </div>
     );
 

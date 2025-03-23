@@ -5,7 +5,11 @@ const PokemonGrid = () => {
   const { pokemon, loading, error } = usePokemon();
 
   if (loading && pokemon.length === 0) {
-    return <p>Loading...</p>;
+    return (
+      <div className="loading">
+        <img src="/pikachu-loading.gif" alt="loading" />
+      </div>
+    );
   }
 
   if (error) {
