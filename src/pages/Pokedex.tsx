@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 // components
 import Search from "../components/SearchBar/Search";
@@ -15,9 +15,22 @@ import PokemonMainStat from "../components/PokemonMainStat";
 import Dropdown from "../components/Dropdown/Dropdown";
 import { DropdownType } from "../types";
 
+import { motion, useScroll, useTransform } from "motion/react";
+
 const Pokedex = () => {
   const [selectType, setSelectType] = useState<DropdownType | null>(null);
   const [selectSort, setSelectSort] = useState<DropdownType | null>(null);
+
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollY } = useScroll();
+
+  const opacity = useTransform(
+    scrollY,
+    [0, 100], // Scroll position values (in pixels)
+    [0.95, 1] // Corresponding opacity values
+  );
+
+  const scale = useTransform(scrollY, [0, 100], [0.98, 1]);
 
   const resetSelect = () => {
     setSelectType(null);
@@ -60,9 +73,16 @@ const Pokedex = () => {
 
       {/* Right Section */}
       <section className="pokedex-section__right">
-        <div className="pokemon__stat-container">
-          <PokemonMainStat />
-        </div>
+        <motion.div
+          className="pokemon__wrapper"
+          ref={containerRef}
+          style={{ opacity, scale }}
+          transition={{ duration: 0.3 }}
+        >
+          <div className="pokemon__stat-container">
+            <PokemonMainStat />
+          </div>
+        </motion.div>
       </section>
     </section>
   );

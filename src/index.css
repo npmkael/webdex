@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 a,
 img,
 span,
@@ -393,6 +397,10 @@ body {
   font-size: 0.9rem;
 }
 
+.pokedex-section__right {
+  position: relative;
+}
+
 .pokemon__type.normal {
   background-color: var(--normal);
 }
@@ -547,6 +555,12 @@ body {
   /* height: 787px; */
 
   position: relative;
+}
+
+.pokemon__wrapper {
+  position: sticky;
+  top: 90px;
+  z-index: 10;
 }
 
 .pokeball-loading-container {
