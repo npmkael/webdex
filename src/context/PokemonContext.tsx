@@ -201,7 +201,7 @@ export const PokemonProvider = ({
       }
 
       // console.table(data);
-      const weaknessesData = await fetchWeaknessesPokemon(data.name);
+      const weaknessesData = await fetchWeaknessesPokemon(data.id);
       setEvolutionChain(evolutionChain);
       setPokemonWeakness(weaknessesData);
       setPokemonSpecies(data);

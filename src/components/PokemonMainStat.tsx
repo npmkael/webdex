@@ -54,8 +54,6 @@ const PokemonMainStat = () => {
 
   const pokemonAdjacent = getAdjacentPokemon(pokemonSpecies.id, pokemon);
 
-  console.log(pokemonAdjacent);
-
   if (speciesLoading)
     return (
       <div className="pokeball-loading-container">
