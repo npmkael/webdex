@@ -135,3 +135,76 @@ export const sortValues = [
     label: "Descending",
   },
 ];
+
+export const paginationValues = [
+  {
+    value: {
+      limit: 100,
+      offset: 0,
+    },
+    label: "0-101",
+  },
+  {
+    value: {
+      limit: 100,
+      offset: 100,
+    },
+    label: "101-200",
+  },
+  {
+    value: {
+      limit: 100,
+      offset: 200,
+    },
+    label: "201-300",
+  },
+  {
+    value: {
+      limit: 100,
+      offset: 300,
+    },
+    label: "301-400",
+  },
+  {
+    value: {
+      limit: 100,
+      offset: 400,
+    },
+    label: "401-500",
+  },
+  {
+    value: {
+      limit: 100,
+      offset: 500,
+    },
+    label: "501-600",
+  },
+  {
+    value: {
+      limit: 100,
+      offset: 600,
+    },
+    label: "601-700",
+  },
+  {
+    value: {
+      limit: 100,
+      offset: 700,
+    },
+    label: "701-800",
+  },
+  {
+    value: {
+      limit: 100,
+      offset: 800,
+    },
+    label: "801-900",
+  },
+  {
+    value: {
+      limit: 100,
+      offset: 900,
+    },
+    label: "901-1024",
+  },
+];

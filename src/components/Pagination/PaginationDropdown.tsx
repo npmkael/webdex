@@ -1,17 +1,29 @@
 import { useRef, useState, useEffect } from "react";
 import { motion } from "motion/react";
-import DropdownItem from "./DropdownItem";
-import { DropdownType } from "../../types";
 import { ChevronDown } from "lucide-react";
+import { PaginationType } from "../../types";
 
 type Props = {
   placeholder?: string;
-  options: DropdownType[];
-  selected: DropdownType | null;
-  onSelect: React.Dispatch<React.SetStateAction<DropdownType | null>>;
+  options: PaginationType[];
+  pagination: PaginationType;
+  setPagination: React.Dispatch<
+    React.SetStateAction<{
+      value: {
+        limit: number;
+        offset: number;
+      };
+      label: string;
+    }>
+  >;
 };
 
-const Dropdown = ({ placeholder, options, selected, onSelect }: Props) => {
+const PaginationDropdown = ({
+  placeholder,
+  options,
+  pagination,
+  setPagination,
+}: Props) => {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -45,10 +57,9 @@ const Dropdown = ({ placeholder, options, selected, onSelect }: Props) => {
         aria-expanded={open}
       >
         <div className="dropdown-label">
-          {selected ? (
+          {pagination ? (
             <>
-              <span className="pokemon-icon">{selected.icon}</span>
-              <p>{selected.label}</p>
+              <p>{pagination.label}</p>
             </>
           ) : (
             <>
@@ -69,12 +80,20 @@ const Dropdown = ({ placeholder, options, selected, onSelect }: Props) => {
         className="dropdown-content"
       >
         {options.map((option, index) => (
-          <DropdownItem
-            setSelected={onSelect}
-            setOpen={setOpen}
-            option={option}
+          <div
+            className="dropdown-item"
+            onClick={() => {
+              setPagination({
+                value: option.value,
+                label: option.label,
+              });
+              console.log();
+              setOpen(false);
+            }}
             key={index}
-          />
+          >
+            <p>{option.label}</p>
+          </div>
         ))}
       </motion.div>
     </motion.div>
@@ -97,4 +116,4 @@ const iconVariants = {
   closed: { rotate: 0 },
 };
 
-export default Dropdown;
+export default PaginationDropdown;

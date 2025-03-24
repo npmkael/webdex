@@ -7,7 +7,7 @@ import Search from "../components/SearchBar/Search";
 import { RotateCcw } from "lucide-react";
 
 // constants
-import { optionTypes, sortValues } from "../constants";
+import { optionTypes, paginationValues, sortValues } from "../constants";
 
 // types
 import PokemonGrid from "../components/PokemonBlock/PokemonGrid";
@@ -16,10 +16,15 @@ import Dropdown from "../components/Dropdown/Dropdown";
 import { DropdownType } from "../types";
 
 import { motion, useScroll, useTransform } from "motion/react";
+import { usePokemon } from "../context/PokemonContext";
+import PaginationDropdown from "../components/Pagination/PaginationDropdown";
 
 const Pokedex = () => {
   const [selectType, setSelectType] = useState<DropdownType | null>(null);
   const [selectSort, setSelectSort] = useState<DropdownType | null>(null);
+
+  // Context API
+  const { pagination, setPagination } = usePokemon();
 
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollY } = useScroll();
@@ -57,6 +62,12 @@ const Pokedex = () => {
             options={sortValues}
             selected={selectSort}
             onSelect={setSelectSort}
+          />
+
+          <PaginationDropdown
+            pagination={pagination}
+            options={paginationValues}
+            setPagination={setPagination}
           />
 
           {/* reset button */}

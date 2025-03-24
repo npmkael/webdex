@@ -18,6 +18,22 @@ type PokemonContextType = {
   speciesError: string | null;
   pokemonWeakness: string[] | null;
   evolutionChain: PokemonEvolution[];
+  setPagination: React.Dispatch<
+    React.SetStateAction<{
+      value: {
+        limit: number;
+        offset: number;
+      };
+      label: string;
+    }>
+  >;
+  pagination: {
+    value: {
+      limit: number;
+      offset: number;
+    };
+    label: string;
+  };
 };
 
 const PokemonContext = createContext<PokemonContextType | undefined>(undefined);
@@ -50,9 +66,17 @@ export const PokemonProvider = ({
   const [speciesLoading, setSpeciesLoading] = useState(true);
   const [speciesError, setSpeciesError] = useState<string | null>(null);
 
+  const [pagination, setPagination] = useState({
+    value: {
+      limit: 101,
+      offset: 0,
+    },
+    label: "0-101",
+  });
+
   useEffect(() => {
     fetchInitialPokemon();
-  }, []);
+  }, [pagination]);
 
   const fetchInitialPokemon = async (): Promise<void> => {
     try {
@@ -60,7 +84,7 @@ export const PokemonProvider = ({
       setError(null);
 
       const response = await fetch(
-        "https://pokeapi.co/api/v2/pokemon?limit=100"
+        `https://pokeapi.co/api/v2/pokemon?limit=${pagination.value.limit}&offset=${pagination.value.offset}`
       );
 
       if (!response.ok) {
@@ -196,14 +220,10 @@ export const PokemonProvider = ({
     }
   };
 
-  const fetchWeaknessesPokemon = async (
-    pokemonName: string
-  ): Promise<string[]> => {
+  const fetchWeaknessesPokemon = async (id: number): Promise<string[]> => {
     try {
-      // Fetch the pokemon data to get its types via name
-      const response = await fetch(
-        `https://pokeapi.co/api/v2/pokemon/${pokemonName}`
-      );
+      // Fetch the pokemon data to get its types id
+      const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
 
       if (!response.ok)
         throw new Error(`Failed to fetch Pokémon: ${response.status}`);
@@ -250,6 +270,8 @@ export const PokemonProvider = ({
         speciesError,
         pokemonWeakness,
         evolutionChain,
+        setPagination,
+        pagination,
       }}
     >
       {children}

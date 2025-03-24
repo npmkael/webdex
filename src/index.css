@@ -198,6 +198,8 @@ body {
   display: grid;
   grid-template-columns: 740px 1fr;
   gap: 12px;
+
+  margin-bottom: 16px;
 }
 
 .pokedex-section__left {
