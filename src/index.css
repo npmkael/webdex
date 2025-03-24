@@ -870,6 +870,14 @@ body {
   border-radius: 15px;
 }
 
+.pokemon__evolution-wrapper .pokemon__evolution-text {
+  font-size: 0.9rem;
+}
+
+.pokemon__evolution-wrapper .pokemon__evolution-text i {
+  font-weight: 600;
+}
+
 .min-level span {
   color: var(--neutral-60);
   font-size: 0.7rem;
