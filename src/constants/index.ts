@@ -142,7 +142,7 @@ export const paginationValues = [
       limit: 100,
       offset: 0,
     },
-    label: "0-101",
+    label: "1-100",
   },
   {
     value: {
