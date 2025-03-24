@@ -4,7 +4,7 @@ import PokemonBlock from "./pokemon-block";
 const PokemonGrid = () => {
   const { pokemon, loading, error } = usePokemon();
 
-  if (loading && pokemon.length === 0) {
+  if (loading || pokemon.length === 0) {
     return (
       <div className="loading">
         <img src="/pikachu-loading.gif" alt="loading" />
