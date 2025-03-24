@@ -16,7 +16,7 @@ const PokemonBlock = ({ id, name, types, sprites }: Props) => {
     <button className="pokemon" onClick={() => fetchSpeciesPokemon(id)}>
       <div className="pokemon__img">
         <img
-          src={`${sprites.versions?.["generation-v"]["black-white"].animated?.front_default}`}
+          src={`${sprites.other?.showdown?.front_default || ""}`}
           alt=""
           width={50}
           height={45}
