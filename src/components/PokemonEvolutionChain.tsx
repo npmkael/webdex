@@ -1,3 +1,4 @@
+import React from "react";
 import { PokemonEvolution } from "../types/pokemonSpeciesType";
 
 type Props = {
@@ -13,7 +14,7 @@ const PokemonEvolutionChain = ({ evolution }: Props) => {
         </p>
       ) : (
         evolution.map((evo, index) => (
-          <>
+          <React.Fragment key={index}>
             <img src={evo.image} width={50} height={50} alt={evo.name} />
 
             {index < evolution.length - 1 &&
@@ -49,7 +50,7 @@ const PokemonEvolutionChain = ({ evolution }: Props) => {
                   )}
                 </div>
               )}
-          </>
+          </React.Fragment>
         ))
       )}
     </div>
