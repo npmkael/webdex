@@ -1,5 +1,6 @@
 import React from "react";
 import { PokemonEvolution } from "../types/pokemonSpeciesType";
+import { formatCapital } from "../utils/utils";
 
 type Props = {
   evolution: PokemonEvolution[];
@@ -10,7 +11,7 @@ const PokemonEvolutionChain = ({ evolution }: Props) => {
     <div className="pokemon__evolution-wrapper">
       {evolution.length === 1 ? (
         <p className="pokemon__evolution-text">
-          <i>{evolution[0].name}</i> does not evolve
+          <i>{formatCapital(evolution[0].name)}</i> does not evolve
         </p>
       ) : (
         evolution.map((evo, index) => (
