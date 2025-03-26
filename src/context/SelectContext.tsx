@@ -22,7 +22,10 @@ export const useSelect = () => {
 
 export const SelectProvider = ({ children }: { children: React.ReactNode }) => {
   const [selectType, setSelectType] = useState<DropdownType | null>(null);
-  const [selectSort, setSelectSort] = useState<DropdownType | null>(null);
+  const [selectSort, setSelectSort] = useState<DropdownType | null>({
+    label: "Ascending",
+    value: "asc",
+  });
 
   return (
     <SelectContext.Provider

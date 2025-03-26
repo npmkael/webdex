@@ -15,11 +15,14 @@ const PokemonGrid = () => {
     );
   }
 
+  const pokemonSortType =
+    selectSort?.value === "asc" ? pokemon : [...pokemon].reverse();
+
   const pokemonFilterType = selectType
-    ? pokemon.filter((poke) =>
+    ? pokemonSortType.filter((poke) =>
         poke.types.some((type) => type.type.name === selectType.value)
       )
-    : pokemon;
+    : pokemonSortType;
 
   if (error) {
     return <div>Error: {error}</div>;
