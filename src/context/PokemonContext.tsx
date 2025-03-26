@@ -34,6 +34,7 @@ type PokemonContextType = {
     };
     label: string;
   };
+  singlePokemon: PokeAPIResponse | null;
 };
 
 const PokemonContext = createContext<PokemonContextType | undefined>(undefined);
@@ -73,6 +74,10 @@ export const PokemonProvider = ({
     },
     label: "1-100",
   });
+
+  const [singlePokemon, setSinglePokemon] = useState<PokeAPIResponse | null>(
+    null
+  );
 
   useEffect(() => {
     fetchInitialPokemon();
@@ -132,6 +137,19 @@ export const PokemonProvider = ({
       if (!response.ok) throw new Error(`Error: ${response.status}`);
 
       const data = await response.json();
+
+      const singlePokemonResponse = await fetch(
+        `https://pokeapi.co/api/v2/pokemon/${data.id}`
+      );
+
+      if (!singlePokemonResponse.ok)
+        throw new Error(
+          `Error Single Pokemon Response: ${singlePokemonResponse.status}`
+        );
+
+      const singlePokemonData = await singlePokemonResponse.json();
+
+      setSinglePokemon(singlePokemonData);
 
       const evolutionResponse = await fetch(data.evolution_chain.url);
 
@@ -272,6 +290,7 @@ export const PokemonProvider = ({
         evolutionChain,
         setPagination,
         pagination,
+        singlePokemon,
       }}
     >
       {children}

@@ -23,20 +23,8 @@ const PokemonMainStat = () => {
     pokemonWeakness,
     evolutionChain,
     fetchSpeciesPokemon,
+    singlePokemon,
   } = usePokemon();
-
-  if (!pokemonSpecies)
-    return (
-      <div className="pick--pokemon">
-        <img src="/choose-pokemon.jpg" width={150} height={150} />
-        <p>Choose a Pokémon!</p>
-      </div>
-    );
-
-  // console.table(pokemonSpecies);
-  const pokemonFilter = pokemon.filter(
-    (poke) => poke.id === pokemonSpecies?.id
-  );
 
   const getAdjacentPokemon = (
     target: number = 1,
@@ -52,7 +40,19 @@ const PokemonMainStat = () => {
     return [pokemon[prevPokemon], pokemon[nextPokemon]];
   };
 
-  const pokemonAdjacent = getAdjacentPokemon(pokemonSpecies.id, pokemon);
+  const pokemonAdjacent = pokemonSpecies
+    ? getAdjacentPokemon(pokemonSpecies.id, pokemon)
+    : null;
+
+  if (speciesError) return <div>Failed to load Pokémon</div>;
+
+  if (!pokemonSpecies)
+    return (
+      <div className="pick--pokemon">
+        <img src="/choose-pokemon.jpg" width={150} height={150} />
+        <p>Choose a Pokémon!</p>
+      </div>
+    );
 
   if (speciesLoading)
     return (
@@ -61,13 +61,13 @@ const PokemonMainStat = () => {
       </div>
     );
 
+  // console.table(pokemonSpecies);
+
   return (
     <>
       <div className="pokemon__img">
         <img
-          src={
-            pokemonFilter[0].sprites.other?.["official-artwork"].front_default
-          }
+          src={singlePokemon?.sprites.other?.["official-artwork"].front_default}
           alt={pokemonSpecies.name}
           width={158}
           height={158}
@@ -94,7 +94,7 @@ const PokemonMainStat = () => {
           </h2>
           <p className="pokemon__genera">{pokemonSpecies.genera[7].genus}</p>
           <div className="pokemon__type-wrapper">
-            {pokemonFilter[0].types.map((pokeType) => (
+            {singlePokemon?.types.map((pokeType) => (
               <div
                 className={`pokemon__type ${pokeType.type.name}`}
                 key={pokeType.type.name}
@@ -115,7 +115,7 @@ const PokemonMainStat = () => {
         <div className="pokemon__signature-abilities-wrapper">
           <h3>Abilities</h3>
           <div className="pokemon__ability-wrapper">
-            {pokemonFilter[0].abilities.map((ability, index) => (
+            {singlePokemon?.abilities.map((ability, index) => (
               <div className="ability" key={index}>
                 <span>{formatCapital(ability.ability.name)}</span>
                 {ability.is_hidden ? <EyeOff size={18} color="#919499" /> : ""}
@@ -128,12 +128,12 @@ const PokemonMainStat = () => {
           <div className="pokemon__attribute-values">
             <PokemonAttribute title="Height">
               <span className="pokemon__attribute-value">
-                {formatPokemonHeight(pokemonFilter[0].height)}
+                {formatPokemonHeight(singlePokemon?.height || 0)}
               </span>
             </PokemonAttribute>
             <PokemonAttribute title="Weight">
               <span className="pokemon__attribute-value">
-                {formatPokemonWeight(pokemonFilter[0].weight)}
+                {formatPokemonWeight(singlePokemon?.weight || 0)}
               </span>
             </PokemonAttribute>
           </div>
@@ -150,7 +150,7 @@ const PokemonMainStat = () => {
             </div>
             <PokemonAttribute title="Base Exp">
               <span className="pokemon__attribute-value">
-                {pokemonFilter[0].base_experience}
+                {singlePokemon?.base_experience || 0}
               </span>
             </PokemonAttribute>
           </div>
@@ -158,7 +158,7 @@ const PokemonMainStat = () => {
         <div className="pokemon__stats-container">
           <h3>Stats</h3>
           <div className="pokemon__stats-wrapper">
-            {pokemonFilter[0].stats.map((stat) => (
+            {singlePokemon?.stats.map((stat) => (
               <PokemonStat
                 base_stat={stat.base_stat}
                 name={stat.stat.name}
@@ -168,7 +168,7 @@ const PokemonMainStat = () => {
             <div className="stat total">
               <div className="label total">TOT</div>
               <span className="value">
-                {getTotalStat(pokemonFilter[0].stats)}
+                {getTotalStat(singlePokemon?.stats || [])}
               </span>
             </div>
           </div>
@@ -198,11 +198,15 @@ const PokemonMainStat = () => {
             />
 
             <span className="pokemon__name">
-              {pokemonAdjacent ? formatCapital(pokemonAdjacent[0].name) : "N/A"}
+              {pokemonAdjacent
+                ? formatCapital(singlePokemon?.name || "")
+                : "N/A"}
             </span>
             <span className="prev pokemon-btn__pokemon-no">
               #
-              {pokemonAdjacent ? formatPokemonId(pokemonAdjacent[0].id) : "N/A"}
+              {pokemonAdjacent
+                ? formatPokemonId(singlePokemon?.id || 0)
+                : "N/A"}
             </span>
           </button>
 
