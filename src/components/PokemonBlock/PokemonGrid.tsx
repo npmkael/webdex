@@ -1,10 +1,12 @@
 import { usePokemon } from "../../context/PokemonContext";
+import { useSearch } from "../../context/SearchContext";
 import { useSelect } from "../../context/SelectContext";
 import PokemonBlock from "./pokemon-block";
 
 const PokemonGrid = () => {
   const { pokemon, loading, error } = usePokemon();
 
+  const { searchResults } = useSearch();
   const { selectType, selectSort } = useSelect();
 
   if (loading || pokemon.length === 0) {
@@ -16,7 +18,13 @@ const PokemonGrid = () => {
   }
 
   const pokemonSortType =
-    selectSort?.value === "asc" ? pokemon : [...pokemon].reverse();
+    searchResults.length > 0
+      ? selectSort?.value === "asc"
+        ? searchResults
+        : [...searchResults].reverse()
+      : selectSort?.value === "asc"
+      ? pokemon
+      : [...pokemon].reverse();
 
   const pokemonFilterType = selectType
     ? pokemonSortType.filter((poke) =>
