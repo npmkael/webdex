@@ -92,7 +92,10 @@ const PokemonMainStat = () => {
           <h2 className="pokemon__name">
             {formatCapital(pokemonSpecies.name)}
           </h2>
-          <p className="pokemon__genera">{pokemonSpecies.genera[7].genus}</p>
+          <p className="pokemon__genera">
+            {pokemonSpecies.genera.find((gen) => gen.language.name === "en")
+              ?.genus || "No genus found."}
+          </p>
           <div className="pokemon__type-wrapper">
             {singlePokemon?.types.map((pokeType) => (
               <div
