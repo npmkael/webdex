@@ -23,6 +23,8 @@ const PokemonMainStat = () => {
     pokemonWeakness,
     evolutionChain,
     fetchSpeciesPokemon,
+    pagination,
+    setPagination,
   } = usePokemon();
 
   const getAdjacentPokemon = (
@@ -60,9 +62,13 @@ const PokemonMainStat = () => {
       </div>
     );
 
+  console.log(pokemonSpecies);
+
   const pokemonFilter = pokemon.filter(
     (poke) => poke.id === pokemonSpecies?.id
   );
+
+  console.log(pokemonFilter);
 
   return (
     <>
@@ -188,11 +194,19 @@ const PokemonMainStat = () => {
         <div className="next-prev-container">
           <button
             className="prev pokemon-btn"
-            onClick={() =>
-              fetchSpeciesPokemon(
-                pokemonSpecies.id - 1 ? pokemonSpecies.id - 1 : pokemon.length
-              )
-            }
+            onClick={() => {
+              const currentOffset = pagination.value.offset;
+              const currentLimit = pagination.value.limit;
+              const currentId = pokemonSpecies.id;
+              const newId = currentId - 1;
+
+              // If we're at the first pokemon of a page, go to the last pokemon of the current page
+              if (newId < currentOffset + 1) {
+                fetchSpeciesPokemon(currentOffset + currentLimit);
+              } else {
+                fetchSpeciesPokemon(newId);
+              }
+            }}
           >
             <ChevronLeft color="#85888b" size={18} />
             <img
@@ -218,9 +232,17 @@ const PokemonMainStat = () => {
           <button
             className="next pokemon-btn"
             onClick={() => {
-              fetchSpeciesPokemon(
-                pokemonSpecies.id >= pokemon.length ? 1 : pokemonSpecies.id + 1
-              );
+              const currentOffset = pagination.value.offset;
+              const currentLimit = pagination.value.limit;
+              const currentId = pokemonSpecies.id;
+              const newId = currentId + 1;
+
+              // If we're at the last pokemon of a page, go to the first pokemon of the current page
+              if (newId > currentOffset + currentLimit) {
+                fetchSpeciesPokemon(currentOffset + 1);
+              } else {
+                fetchSpeciesPokemon(newId);
+              }
             }}
           >
             <span className="next pokemon-btn__pokemon-no">
