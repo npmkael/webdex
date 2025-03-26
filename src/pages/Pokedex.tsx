@@ -13,16 +13,14 @@ import { optionTypes, paginationValues, sortValues } from "../constants";
 import PokemonGrid from "../components/PokemonBlock/PokemonGrid";
 import PokemonMainStat from "../components/PokemonMainStat";
 import Dropdown from "../components/Dropdown/Dropdown";
-import { DropdownType } from "../types";
 
 import { motion, useScroll, useTransform } from "motion/react";
 import { usePokemon } from "../context/PokemonContext";
 import PaginationDropdown from "../components/Pagination/PaginationDropdown";
+import { useSelect } from "../context/SelectContext";
 
 const Pokedex = () => {
-  const [selectType, setSelectType] = useState<DropdownType | null>(null);
-  const [selectSort, setSelectSort] = useState<DropdownType | null>(null);
-
+  const { selectType, selectSort, setSelectType, setSelectSort } = useSelect();
   // Context API
   const { pagination, setPagination } = usePokemon();
 
