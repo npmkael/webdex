@@ -23,7 +23,6 @@ const PokemonMainStat = () => {
     pokemonWeakness,
     evolutionChain,
     fetchSpeciesPokemon,
-    singlePokemon,
   } = usePokemon();
 
   const getAdjacentPokemon = (
@@ -61,13 +60,17 @@ const PokemonMainStat = () => {
       </div>
     );
 
-  // console.table(pokemonSpecies);
+  const pokemonFilter = pokemon.filter(
+    (poke) => poke.id === pokemonSpecies?.id
+  );
 
   return (
     <>
       <div className="pokemon__img">
         <img
-          src={singlePokemon?.sprites.other?.["official-artwork"].front_default}
+          src={
+            pokemonFilter[0].sprites.other?.["official-artwork"].front_default
+          }
           alt={pokemonSpecies.name}
           width={158}
           height={158}
@@ -97,7 +100,7 @@ const PokemonMainStat = () => {
               ?.genus || "No genus found."}
           </p>
           <div className="pokemon__type-wrapper">
-            {singlePokemon?.types.map((pokeType) => (
+            {pokemonFilter[0].types.map((pokeType) => (
               <div
                 className={`pokemon__type ${pokeType.type.name}`}
                 key={pokeType.type.name}
@@ -118,7 +121,7 @@ const PokemonMainStat = () => {
         <div className="pokemon__signature-abilities-wrapper">
           <h3>Abilities</h3>
           <div className="pokemon__ability-wrapper">
-            {singlePokemon?.abilities.map((ability, index) => (
+            {pokemonFilter[0].abilities.map((ability, index) => (
               <div className="ability" key={index}>
                 <span>{formatCapital(ability.ability.name)}</span>
                 {ability.is_hidden ? <EyeOff size={18} color="#919499" /> : ""}
@@ -131,12 +134,12 @@ const PokemonMainStat = () => {
           <div className="pokemon__attribute-values">
             <PokemonAttribute title="Height">
               <span className="pokemon__attribute-value">
-                {formatPokemonHeight(singlePokemon?.height || 0)}
+                {formatPokemonHeight(pokemonFilter[0].height || 0)}
               </span>
             </PokemonAttribute>
             <PokemonAttribute title="Weight">
               <span className="pokemon__attribute-value">
-                {formatPokemonWeight(singlePokemon?.weight || 0)}
+                {formatPokemonWeight(pokemonFilter[0].weight || 0)}
               </span>
             </PokemonAttribute>
           </div>
@@ -153,7 +156,7 @@ const PokemonMainStat = () => {
             </div>
             <PokemonAttribute title="Base Exp">
               <span className="pokemon__attribute-value">
-                {singlePokemon?.base_experience || 0}
+                {pokemonFilter[0].base_experience || 0}
               </span>
             </PokemonAttribute>
           </div>
@@ -161,7 +164,7 @@ const PokemonMainStat = () => {
         <div className="pokemon__stats-container">
           <h3>Stats</h3>
           <div className="pokemon__stats-wrapper">
-            {singlePokemon?.stats.map((stat) => (
+            {pokemonFilter[0].stats.map((stat) => (
               <PokemonStat
                 base_stat={stat.base_stat}
                 name={stat.stat.name}
@@ -171,7 +174,7 @@ const PokemonMainStat = () => {
             <div className="stat total">
               <div className="label total">TOT</div>
               <span className="value">
-                {getTotalStat(singlePokemon?.stats || [])}
+                {getTotalStat(pokemonFilter[0].stats || [])}
               </span>
             </div>
           </div>
@@ -181,6 +184,7 @@ const PokemonMainStat = () => {
           <PokemonEvolutionChain evolution={evolutionChain} />
         </div>
 
+        {/* Previous and Next Pokemon to its current selected pokemon */}
         <div className="next-prev-container">
           <button
             className="prev pokemon-btn"
@@ -201,15 +205,11 @@ const PokemonMainStat = () => {
             />
 
             <span className="pokemon__name">
-              {pokemonAdjacent
-                ? formatCapital(singlePokemon?.name || "")
-                : "N/A"}
+              {pokemonAdjacent ? formatCapital(pokemonAdjacent[0].name) : "N/A"}
             </span>
             <span className="prev pokemon-btn__pokemon-no">
               #
-              {pokemonAdjacent
-                ? formatPokemonId(singlePokemon?.id || 0)
-                : "N/A"}
+              {pokemonAdjacent ? formatPokemonId(pokemonAdjacent[0].id) : "N/A"}
             </span>
           </button>
 

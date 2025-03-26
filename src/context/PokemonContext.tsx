@@ -35,6 +35,7 @@ type PokemonContextType = {
     label: string;
   };
   singlePokemon: PokeAPIResponse | null;
+  pokemonNav: PokeAPIResponse[];
 };
 
 const PokemonContext = createContext<PokemonContextType | undefined>(undefined);
@@ -55,6 +56,7 @@ export const PokemonProvider = ({
   children: React.ReactNode;
 }) => {
   const [pokemon, setPokemon] = useState<PokeAPIResponse[]>([]);
+  const [pokemonNav, setPokemonNav] = useState<PokeAPIResponse[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [nextUrl, setNextUrl] = useState<string | null>(null);
@@ -85,6 +87,7 @@ export const PokemonProvider = ({
 
   const fetchInitialPokemon = async (): Promise<void> => {
     try {
+      setPokemonSpecies(null);
       setLoading(true);
       setError(null);
 
@@ -291,6 +294,7 @@ export const PokemonProvider = ({
         setPagination,
         pagination,
         singlePokemon,
+        pokemonNav,
       }}
     >
       {children}
