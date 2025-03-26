@@ -37,7 +37,10 @@ const Pokedex = () => {
 
   const resetSelect = () => {
     setSelectType(null);
-    setSelectSort(null);
+    setSelectSort({
+      label: "Ascending",
+      value: "asc",
+    });
   };
 
   return (
