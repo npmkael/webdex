@@ -194,6 +194,8 @@ body {
   width: 100%;
   margin-inline: auto;
   padding-inline: 48px;
+
+  position: relative;
 }
 
 .pokemon-icon {
@@ -371,6 +373,13 @@ body {
   transition: var(--transition-duration-smooth) var(--transition-easing-quick);
 }
 
+.pokemon-main-stat__img {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  translate: -50%;
+}
+
 .pokemon__info {
   margin-top: 28px;
 }
@@ -410,10 +419,6 @@ body {
   text-transform: uppercase;
   font-weight: 800;
   font-size: 0.9rem;
-}
-
-.pokedex-section__right {
-  position: relative;
 }
 
 .pokemon__type.normal {
@@ -560,44 +565,56 @@ body {
   color: var(--fairy-txt);
 }
 
+.pokedex-section__right {
+  position: relative;
+
+  max-width: 400px;
+}
+
 .pokemon__stat-container {
   background-color: var(--white);
   margin-top: 100px;
 
   box-shadow: var(--shadow-4);
   padding: 16px 8px 8px 8px;
-  border-radius: 8px;
-  /* height: 787px; */
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 
-  position: relative;
-}
+  position: fixed;
+  height: 80vh;
+  bottom: 0;
 
-.pokemon__wrapper {
-  position: sticky;
-  top: 90px;
-  z-index: 10;
-}
-
-.pokeball-loading-container {
-  display: flex;
-  height: 200px;
-  align-items: center;
-  justify-content: center;
-}
-
-.pick--pokemon {
-  height: 200px;
+  width: 400px;
 
   display: flex;
   align-items: center;
   justify-content: center;
-
   flex-direction: column;
 }
 
+.pokeball-loading-container {
+  position: fixed;
+  height: 80vh;
+  bottom: 0;
+
+  width: 400px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.pick--pokemon img {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  translate: -50%;
+}
+
 .pick--pokemon p {
-  text-transform: uppercase;
   font-weight: 500;
+  color: var(--foreground);
 }
 
 .pokemon__stat-container .pokemon__img {
@@ -615,6 +632,8 @@ body {
   margin-bottom: 6px;
 
   margin-inline: 8px;
+
+  width: 100%;
 }
 
 .pokemon__gender {
@@ -637,6 +656,10 @@ body {
   display: flex;
   flex-direction: column;
   gap: 20px;
+
+  height: 100%;
+  overflow-y: scroll;
+  scrollbar-width: none;
 }
 
 .pokemon__intro-details {

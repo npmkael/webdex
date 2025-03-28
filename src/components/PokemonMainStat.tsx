@@ -14,6 +14,8 @@ import PokemonStat from "./PokemonStat";
 import PokemonEvolutionChain from "./PokemonEvolutionChain";
 import { PokeAPIResponse } from "../types/pokeApi";
 
+import { motion, AnimatePresence } from "motion/react";
+
 const PokemonMainStat = () => {
   const {
     pokemonSpecies,
@@ -45,226 +47,274 @@ const PokemonMainStat = () => {
     ? getAdjacentPokemon(pokemonSpecies.id, pokemon)
     : null;
 
-  if (speciesError) return <div>Failed to load Pokémon</div>;
-
-  if (!pokemonSpecies)
-    return (
-      <div className="pick--pokemon">
-        <img src="/choose-pokemon.jpg" width={150} height={150} />
-        <p>Choose a Pokémon!</p>
-      </div>
-    );
-
-  if (speciesLoading)
-    return (
-      <div className="pokeball-loading-container">
-        <img src="/pokeball-loading.gif" alt="pokeball loading" />
-      </div>
-    );
-
-  console.log(pokemonSpecies);
-
   const pokemonFilter = pokemon.filter(
     (poke) => poke.id === pokemonSpecies?.id
   );
 
-  console.log(pokemonFilter);
-
   return (
-    <>
-      <div className="pokemon__img">
-        <img
-          src={
-            pokemonFilter[0].sprites.other?.["official-artwork"].front_default
-          }
-          alt={pokemonSpecies.name}
-          width={158}
-          height={158}
-          loading="lazy"
-        />
-      </div>
-
-      <div className="pokemon__gender-wrapper">
-        <div className="pokemon__gender male">
-          <Mars color="#2e7591" size={18} />
-        </div>
-        <div className="pokemon__gender female">
-          <Venus color="#C23348" size={18} />
-        </div>
-      </div>
-
-      <div className="pokemon__details-wrapper">
-        <div className="pokemon__intro-details">
-          <p className="pokemon__number">
-            #{formatPokemonId(pokemonSpecies.id)}
-          </p>
-          <h2 className="pokemon__name">
-            {formatCapital(pokemonSpecies.name)}
-          </h2>
-          <p className="pokemon__genera">
-            {pokemonSpecies.genera.find((gen) => gen.language.name === "en")
-              ?.genus || "No genus found."}
-          </p>
-          <div className="pokemon__type-wrapper">
-            {pokemonFilter[0].types.map((pokeType) => (
-              <div
-                className={`pokemon__type ${pokeType.type.name}`}
-                key={pokeType.type.name}
-              >
-                <span className={`pokemon__type-text ${pokeType.type.name}`}>
-                  {pokeType.type.name}
-                </span>
-              </div>
-            ))}
+    <AnimatePresence mode="wait">
+      {speciesError ? (
+        <motion.div
+          key="error"
+          className="pokemon__stat-container"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          <div>Failed to load Pokémon</div>
+        </motion.div>
+      ) : !pokemonSpecies ? (
+        <motion.div
+          key="empty"
+          className="pokemon__stat-container"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          <div className="pick--pokemon">
+            <div>
+              <img src="/choose-pikachu.png" alt="" width={175} height={175} />
+            </div>
+            <p>Click on a Pokémon to learn more!</p>
           </div>
-        </div>
-        <div className="pokemon__entry-wrapper">
-          <h3>Pokédex Entry</h3>
-          <p className="pokemon__flavor-text">
-            {getFlavorText(pokemonSpecies)}
-          </p>
-        </div>
-        <div className="pokemon__signature-abilities-wrapper">
-          <h3>Abilities</h3>
-          <div className="pokemon__ability-wrapper">
-            {pokemonFilter[0].abilities.map((ability, index) => (
-              <div className="ability" key={index}>
-                <span>{formatCapital(ability.ability.name)}</span>
-                {ability.is_hidden ? <EyeOff size={18} color="#919499" /> : ""}
-              </div>
-            ))}
+        </motion.div>
+      ) : speciesLoading ? (
+        <motion.div
+          key="loading"
+          className="pokemon__loading-container"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          <div className="pokeball-loading-container">
+            <img src="/pokeball-loading.gif" alt="pokeball loading" />
           </div>
-        </div>
-        <div className="pokemon__attribute-container">
-          {/*  */}
-          <div className="pokemon__attribute-values">
-            <PokemonAttribute title="Height">
-              <span className="pokemon__attribute-value">
-                {formatPokemonHeight(pokemonFilter[0].height || 0)}
-              </span>
-            </PokemonAttribute>
-            <PokemonAttribute title="Weight">
-              <span className="pokemon__attribute-value">
-                {formatPokemonWeight(pokemonFilter[0].weight || 0)}
-              </span>
-            </PokemonAttribute>
+        </motion.div>
+      ) : (
+        <motion.div
+          key={pokemonSpecies.id}
+          className="pokemon__stat-container"
+          initial={{ opacity: 0, y: 100 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 100 }}
+          transition={{
+            type: "spring",
+            duration: 0.8,
+          }}
+        >
+          <div className="pokemon-main-stat__img">
+            <img
+              src={
+                pokemonFilter[0].sprites.other?.["official-artwork"]
+                  .front_default
+              }
+              alt={pokemonSpecies.name}
+              style={{
+                height: "165px",
+              }}
+            />
           </div>
 
-          {/*  */}
-          <div className="pokemon__attribute-values">
-            <div className="pokemon__attribute">
-              <h3 className="pokemon__attribute-title">Weaknesses</h3>
-              <div className="pokemon__attribute-wrapper  weaknesses">
-                {pokemonWeakness?.map((pw, index) => (
-                  <PokemonType type={pw} key={index} />
+          <div className="pokemon__gender-wrapper">
+            <div className="pokemon__gender male">
+              <Mars color="#2e7591" size={18} />
+            </div>
+            <div className="pokemon__gender female">
+              <Venus color="#C23348" size={18} />
+            </div>
+          </div>
+
+          <div className="pokemon__details-wrapper">
+            <div className="pokemon__intro-details">
+              <p className="pokemon__number">
+                #{formatPokemonId(pokemonSpecies.id)}
+              </p>
+              <h2 className="pokemon__name">
+                {formatCapital(pokemonSpecies.name)}
+              </h2>
+              <p className="pokemon__genera">
+                {pokemonSpecies.genera.find((gen) => gen.language.name === "en")
+                  ?.genus || "No genus found."}
+              </p>
+              <div className="pokemon__type-wrapper">
+                {pokemonFilter[0].types.map((pokeType) => (
+                  <div
+                    className={`pokemon__type ${pokeType.type.name}`}
+                    key={pokeType.type.name}
+                  >
+                    <span
+                      className={`pokemon__type-text ${pokeType.type.name}`}
+                    >
+                      {pokeType.type.name}
+                    </span>
+                  </div>
                 ))}
               </div>
             </div>
-            <PokemonAttribute title="Base Exp">
-              <span className="pokemon__attribute-value">
-                {pokemonFilter[0].base_experience || 0}
-              </span>
-            </PokemonAttribute>
-          </div>
-        </div>
-        <div className="pokemon__stats-container">
-          <h3>Stats</h3>
-          <div className="pokemon__stats-wrapper">
-            {pokemonFilter[0].stats.map((stat) => (
-              <PokemonStat
-                base_stat={stat.base_stat}
-                name={stat.stat.name}
-                key={stat.stat.name}
-              />
-            ))}
-            <div className="stat total">
-              <div className="label total">TOT</div>
-              <span className="value">
-                {getTotalStat(pokemonFilter[0].stats || [])}
-              </span>
+            <div className="pokemon__entry-wrapper">
+              <h3>Pokédex Entry</h3>
+              <p className="pokemon__flavor-text">
+                {getFlavorText(pokemonSpecies)}
+              </p>
+            </div>
+            <div className="pokemon__signature-abilities-wrapper">
+              <h3>Abilities</h3>
+              <div className="pokemon__ability-wrapper">
+                {pokemonFilter[0].abilities.map((ability, index) => (
+                  <div className="ability" key={index}>
+                    <span>{formatCapital(ability.ability.name)}</span>
+                    {ability.is_hidden ? (
+                      <EyeOff size={18} color="#919499" />
+                    ) : (
+                      ""
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="pokemon__attribute-container">
+              {/*  */}
+              <div className="pokemon__attribute-values">
+                <PokemonAttribute title="Height">
+                  <span className="pokemon__attribute-value">
+                    {formatPokemonHeight(pokemonFilter[0].height || 0)}
+                  </span>
+                </PokemonAttribute>
+                <PokemonAttribute title="Weight">
+                  <span className="pokemon__attribute-value">
+                    {formatPokemonWeight(pokemonFilter[0].weight || 0)}
+                  </span>
+                </PokemonAttribute>
+              </div>
+
+              {/*  */}
+              <div className="pokemon__attribute-values">
+                <div className="pokemon__attribute">
+                  <h3 className="pokemon__attribute-title">Weaknesses</h3>
+                  <div className="pokemon__attribute-wrapper  weaknesses">
+                    {pokemonWeakness?.map((pw, index) => (
+                      <PokemonType type={pw} key={index} />
+                    ))}
+                  </div>
+                </div>
+                <PokemonAttribute title="Base Exp">
+                  <span className="pokemon__attribute-value">
+                    {pokemonFilter[0].base_experience || 0}
+                  </span>
+                </PokemonAttribute>
+              </div>
+            </div>
+            <div className="pokemon__stats-container">
+              <h3>Stats</h3>
+              <div className="pokemon__stats-wrapper">
+                {pokemonFilter[0].stats.map((stat) => (
+                  <PokemonStat
+                    base_stat={stat.base_stat}
+                    name={stat.stat.name}
+                    key={stat.stat.name}
+                  />
+                ))}
+                <div className="stat total">
+                  <div className="label total">TOT</div>
+                  <span className="value">
+                    {getTotalStat(pokemonFilter[0].stats || [])}
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div className="pokemon__evolution-container">
+              <h3>Evolution</h3>
+              <PokemonEvolutionChain evolution={evolutionChain} />
+            </div>
+
+            {/* Previous and Next Pokemon to its current selected pokemon */}
+            <div className="next-prev-container">
+              <button
+                className="prev pokemon-btn"
+                onClick={() => {
+                  const currentOffset = pagination.value.offset;
+                  const currentLimit = pagination.value.limit;
+                  const currentId = pokemonSpecies.id;
+                  const newId = currentId - 1;
+
+                  // If we're at the first pokemon of a page, go to the last pokemon of the current page
+                  if (newId < currentOffset + 1) {
+                    fetchSpeciesPokemon(currentOffset + currentLimit);
+                  } else {
+                    fetchSpeciesPokemon(newId);
+                  }
+                }}
+              >
+                <ChevronLeft color="#85888b" size={18} />
+                <img
+                  src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${
+                    pokemonAdjacent ? pokemonAdjacent[0].id : ""
+                  }.gif`}
+                  alt={`${pokemonAdjacent ? pokemonAdjacent[0].name : ""}`}
+                  width={20}
+                  height={20}
+                />
+
+                <span className="pokemon__name">
+                  {pokemonAdjacent
+                    ? formatCapital(pokemonAdjacent[0].name)
+                    : "N/A"}
+                </span>
+                <span className="prev pokemon-btn__pokemon-no">
+                  #
+                  {pokemonAdjacent
+                    ? formatPokemonId(pokemonAdjacent[0].id)
+                    : "N/A"}
+                </span>
+              </button>
+
+              <div className="divider" />
+
+              <button
+                className="next pokemon-btn"
+                onClick={() => {
+                  const currentOffset = pagination.value.offset;
+                  const currentLimit = pagination.value.limit;
+                  const currentId = pokemonSpecies.id;
+                  const newId = currentId + 1;
+
+                  // If we're at the last pokemon of a page, go to the first pokemon of the current page
+                  if (newId > currentOffset + currentLimit) {
+                    fetchSpeciesPokemon(currentOffset + 1);
+                  } else {
+                    fetchSpeciesPokemon(newId);
+                  }
+                }}
+              >
+                <span className="next pokemon-btn__pokemon-no">
+                  #
+                  {pokemonAdjacent
+                    ? formatPokemonId(pokemonAdjacent[1].id)
+                    : "N/A"}
+                </span>
+                <span className="pokemon__name">
+                  {pokemonAdjacent
+                    ? formatCapital(pokemonAdjacent[1].name)
+                    : "N/A"}
+                </span>
+                <img
+                  src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${
+                    pokemonAdjacent ? pokemonAdjacent[1].id : ""
+                  }.gif`}
+                  alt={`${pokemonAdjacent ? pokemonAdjacent[1].name : ""}`}
+                  width={20}
+                  height={20}
+                />
+                <ChevronRight color="#85888b" size={18} />
+              </button>
             </div>
           </div>
-        </div>
-        <div className="pokemon__evolution-container">
-          <h3>Evolution</h3>
-          <PokemonEvolutionChain evolution={evolutionChain} />
-        </div>
-
-        {/* Previous and Next Pokemon to its current selected pokemon */}
-        <div className="next-prev-container">
-          <button
-            className="prev pokemon-btn"
-            onClick={() => {
-              const currentOffset = pagination.value.offset;
-              const currentLimit = pagination.value.limit;
-              const currentId = pokemonSpecies.id;
-              const newId = currentId - 1;
-
-              // If we're at the first pokemon of a page, go to the last pokemon of the current page
-              if (newId < currentOffset + 1) {
-                fetchSpeciesPokemon(currentOffset + currentLimit);
-              } else {
-                fetchSpeciesPokemon(newId);
-              }
-            }}
-          >
-            <ChevronLeft color="#85888b" size={18} />
-            <img
-              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${
-                pokemonAdjacent ? pokemonAdjacent[0].id : ""
-              }.gif`}
-              alt={`${pokemonAdjacent ? pokemonAdjacent[0].name : ""}`}
-              width={20}
-              height={20}
-            />
-
-            <span className="pokemon__name">
-              {pokemonAdjacent ? formatCapital(pokemonAdjacent[0].name) : "N/A"}
-            </span>
-            <span className="prev pokemon-btn__pokemon-no">
-              #
-              {pokemonAdjacent ? formatPokemonId(pokemonAdjacent[0].id) : "N/A"}
-            </span>
-          </button>
-
-          <div className="divider" />
-
-          <button
-            className="next pokemon-btn"
-            onClick={() => {
-              const currentOffset = pagination.value.offset;
-              const currentLimit = pagination.value.limit;
-              const currentId = pokemonSpecies.id;
-              const newId = currentId + 1;
-
-              // If we're at the last pokemon of a page, go to the first pokemon of the current page
-              if (newId > currentOffset + currentLimit) {
-                fetchSpeciesPokemon(currentOffset + 1);
-              } else {
-                fetchSpeciesPokemon(newId);
-              }
-            }}
-          >
-            <span className="next pokemon-btn__pokemon-no">
-              #
-              {pokemonAdjacent ? formatPokemonId(pokemonAdjacent[1].id) : "N/A"}
-            </span>
-            <span className="pokemon__name">
-              {pokemonAdjacent ? formatCapital(pokemonAdjacent[1].name) : "N/A"}
-            </span>
-            <img
-              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${
-                pokemonAdjacent ? pokemonAdjacent[1].id : ""
-              }.gif`}
-              alt={`${pokemonAdjacent ? pokemonAdjacent[1].name : ""}`}
-              width={20}
-              height={20}
-            />
-            <ChevronRight color="#85888b" size={18} />
-          </button>
-        </div>
-      </div>
-    </>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };
 

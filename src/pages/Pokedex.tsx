@@ -14,7 +14,6 @@ import PokemonGrid from "../components/PokemonBlock/PokemonGrid";
 import PokemonMainStat from "../components/PokemonMainStat";
 import Dropdown from "../components/Dropdown/Dropdown";
 
-import { motion, useScroll, useTransform } from "motion/react";
 import { usePokemon } from "../context/PokemonContext";
 import PaginationDropdown from "../components/Pagination/PaginationDropdown";
 import { useSelect } from "../context/SelectContext";
@@ -23,17 +22,6 @@ const Pokedex = () => {
   const { selectType, selectSort, setSelectType, setSelectSort } = useSelect();
   // Context API
   const { pagination, setPagination } = usePokemon();
-
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollY } = useScroll();
-
-  const opacity = useTransform(
-    scrollY,
-    [0, 100], // Scroll position values (in pixels)
-    [0.95, 1] // Corresponding opacity values
-  );
-
-  const scale = useTransform(scrollY, [0, 100], [0.98, 1]);
 
   const resetSelect = () => {
     setSelectType(null);
@@ -85,16 +73,7 @@ const Pokedex = () => {
 
       {/* Right Section */}
       <section className="pokedex-section__right">
-        <motion.div
-          className="pokemon__wrapper"
-          ref={containerRef}
-          style={{ opacity, scale }}
-          transition={{ duration: 0.3 }}
-        >
-          <div className="pokemon__stat-container">
-            <PokemonMainStat />
-          </div>
-        </motion.div>
+        <PokemonMainStat />
       </section>
     </section>
   );
