@@ -16,10 +16,10 @@ const PokemonBlock = ({ id, name, types, sprites }: Props) => {
     <button className="pokemon" onClick={() => fetchSpeciesPokemon(id)}>
       <div className="pokemon__img">
         <img
-          src={`${sprites.other?.showdown?.front_default || ""}`}
+          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
           alt=""
-          width={50}
-          height={45}
+          width={90}
+          height={90}
           loading="lazy"
         />
       </div>
