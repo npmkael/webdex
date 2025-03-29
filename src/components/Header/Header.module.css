@@ -1,7 +1,7 @@
 .header {
   background: var(--white);
-  box-shadow: var(--shadow-4);
-  border-radius: var(--rounded-1);
+  box-shadow: var(--shadow-md);
+  border-radius: var(--radius-md);
   padding-inline: 18px;
   margin-top: 24px;
   margin-bottom: 28px;

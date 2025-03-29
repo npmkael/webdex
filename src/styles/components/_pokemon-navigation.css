@@ -12,7 +12,7 @@
   align-items: center;
   justify-content: center;
   gap: 6px;
-  transition: var(--duration-smooth) var(--transition-quick);
+  transition: var(--transition-quick) var(--duration-smooth);
   flex: 1;
 }
 

@@ -3,13 +3,10 @@
   font-weight: 650;
   height: 87px;
   padding-inline: 4px;
-
   display: flex;
   align-items: center;
   gap: 7px;
-
-  transition: var(--transition-duration-smooth) var(--transition-easing-quick);
-
+  transition: var(--transition-quick) var(--duration-smooth);
   position: relative;
 }
 
@@ -51,7 +48,7 @@
     rgba(255, 83, 80, 0.15) 100%
   );
 
-  animation: fadeIn 2s var(--transition-easing-quick);
+  animation: fadeIn 2s var(--transition-quick);
 }
 
 @keyframes fadeIn {
