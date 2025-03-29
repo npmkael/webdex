@@ -1,4 +1,11 @@
-import { ChevronLeft, ChevronRight, EyeOff, Mars, Venus } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  EyeOff,
+  Mars,
+  Venus,
+  Volume2,
+} from "lucide-react";
 import PokemonAttribute from "./PokemonAttribute";
 import { usePokemon } from "../context/PokemonContext";
 import {
@@ -15,6 +22,7 @@ import PokemonEvolutionChain from "./PokemonEvolutionChain";
 import { PokeAPIResponse } from "../types/pokeApi";
 
 import { motion, AnimatePresence } from "motion/react";
+import { usePokemonCry } from "../hooks/usePokemonCry";
 
 const PokemonMainStat = () => {
   const {
@@ -50,6 +58,12 @@ const PokemonMainStat = () => {
   const pokemonFilter = pokemon.filter(
     (poke) => poke.id === pokemonSpecies?.id
   );
+
+  const { playSound } = usePokemonCry(pokemonFilter[0]?.cries?.latest);
+
+  const handlePokemonCrySound = () => {
+    playSound();
+  };
 
   return (
     <AnimatePresence mode="wait">
@@ -120,12 +134,22 @@ const PokemonMainStat = () => {
             />
           </div>
 
-          <div className="pokemon-details__gender">
-            <div className="pokemon-details__gender-item pokemon-details__gender-item--male">
-              <Mars color="#2e7591" size={18} />
+          <div className="pokemon-details__top">
+            <div>
+              <button
+                className="pokemon-details__sound-btn"
+                onClick={handlePokemonCrySound}
+              >
+                <Volume2 color="#0b1d30" size={18} />
+              </button>
             </div>
-            <div className="pokemon-details__gender-item pokemon-details__gender-item--female">
-              <Venus color="#C23348" size={18} />
+            <div className="pokemon-details__gender">
+              <div className="pokemon-details__gender-item pokemon-details__gender-item--male">
+                <Mars color="#2e7591" size={18} />
+              </div>
+              <div className="pokemon-details__gender-item pokemon-details__gender-item--female">
+                <Venus color="#C23348" size={18} />
+              </div>
             </div>
           </div>
 
