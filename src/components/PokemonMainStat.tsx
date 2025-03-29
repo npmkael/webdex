@@ -56,7 +56,7 @@ const PokemonMainStat = () => {
       {speciesError ? (
         <motion.div
           key="error"
-          className="pokemon__stat-container"
+          className="pokemon-details"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -67,36 +67,38 @@ const PokemonMainStat = () => {
       ) : !pokemonSpecies ? (
         <motion.div
           key="empty"
-          className="pokemon__stat-container"
+          className="pokemon-details"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
         >
-          <div className="pick--pokemon">
+          <div className="empty-state">
             <div>
               <img src="/choose-pikachu.png" alt="" width={175} height={175} />
             </div>
-            <p>Click on a Pokémon to learn more!</p>
+            <p className="empty-state__text">
+              Click on a Pokémon to learn more!
+            </p>
           </div>
         </motion.div>
       ) : speciesLoading ? (
         <motion.div
           key="loading"
-          className="pokemon__loading-container"
+          className="loading-container"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
         >
-          <div className="pokeball-loading-container">
+          <div>
             <img src="/pokeball-loading.gif" alt="pokeball loading" />
           </div>
         </motion.div>
       ) : (
         <motion.div
           key={pokemonSpecies.id}
-          className="pokemon__stat-container"
+          className="pokemon-details"
           initial={{ opacity: 0, y: 100 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 100 }}
@@ -105,48 +107,48 @@ const PokemonMainStat = () => {
             duration: 0.8,
           }}
         >
-          <div className="pokemon-main-stat__img">
+          <div className="pokemon-details__image">
             <img
               src={
                 pokemonFilter[0].sprites.other?.["official-artwork"]
                   .front_default
               }
               alt={pokemonSpecies.name}
-              style={{
-                height: "165px",
-              }}
+              width={158}
+              height={158}
+              loading="lazy"
             />
           </div>
 
-          <div className="pokemon__gender-wrapper">
-            <div className="pokemon__gender male">
+          <div className="pokemon-details__gender">
+            <div className="pokemon-details__gender-item pokemon-details__gender-item--male">
               <Mars color="#2e7591" size={18} />
             </div>
-            <div className="pokemon__gender female">
+            <div className="pokemon-details__gender-item pokemon-details__gender-item--female">
               <Venus color="#C23348" size={18} />
             </div>
           </div>
 
-          <div className="pokemon__details-wrapper">
-            <div className="pokemon__intro-details">
-              <p className="pokemon__number">
+          <div className="pokemon-details__content">
+            <div className="pokemon-details__header">
+              <p className="pokemon-details__number">
                 #{formatPokemonId(pokemonSpecies.id)}
               </p>
-              <h2 className="pokemon__name">
+              <h2 className="pokemon-details__name">
                 {formatCapital(pokemonSpecies.name)}
               </h2>
-              <p className="pokemon__genera">
+              <p className="pokemon-details__genus">
                 {pokemonSpecies.genera.find((gen) => gen.language.name === "en")
                   ?.genus || "No genus found."}
               </p>
-              <div className="pokemon__type-wrapper">
+              <div className="pokemon-details__types">
                 {pokemonFilter[0].types.map((pokeType) => (
                   <div
-                    className={`pokemon__type ${pokeType.type.name}`}
+                    className={`pokemon-type pokemon-type--${pokeType.type.name}`}
                     key={pokeType.type.name}
                   >
                     <span
-                      className={`pokemon__type-text ${pokeType.type.name}`}
+                      className={`pokemon-type__text pokemon-type__text--${pokeType.type.name}`}
                     >
                       {pokeType.type.name}
                     </span>
@@ -154,17 +156,19 @@ const PokemonMainStat = () => {
                 ))}
               </div>
             </div>
-            <div className="pokemon__entry-wrapper">
-              <h3>Pokédex Entry</h3>
-              <p className="pokemon__flavor-text">
+
+            <div className="pokemon-details__section">
+              <h3 className="pokemon-details__section-title">Pokédex Entry</h3>
+              <p className="pokemon-details__flavor-text">
                 {getFlavorText(pokemonSpecies)}
               </p>
             </div>
-            <div className="pokemon__signature-abilities-wrapper">
-              <h3>Abilities</h3>
-              <div className="pokemon__ability-wrapper">
+            <div className="pokemon-details__section">
+              <h3 className="pokemon-details__section-title">Abilities</h3>
+              <div className="pokemon-details__abilities">
+                {/* Create a component here */}
                 {pokemonFilter[0].abilities.map((ability, index) => (
-                  <div className="ability" key={index}>
+                  <div className="pokemon-details__ability" key={index}>
                     <span>{formatCapital(ability.ability.name)}</span>
                     {ability.is_hidden ? (
                       <EyeOff size={18} color="#919499" />
@@ -175,41 +179,41 @@ const PokemonMainStat = () => {
                 ))}
               </div>
             </div>
-            <div className="pokemon__attribute-container">
-              {/*  */}
-              <div className="pokemon__attribute-values">
+
+            <div className="pokemon-details__section">
+              <div className="pokemon-details__attributes">
                 <PokemonAttribute title="Height">
-                  <span className="pokemon__attribute-value">
+                  <span className="pokemon-details__attribute-value">
                     {formatPokemonHeight(pokemonFilter[0].height || 0)}
                   </span>
                 </PokemonAttribute>
                 <PokemonAttribute title="Weight">
-                  <span className="pokemon__attribute-value">
+                  <span className="pokemon-details__attribute-value">
                     {formatPokemonWeight(pokemonFilter[0].weight || 0)}
                   </span>
                 </PokemonAttribute>
               </div>
 
-              {/*  */}
-              <div className="pokemon__attribute-values">
-                <div className="pokemon__attribute">
-                  <h3 className="pokemon__attribute-title">Weaknesses</h3>
-                  <div className="pokemon__attribute-wrapper  weaknesses">
+              <div className="pokemon-details__attributes">
+                <div className="pokemon-details__attribute">
+                  <h3 className="pokemon-details__section-title">Weaknesses</h3>
+                  <div className="pokemon-details__weakness">
                     {pokemonWeakness?.map((pw, index) => (
                       <PokemonType type={pw} key={index} />
                     ))}
                   </div>
                 </div>
                 <PokemonAttribute title="Base Exp">
-                  <span className="pokemon__attribute-value">
+                  <span className="pokemon-details__attribute-value">
                     {pokemonFilter[0].base_experience || 0}
                   </span>
                 </PokemonAttribute>
               </div>
             </div>
-            <div className="pokemon__stats-container">
-              <h3>Stats</h3>
-              <div className="pokemon__stats-wrapper">
+
+            <div className="pokemon-details__section">
+              <h3 className="pokemon-details__section-title">Stats</h3>
+              <div className="pokemon-details__stats">
                 {pokemonFilter[0].stats.map((stat) => (
                   <PokemonStat
                     base_stat={stat.base_stat}
@@ -217,30 +221,32 @@ const PokemonMainStat = () => {
                     key={stat.stat.name}
                   />
                 ))}
-                <div className="stat total">
-                  <div className="label total">TOT</div>
-                  <span className="value">
+                <div className="pokemon-details__stat pokemon-details__stat--total">
+                  <div className="pokemon-details__stat-label pokemon-details__stat-label--total">
+                    TOT
+                  </div>
+                  <span className="pokemon-details__stat-value">
                     {getTotalStat(pokemonFilter[0].stats || [])}
                   </span>
                 </div>
               </div>
             </div>
-            <div className="pokemon__evolution-container">
-              <h3>Evolution</h3>
+
+            <div className="pokemon-details__section">
+              <h3 className="pokemon-details__section-title">Evolution</h3>
               <PokemonEvolutionChain evolution={evolutionChain} />
             </div>
 
             {/* Previous and Next Pokemon to its current selected pokemon */}
-            <div className="next-prev-container">
+            <div className="pokemon-navigation">
               <button
-                className="prev pokemon-btn"
+                className="pokemon-navigation__button pokemon-navigation__button--prev"
                 onClick={() => {
                   const currentOffset = pagination.value.offset;
                   const currentLimit = pagination.value.limit;
                   const currentId = pokemonSpecies.id;
                   const newId = currentId - 1;
 
-                  // If we're at the first pokemon of a page, go to the last pokemon of the current page
                   if (newId < currentOffset + 1) {
                     fetchSpeciesPokemon(currentOffset + currentLimit);
                   } else {
@@ -257,13 +263,12 @@ const PokemonMainStat = () => {
                   width={20}
                   height={20}
                 />
-
-                <span className="pokemon__name">
+                <span className="pokemon-navigation__name">
                   {pokemonAdjacent
                     ? formatCapital(pokemonAdjacent[0].name)
                     : "N/A"}
                 </span>
-                <span className="prev pokemon-btn__pokemon-no">
+                <span className="pokemon-navigation__number">
                   #
                   {pokemonAdjacent
                     ? formatPokemonId(pokemonAdjacent[0].id)
@@ -271,17 +276,16 @@ const PokemonMainStat = () => {
                 </span>
               </button>
 
-              <div className="divider" />
+              <div className="pokemon-navigation__divider" />
 
               <button
-                className="next pokemon-btn"
+                className="pokemon-navigation__button pokemon-navigation__button--next"
                 onClick={() => {
                   const currentOffset = pagination.value.offset;
                   const currentLimit = pagination.value.limit;
                   const currentId = pokemonSpecies.id;
                   const newId = currentId + 1;
 
-                  // If we're at the last pokemon of a page, go to the first pokemon of the current page
                   if (newId > currentOffset + currentLimit) {
                     fetchSpeciesPokemon(currentOffset + 1);
                   } else {
@@ -289,13 +293,13 @@ const PokemonMainStat = () => {
                   }
                 }}
               >
-                <span className="next pokemon-btn__pokemon-no">
+                <span className="pokemon-navigation__number">
                   #
                   {pokemonAdjacent
                     ? formatPokemonId(pokemonAdjacent[1].id)
                     : "N/A"}
                 </span>
-                <span className="pokemon__name">
+                <span className="pokemon-navigation__name">
                   {pokemonAdjacent
                     ? formatCapital(pokemonAdjacent[1].name)
                     : "N/A"}

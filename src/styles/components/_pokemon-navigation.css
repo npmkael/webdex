@@ -1,0 +1,58 @@
+.pokemon-navigation {
+  background-color: #eeeeef;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pokemon-navigation__button {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: var(--duration-smooth) var(--transition-quick);
+  flex: 1;
+}
+
+.pokemon-navigation__button:hover {
+  background-color: #e2e2e2;
+}
+
+.pokemon-navigation__button--next {
+  border-top-right-radius: var(--radius-lg);
+  border-bottom-right-radius: var(--radius-lg);
+}
+
+.pokemon-navigation__button--prev {
+  border-top-left-radius: var(--radius-lg);
+  border-bottom-left-radius: var(--radius-lg);
+}
+
+.pokemon-navigation__name {
+  margin-bottom: 0;
+  font-size: 0.73rem;
+}
+
+.pokemon-navigation__number {
+  font-size: 0.73rem;
+  font-weight: 500;
+}
+
+.pokemon-navigation__divider {
+  width: 1px;
+  height: 20px;
+  background-color: var(--neutral-50);
+}
+
+.sort-controls__reset-btn {
+  background-color: #83919f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+
+  border-radius: 8px;
+  width: 40px;
+}

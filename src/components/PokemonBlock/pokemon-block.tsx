@@ -13,8 +13,8 @@ const PokemonBlock = ({ id, name, types, sprites }: Props) => {
   const { fetchSpeciesPokemon } = usePokemon();
 
   return (
-    <button className="pokemon" onClick={() => fetchSpeciesPokemon(id)}>
-      <div className="pokemon__img">
+    <button className="pokemon-card" onClick={() => fetchSpeciesPokemon(id)}>
+      <div className="pokemon-card__image">
         <img
           src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
           alt=""
@@ -24,18 +24,20 @@ const PokemonBlock = ({ id, name, types, sprites }: Props) => {
         />
       </div>
 
-      <div className="pokemon__info">
-        <p className="pokemon__no">N&#176;{formatPokemonId(id)}</p>
-        <p className="pokemon__name">
+      <div className="pokemon-card__info">
+        <p className="pokemon-card__number">N&#176;{formatPokemonId(id)}</p>
+        <p className="pokemon-card__name">
           {name.charAt(0).toUpperCase() + name.slice(1)}
         </p>
-        <div className="pokemon__type-wrapper">
+        <div className="pokemon-card__types">
           {types.map((pokeType) => (
             <div
-              className={`pokemon__type ${pokeType.type.name}`}
+              className={`pokemon-type pokemon-type--${pokeType.type.name}`}
               key={pokeType.type.name}
             >
-              <span className={`pokemon__type-text ${pokeType.type.name}`}>
+              <span
+                className={`pokemon-type__text pokemon-type__text--${pokeType.type.name}`}
+              >
                 {pokeType.type.name}
               </span>
             </div>

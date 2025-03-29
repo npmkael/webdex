@@ -1,13 +1,5 @@
 type Props = { type: string };
 
-const PokemonType = ({ type }: Props) => {
-  return (
-    <div className="">
-      <span className="pokemon-icon">{checkType(type)}</span>
-    </div>
-  );
-};
-
 function checkType(type: string) {
   switch (type) {
     case "normal":
@@ -47,8 +39,14 @@ function checkType(type: string) {
     case "fairy":
       return "y";
   }
-
-  // return "";
 }
+
+const PokemonType = ({ type }: Props) => {
+  return (
+    <div>
+      <span className="pokemon-icon">{checkType(type)}</span>
+    </div>
+  );
+};
 
 export default PokemonType;

@@ -1,0 +1,172 @@
+.pokemon-type {
+  padding: 4px 11px;
+  border-radius: var(--radius-sm);
+}
+
+.pokemon-type__text {
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+/* Normal */
+.pokemon-type--normal {
+  background-color: var(--type-normal);
+}
+
+.pokemon-type__text--normal {
+  color: var(--type-normal-text);
+}
+
+/* Fire */
+.pokemon-type--fire {
+  background-color: var(--type-fire);
+}
+
+.pokemon-type__text--fire {
+  color: var(--type-fire-text);
+}
+
+/* Water */
+.pokemon-type--water {
+  background-color: var(--type-water);
+}
+
+.pokemon-type__text--water {
+  color: var(--type-water-text);
+}
+
+/* Electric */
+.pokemon-type--electric {
+  background-color: var(--type-electric);
+}
+
+.pokemon-type__text--electric {
+  color: var(--type-electric-text);
+}
+
+/* Grass */
+.pokemon-type--grass {
+  background-color: var(--type-grass);
+}
+
+.pokemon-type__text--grass {
+  color: var(--type-grass-text);
+}
+
+/* Ice */
+.pokemon-type--ice {
+  background-color: var(--type-ice);
+}
+
+.pokemon-type__text--ice {
+  color: var(--type-ice-text);
+}
+
+/* Fighting */
+.pokemon-type--fighting {
+  background-color: var(--type-fighting);
+}
+
+.pokemon-type__text--fighting {
+  color: var(--type-fighting-text);
+}
+
+/* Flying */
+.pokemon-type--flying {
+  background-color: var(--type-flying);
+}
+
+.pokemon-type__text--flying {
+  color: var(--type-flying-text);
+}
+
+/* Poison */
+.pokemon-type--poison {
+  background-color: var(--type-poison);
+}
+
+.pokemon-type__text--poison {
+  color: var(--type-poison-text);
+}
+
+/* Ground */
+.pokemon-type--ground {
+  background-color: var(--type-ground);
+}
+
+.pokemon-type__text--ground {
+  color: var(--type-ground-text);
+}
+
+/* Psychic */
+.pokemon-type--psychic {
+  background-color: var(--type-psychic);
+}
+
+.pokemon-type__text--psychic {
+  color: var(--type-psychic-text);
+}
+
+/* Bug */
+.pokemon-type--bug {
+  background-color: var(--type-bug);
+}
+
+.pokemon-type__text--bug {
+  color: var(--type-bug-text);
+}
+
+/* Rock */
+.pokemon-type--rock {
+  background-color: var(--type-rock);
+}
+
+.pokemon-type__text--rock {
+  color: var(--type-rock-text);
+}
+
+/* Ghost */
+.pokemon-type--ghost {
+  background-color: var(--type-ghost);
+}
+
+.pokemon-type__text--ghost {
+  color: var(--type-ghost-text);
+}
+
+/* Dragon */
+.pokemon-type--dragon {
+  background-color: var(--type-dragon);
+}
+
+.pokemon-type__text--dragon {
+  color: var(--type-dragon-text);
+}
+
+/* Dark */
+.pokemon-type--dark {
+  background-color: var(--type-dark);
+}
+
+.pokemon-type__text--dark {
+  color: var(--type-dark-text);
+}
+
+/* Steel */
+.pokemon-type--steel {
+  background-color: var(--type-steel);
+}
+
+.pokemon-type__text--steel {
+  color: var(--type-steel-text);
+}
+
+/* Fairy */
+.pokemon-type--fairy {
+  background-color: var(--type-fairy);
+}
+
+.pokemon-type__text--fairy {
+  color: var(--type-fairy-text);
+}

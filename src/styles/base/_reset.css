@@ -1,0 +1,61 @@
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-primary);
+  font-family: var(--font-primary);
+}
+
+/* Base element styles */
+a,
+img,
+span,
+input,
+select {
+  display: block;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+input,
+button,
+select {
+  background: none;
+  border: none;
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+input {
+  width: 100%;
+  outline: none;
+}
+
+select {
+  outline: none;
+}
+
+/* Font face declarations */
+@font-face {
+  font-family: "Pokemon";
+  src: url("../../assets/fonts/Essentiarum Regular.ttf");
+}

@@ -1,0 +1,108 @@
+.sort-pagination-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-weight: 550;
+  font-size: 14px;
+
+  color: var(--neutral-20);
+
+  margin-bottom: 28px;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.from-pag,
+.to-pag {
+  border: 1px solid var(--neutral-50);
+  border-radius: 8px;
+
+  width: 65px;
+  padding: 8px;
+  font-weight: normal;
+}
+
+.sort-controls {
+  display: flex;
+  gap: 12px;
+
+  align-items: center;
+  height: 40px;
+
+  margin-bottom: 42px;
+}
+
+.sort-controls button {
+  height: 100%;
+}
+
+.dropdown {
+  position: relative;
+  height: 100%;
+
+  cursor: pointer;
+}
+
+.dropdown .dropdown-label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.dropdown .dropdown-label span {
+  font-size: 1.1rem;
+}
+
+.dropdown .dropdown-label p {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.dropdown .dropdown-btn {
+  padding: 8px 12px;
+  background-color: var(--white);
+  box-shadow: var(--shadow-4);
+  border-radius: 6px;
+
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  color: var(--neutral-60);
+
+  height: 100%;
+}
+
+.dropdown .dropdown-btn span {
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-content {
+  position: absolute;
+  top: 110%;
+  z-index: 4;
+
+  width: 100%;
+  border-radius: 6px;
+
+  background-color: var(--white);
+  box-shadow: var(--shadow-2);
+}
+
+.dropdown-item {
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.dropdown-item:hover {
+  background-color: var(--neutral-95);
+}

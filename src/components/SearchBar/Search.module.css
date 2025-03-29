@@ -19,11 +19,11 @@
   background-color: var(--primary-red);
   padding: 4px;
   border-radius: 8px;
-  transition: var(--transition-duration-smooth) var(--transition-easing-quick);
+  transition: var(--transition-quick) var(--duration-smooth);
 }
 
 .search-btn span {
-  font-family: var(--pokemon-icon);
+  font-family: "pokemon";
   color: var(--white);
   font-size: 22px;
 }

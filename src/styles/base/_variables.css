@@ -1,0 +1,89 @@
+:root {
+  /* Colors */
+  --bg-primary: #f6f8fc;
+  --white: #ffffff;
+  --dark-grey: #767c7e;
+  --dark-blue: #0b1d30;
+  --primary-red: #ff5350;
+
+  /* Neutral Colors */
+  --neutral-100: #f6f8fc;
+  --neutral-98: #f2f5fa;
+  --neutral-95: #e9ecf2;
+  --neutral-90: #dadfe5;
+  --neutral-80: #c2c6cc;
+  --neutral-60: #919499;
+  --neutral-50: #797c80;
+  --neutral-40: #616366;
+  --neutral-30: #494a4d;
+  --neutral-20: #303133;
+  --neutral-10: #18191a;
+  --neutral-5: #0c0c0d;
+
+  /* Pokemon Type Colors */
+  --type-normal: #bcc6d3;
+  --type-normal-text: #4d5052;
+  --type-fire: #ff9d55;
+  --type-fire-text: #605045;
+  --type-water: #97a9ff;
+  --type-water-text: #032769;
+  --type-electric: #f4d33c;
+  --type-electric-text: #5d5942;
+  --type-grass: rgb(168, 239, 144);
+  --type-grass-text: #205c0e;
+  --type-ice: #73cfbe;
+  --type-ice-text: #475856;
+  --type-fighting: #e64b76;
+  --type-fighting-text: #422733;
+  --type-flying: #a5c0f5;
+  --type-flying-text: #3d4b61;
+  --type-poison: #c77ee9;
+  --type-poison-text: #524956;
+  --type-ground: #d97845;
+  --type-ground-text: #473d34;
+  --type-psychic: #fa7178;
+  --type-psychic-text: #5d494a;
+  --type-bug: #91c12e;
+  --type-bug-text: #4d5052;
+  --type-rock: #c6b78b;
+  --type-rock-text: #57554f;
+  --type-ghost: #6e8deb;
+  --type-ghost-text: #424952;
+  --type-dragon: #0e7ddd;
+  --type-dragon-text: #25323b;
+  --type-dark: #8f86a3;
+  --type-dark-text: #45454a;
+  --type-steel: #6ca8c0;
+  --type-steel-text: #293a44;
+  --type-fairy: #ec8fe7;
+  --type-fairy-text: #524956;
+
+  /* Theme Colors */
+  --background: #fff;
+  --foreground: #000;
+  --muted: #fff;
+  --border: #eaeaea;
+  --accent: #111;
+
+  /* Typography */
+  --font-primary: "Montserrat", serif;
+  --font-pokemon: "Pokemon";
+
+  /* Shadows */
+  --shadow-sm: rgba(149, 157, 165, 0.2) 0px 8px 12px;
+  --shadow-md: 0px 10px 30px 0px rgba(66, 71, 97, 0.1);
+  --shadow-lg: 0 8px 30px 0 rgba(65, 89, 214, 0.3);
+  --shadow-xl: 0 8px 18px 0 rgba(65, 89, 214, 0.1);
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-quick: cubic-bezier(0, 0.7, 0.3, 1);
+  --duration-quick: 200ms;
+  --duration-smooth: 500ms;
+}

@@ -1,0 +1,32 @@
+.pokemon__evolution-container {
+  margin-inline: 8px;
+}
+
+.pokemon__evolution-wrapper {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.pokemon__evolution-wrapper .min-level {
+  background-color: var(--neutral-100);
+  padding-inline: 10px;
+  padding-block: 6px;
+
+  border-radius: 15px;
+}
+
+.pokemon__evolution-wrapper .pokemon__evolution-text {
+  font-size: 0.9rem;
+}
+
+.pokemon__evolution-wrapper .pokemon__evolution-text i {
+  font-weight: 600;
+}
+
+.min-level span {
+  color: var(--neutral-60);
+  font-size: 0.7rem;
+  font-weight: 600;
+}
