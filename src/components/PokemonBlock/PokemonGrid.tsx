@@ -11,8 +11,9 @@ const PokemonGrid = () => {
 
   if (loading || pokemon.length === 0) {
     return (
-      <div className="loading">
-        <img src="/pikachu-loading.gif" alt="loading" />
+      <div className="pokemon-grid__loading">
+        <img src="/eevee-loading.gif" alt="loading" />
+        <span className="pixel-font">Loading...</span>
       </div>
     );
   }

@@ -68,6 +68,7 @@
   /* Typography */
   --font-primary: "Montserrat", serif;
   --font-pokemon: "Pokemon";
+  --font-press-start: "Press Start 2P", system-ui;
 
   /* Shadows */
   --shadow-sm: rgba(149, 157, 165, 0.2) 0px 8px 12px;
