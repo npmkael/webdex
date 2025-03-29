@@ -5,18 +5,21 @@ import Pokedex from "./pages/Pokedex";
 import { PokemonProvider } from "./context/PokemonContext";
 import { SelectProvider } from "./context/SelectContext";
 import { SearchProvider } from "./context/SearchContext";
+import { ViewportProvider } from "./context/ViewPortContext";
 
 function App() {
   return (
     <PokemonProvider>
       <SearchProvider>
         <SelectProvider>
-          <Routes>
-            <Route element={<MainLayout />}>
-              <Route index element={<Home />} />
-              <Route path="/pokedex" element={<Pokedex />} />
-            </Route>
-          </Routes>
+          <ViewportProvider>
+            <Routes>
+              <Route element={<MainLayout />}>
+                <Route index element={<Home />} />
+                <Route path="/pokedex" element={<Pokedex />} />
+              </Route>
+            </Routes>
+          </ViewportProvider>
         </SelectProvider>
       </SearchProvider>
     </PokemonProvider>

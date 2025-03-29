@@ -23,6 +23,8 @@ import { PokeAPIResponse } from "../types/pokeApi";
 
 import { motion, AnimatePresence } from "motion/react";
 import { usePokemonCry } from "../hooks/usePokemonCry";
+import { useViewport } from "../context/ViewportContext";
+import { useEffect } from "react";
 
 const PokemonMainStat = () => {
   const {
@@ -36,6 +38,7 @@ const PokemonMainStat = () => {
     pagination,
     setPagination,
   } = usePokemon();
+  const { isMobileView } = useViewport();
 
   const getAdjacentPokemon = (
     target: number = 1,
@@ -65,6 +68,19 @@ const PokemonMainStat = () => {
     playSound();
   };
 
+  useEffect(() => {
+    // Only disable scrolling when a Pokémon is selected and in mobile view
+    if (pokemonSpecies && isMobileView) {
+      document.body.style.overflowY = "hidden";
+    } else {
+      document.body.style.overflowY = "scroll";
+    }
+
+    return () => {
+      document.body.style.overflowY = "scroll";
+    };
+  }, [pokemonSpecies, isMobileView]);
+
   return (
     <AnimatePresence mode="wait">
       {speciesError ? (
@@ -86,6 +102,13 @@ const PokemonMainStat = () => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
+          style={
+            !isMobileView
+              ? {}
+              : {
+                  display: "none",
+                }
+          }
         >
           <div className="empty-state">
             <div>
@@ -96,7 +119,7 @@ const PokemonMainStat = () => {
             </p>
           </div>
         </motion.div>
-      ) : speciesLoading ? (
+      ) : speciesLoading && !isMobileView ? (
         <motion.div
           key="loading"
           className="loading-container"

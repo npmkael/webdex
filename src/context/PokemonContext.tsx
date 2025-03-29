@@ -14,6 +14,9 @@ type PokemonContextType = {
   error: string | null;
   fetchSpeciesPokemon: (id: number) => Promise<void>;
   pokemonSpecies: PokemonSpecies | null;
+  setPokemonSpecies: React.Dispatch<
+    React.SetStateAction<PokemonSpecies | null>
+  >;
   speciesLoading: boolean;
   speciesError: string | null;
   pokemonWeakness: string[] | null;
@@ -287,6 +290,7 @@ export const PokemonProvider = ({
         error,
         fetchSpeciesPokemon,
         pokemonSpecies,
+        setPokemonSpecies,
         speciesLoading,
         speciesError,
         pokemonWeakness,
