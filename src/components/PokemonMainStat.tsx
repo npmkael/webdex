@@ -156,12 +156,13 @@ const PokemonMainStat = () => {
         <motion.div
           key={pokemonSpecies.id}
           className="pokemon-details"
-          initial={{ opacity: 0, y: 1000 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ y: 1000 }}
+          initial={{ opacity: 0, y: 1000, scale: 0 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: 1000, scale: 0 }}
           transition={{
-            duration: 0.35,
-            ease: "linear",
+            duration: 0.5,
+            ease: "circInOut",
+            type: "tween"
           }}
         >
           <div className="pokemon-details__image">
