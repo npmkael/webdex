@@ -69,7 +69,7 @@ export const PokemonProvider = ({
   );
   const [evolutionChain, setEvolutionChain] = useState<PokemonEvolution[]>([]);
   const [pokemonWeakness, setPokemonWeakness] = useState<string[] | null>(null);
-  const [speciesLoading, setSpeciesLoading] = useState(true);
+  const [speciesLoading, setSpeciesLoading] = useState(false);
   const [speciesError, setSpeciesError] = useState<string | null>(null);
 
   const [pagination, setPagination] = useState({

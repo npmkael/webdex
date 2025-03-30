@@ -5,7 +5,7 @@ import Pokedex from "./pages/Pokedex";
 import { PokemonProvider } from "./context/PokemonContext";
 import { SelectProvider } from "./context/SelectContext";
 import { SearchProvider } from "./context/SearchContext";
-import { ViewportProvider } from "./context/ViewPortContext";
+import { ViewportProvider } from "./context/ViewportContext";
 
 function App() {
   return (

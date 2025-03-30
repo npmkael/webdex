@@ -119,29 +119,44 @@ const PokemonMainStat = () => {
             </p>
           </div>
         </motion.div>
-      ) : speciesLoading && !isMobileView ? (
-        <motion.div
-          key="loading"
-          className="loading-container"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.3 }}
-        >
-          <div>
-            <img src="/pokeball-loading.gif" alt="pokeball loading" />
-          </div>
-        </motion.div>
+      ) : speciesLoading ? (
+        isMobileView ? (
+          <motion.div
+            key="loading"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="pokeball-loading__container"
+          >
+            <div className="pokeball-loading__mobile"></div>
+            <span className="pixel-font">Loading...</span>
+          </motion.div>
+        ) : (
+          <motion.div
+            key="loading"
+            className="loading-container"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <div>
+              <img src="/pokeball-loading.gif" alt="pokeball loading" />
+            </div>
+          </motion.div>
+        )
       ) : (
         <motion.div
           key={pokemonSpecies.id}
           className="pokemon-details"
-          initial={{ opacity: 0, y: 100 }}
+          initial={{ opacity: 0, y: 1000 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 100 }}
+          exit={{ y: 1000 }}
           transition={{
-            type: "spring",
             duration: 0.8,
+            type: "spring",
+            ease: "linear",
           }}
         >
           <div className="pokemon-details__image">

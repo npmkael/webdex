@@ -77,8 +77,8 @@ const Pokedex = () => {
 
       {/* Right Section */}
       <section className="pokedex-section__right">
-        {pokemonSpecies && (
-          <AnimatePresence mode="wait">
+        <AnimatePresence mode="wait">
+          {pokemonSpecies && (
             <motion.div
               className="pokedex-section__bg"
               style={{
@@ -94,8 +94,7 @@ const Pokedex = () => {
                 opacity: 0,
               }}
               transition={{
-                delay: 0.5,
-                duration: 0.2,
+                duration: 0.5,
               }}
             >
               <button
@@ -105,8 +104,8 @@ const Pokedex = () => {
                 <X />
               </button>
             </motion.div>
-          </AnimatePresence>
-        )}
+          )}
+        </AnimatePresence>
 
         <PokemonMainStat />
       </section>
