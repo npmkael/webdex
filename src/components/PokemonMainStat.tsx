@@ -141,9 +141,7 @@ const PokemonMainStat = () => {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <div>
-              <img src="/pokeball-loading.gif" alt="pokeball loading" />
-            </div>
+            <div className="pokeball-loading__desktop" />
           </motion.div>
         )
       ) : (
