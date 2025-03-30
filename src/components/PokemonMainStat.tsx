@@ -97,48 +97,56 @@ const PokemonMainStat = () => {
   }
 
   if (speciesLoading) {
-    return isMobileView ? (
-      <motion.div
-        key="loading"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.3 }}
-        className="pokeball-loading__container"
-      >
-        <div className="pokeball-loading__mobile"></div>
-        <span className="pixel-font">Loading...</span>
-      </motion.div>
-    ) : (
-      <motion.div
-        key="loading"
-        className="loading-container"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.3 }}
-      >
-        <div className="pokeball-loading__desktop" />
-      </motion.div>
+    return (
+      <AnimatePresence mode="wait">
+        {isMobileView ? (
+          <motion.div
+            key="loading"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="pokeball-loading__container"
+          >
+            <div className="pokeball-loading__mobile"></div>
+            <span className="pixel-font">Loading...</span>
+          </motion.div>
+        ) : (
+          <motion.div
+            key="loading"
+            className="loading-container"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <div className="pokeball-loading__desktop" />
+          </motion.div>
+        )}
+      </AnimatePresence>
     );
   }
 
   if (!pokemonSpecies) {
     return (
-      <motion.div
-        key="empty"
-        className="pokemon-details"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.3 }}
-        style={isMobileView ? { display: "none" } : {}}
-      >
-        <div className="empty-state">
-          <img src="/choose-pikachu.png" alt="" width={175} height={175} />
-          <p className="empty-state__text">Click on a Pokémon to learn more!</p>
-        </div>
-      </motion.div>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key="empty"
+          className="pokemon-details"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          style={isMobileView ? { display: "none" } : {}}
+        >
+          <div className="empty-state">
+            <img src="/choose-pikachu.png" alt="" width={175} height={175} />
+            <p className="empty-state__text">
+              Click on a Pokémon to learn more!
+            </p>
+          </div>
+        </motion.div>
+      </AnimatePresence>
     );
   }
 
@@ -152,8 +160,7 @@ const PokemonMainStat = () => {
           animate={{ opacity: 1, y: 0 }}
           exit={{ y: 1000 }}
           transition={{
-            duration: 0.8,
-            type: "spring",
+            duration: 0.35,
             ease: "linear",
           }}
         >
