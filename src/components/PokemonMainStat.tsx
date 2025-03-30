@@ -81,70 +81,70 @@ const PokemonMainStat = () => {
     };
   }, [pokemonSpecies, isMobileView]);
 
+  if (speciesError) {
+    return (
+      <motion.div
+        key="error"
+        className="pokemon-details"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.3 }}
+      >
+        <div>Failed to load Pokémon</div>
+      </motion.div>
+    );
+  }
+
+  if (speciesLoading) {
+    return isMobileView ? (
+      <motion.div
+        key="loading"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.3 }}
+        className="pokeball-loading__container"
+      >
+        <div className="pokeball-loading__mobile"></div>
+        <span className="pixel-font">Loading...</span>
+      </motion.div>
+    ) : (
+      <motion.div
+        key="loading"
+        className="loading-container"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.3 }}
+      >
+        <div className="pokeball-loading__desktop" />
+      </motion.div>
+    );
+  }
+
+  if (!pokemonSpecies) {
+    return (
+      <motion.div
+        key="empty"
+        className="pokemon-details"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.3 }}
+        style={isMobileView ? { display: "none" } : {}}
+      >
+        <div className="empty-state">
+          <img src="/choose-pikachu.png" alt="" width={175} height={175} />
+          <p className="empty-state__text">Click on a Pokémon to learn more!</p>
+        </div>
+      </motion.div>
+    );
+  }
+
   return (
     <AnimatePresence mode="wait">
-      {speciesError ? (
-        <motion.div
-          key="error"
-          className="pokemon-details"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.3 }}
-        >
-          <div>Failed to load Pokémon</div>
-        </motion.div>
-      ) : !pokemonSpecies ? (
-        <motion.div
-          key="empty"
-          className="pokemon-details"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.3 }}
-          style={
-            !isMobileView
-              ? {}
-              : {
-                  display: "none",
-                }
-          }
-        >
-          <div className="empty-state">
-            <div>
-              <img src="/choose-pikachu.png" alt="" width={175} height={175} />
-            </div>
-            <p className="empty-state__text">
-              Click on a Pokémon to learn more!
-            </p>
-          </div>
-        </motion.div>
-      ) : speciesLoading ? (
-        isMobileView ? (
-          <motion.div
-            key="loading"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="pokeball-loading__container"
-          >
-            <div className="pokeball-loading__mobile"></div>
-            <span className="pixel-font">Loading...</span>
-          </motion.div>
-        ) : (
-          <motion.div
-            key="loading"
-            className="loading-container"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <div className="pokeball-loading__desktop" />
-          </motion.div>
-        )
-      ) : (
+      {
         <motion.div
           key={pokemonSpecies.id}
           className="pokemon-details"
@@ -377,7 +377,7 @@ const PokemonMainStat = () => {
             </div>
           </div>
         </motion.div>
-      )}
+      }
     </AnimatePresence>
   );
 };
