@@ -10,25 +10,13 @@ export const navLinks = [
     icon: "s",
   },
   {
-    label: "Videogames",
-    path: "/videogames",
+    label: "Games",
+    path: "/games",
     icon: "Q",
-  },
-  {
-    label: "GCC Pokemon",
-    path: "/gccpokemon",
   },
   {
     label: "Team Builder",
     path: "/team-builder",
-  },
-  {
-    label: "Play! Pokemon",
-    path: "/play",
-  },
-  {
-    label: "News",
-    path: "/news",
   },
 ];
 

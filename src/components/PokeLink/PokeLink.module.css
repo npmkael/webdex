@@ -65,3 +65,23 @@
   font-family: "Pokemon";
   font-size: 1.9rem;
 }
+
+@media (max-width: 655px) {
+  .navbar-link {
+    flex-direction: column;
+  }
+
+  .navbar-link {
+    justify-content: center;
+  }
+
+  .navbar-link span:nth-child(2) {
+    font-size: 0.65rem;
+  }
+}
+
+@media (max-width: 413px) {
+  .navbar-link span:nth-child(2) {
+    display: none;
+  }
+}

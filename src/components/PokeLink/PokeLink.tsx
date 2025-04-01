@@ -20,7 +20,7 @@ const PokeLink = ({ label, icon, path }: Props) => {
         }
       >
         <span className={styles["navbar-icon"]}>{icon ? icon : "e"}</span>
-        {label}
+        <span>{label}</span>
       </NavLink>
     </li>
   );
