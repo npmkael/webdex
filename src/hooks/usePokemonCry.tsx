@@ -6,7 +6,9 @@ export const usePokemonCry = (audioSource: string) => {
   useEffect(() => {
     if (!audioSource) return;
 
-    soundRef.current = new Audio(audioSource);
+    soundRef.current = new Audio(audioSource)
+
+    soundRef.current.volume = 0.10;
 
     // Cleanup function to stop and remove the audio element
     return () => {
