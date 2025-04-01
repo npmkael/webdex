@@ -32,6 +32,10 @@
   margin-bottom: 16px;
 }
 
+.pokedex-section__left {
+  width: 100%;
+}
+
 .pokedex-section__right {
   /* position: relative; */
   width: 400px;
@@ -103,7 +107,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   height: 100vh;
-  width: 100vh;
+  width: 100vw;
   backdrop-filter: blur(12px);
 }
 
