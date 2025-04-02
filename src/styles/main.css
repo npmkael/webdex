@@ -297,3 +297,14 @@
     height: 200px;
   }
 }
+
+@media (max-width: 655px) {
+  .coming-soon img {
+    width: 285px;
+    height: 165px;
+  }
+
+  .coming-soon h1 {
+    font-size: 1.2rem;
+  }
+}
