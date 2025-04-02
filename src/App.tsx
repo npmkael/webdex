@@ -6,6 +6,7 @@ import { PokemonProvider } from "./context/PokemonContext";
 import { SelectProvider } from "./context/SelectContext";
 import { SearchProvider } from "./context/SearchContext";
 import { ViewportProvider } from "./context/ViewportContext";
+import ComingSoon from "./pages/ComingSoon";
 
 function App() {
   return (
@@ -15,8 +16,10 @@ function App() {
           <ViewportProvider>
             <Routes>
               <Route element={<MainLayout />}>
-                <Route index element={<Home />} />
+                <Route index element={<ComingSoon />} />
                 <Route path="/pokedex" element={<Pokedex />} />
+                <Route path="/games" element={<ComingSoon />} />
+                <Route path="/team-builder" element={<ComingSoon />} />
               </Route>
             </Routes>
           </ViewportProvider>

@@ -25,6 +25,25 @@
   position: relative;
 }
 
+.coming-soon {
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.coming-soon div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.coming-soon h1 {
+  font-weight: 500;
+}
+
 .pokedex-section {
   display: flex;
   justify-content: space-between;
