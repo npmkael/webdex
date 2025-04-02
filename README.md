@@ -1,54 +1,60 @@
-# React + TypeScript + Vite
+# WebDex
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+WebDex is a Pokédex web application built with React and TypeScript. It allows users to browse Pokémon, view detailed stats, and build their own teams. The app integrates with the OpenAI API to evaluate team compositions and provide feedback.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Pokédex**: Browse a complete list of Pokémon with their stats, abilities, and types.
+- **Search & Filter**: Quickly find Pokémon by name, type, or other attributes.
+- **Team Builder**: Create a custom team of Pokémon and receive AI-generated feedback on strengths and weaknesses.
+- **Responsive Design**: Optimized for both desktop and mobile devices.
 
-## Expanding the ESLint configuration
+## Technologies Used
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **React** (with TypeScript) - Frontend framework
+- **OpenAI API** - Provides team evaluation feedback
+- **PokéAPI** - Fetches Pokémon data
+- **Tailwind CSS** - Styles the UI
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Installation
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+To run the project locally:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/npmkael/webdex.git
+   cd webdex
+   ```
+2. Install dependencies:
+   ```sh
+   npm install
+   ```
+3. Start the development server:
+   ```sh
+   npm run dev
+   ```
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## Usage
+
+- Browse the Pokédex to view detailed Pokémon stats.
+- Use the search and filter options to find specific Pokémon.
+- Build a team and get AI-powered feedback on strengths and weaknesses.
+
+## Future Enhancements
+
+- **User Authentication**: Allow users to save their teams.
+- **Battle Simulator**: Simulate battles between custom teams.
+- **More Filters**: Add advanced filtering options for better team building.
+
+## Contributing
+
+Contributions are welcome! Feel free to open an issue or submit a pull request.
+
+## License
+
+This project is licensed under the MIT License.
+
+## Contact
+
+For any questions or feedback, feel free to reach out via GitHub Issues.
+
