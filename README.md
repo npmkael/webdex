@@ -50,10 +50,6 @@ To run the project locally:
 
 Contributions are welcome! Feel free to open an issue or submit a pull request.
 
-## License
-
-This project is licensed under the MIT License.
-
 ## Contact
 
 For any questions or feedback, feel free to reach out via GitHub Issues.
