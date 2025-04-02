@@ -1,6 +1,6 @@
 # WebDex
 
-WebDex is a Pokédex web application built with React and TypeScript. It allows users to browse Pokémon, view detailed stats, and build their own teams. The app integrates with the OpenAI API to evaluate team compositions and provide feedback.
+WebDex is a Pokédex web application built with React and TypeScript. It allows users to browse Pokémon, view detailed stats, and build their own teams.
 
 ## Features
 
@@ -12,9 +12,7 @@ WebDex is a Pokédex web application built with React and TypeScript. It allows 
 ## Technologies Used
 
 - **React** (with TypeScript) - Frontend framework
-- **OpenAI API** - Provides team evaluation feedback
 - **PokéAPI** - Fetches Pokémon data
-- **Tailwind CSS** - Styles the UI
 
 ## Installation
 
@@ -45,6 +43,7 @@ To run the project locally:
 - **User Authentication**: Allow users to save their teams.
 - **Battle Simulator**: Simulate battles between custom teams.
 - **More Filters**: Add advanced filtering options for better team building.
+- **Build Teams**: Build a team and let AI anaylze it for you.
 
 ## Contributing
 
