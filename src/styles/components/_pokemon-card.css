@@ -10,6 +10,7 @@
 
 .pokemon-card:hover {
   background-color: var(--border);
+  box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.08);
 }
 
 .pokemon-card:hover > .pokemon-card__image {
