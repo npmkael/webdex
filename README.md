@@ -49,6 +49,9 @@ To run the project locally:
 
 Contributions are welcome! Feel free to open an issue or submit a pull request.
 
+## Credits
+- UI/Design inspiration from AC1design
+
 ## Contact
 
 For any questions or feedback, feel free to reach out via GitHub Issues.
