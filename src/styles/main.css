@@ -241,6 +241,10 @@
   .pokedex-section {
     justify-content: center;
   }
+
+  .pokemon-details {
+    height: 75vh;
+  }
 }
 
 @media (max-width: 1020px) {
