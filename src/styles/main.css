@@ -235,6 +235,7 @@
 @media (max-width: 1300px) {
   .pokemon-grid {
     grid-template-columns: repeat(2, minmax(250px, 250px));
+    justify-content: center;
   }
 
   .pokedex-section {
