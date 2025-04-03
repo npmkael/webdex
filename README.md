@@ -41,7 +41,6 @@ To run the project locally:
 ## Future Enhancements
 
 - **User Authentication**: Allow users to save their teams.
-- **Battle Simulator**: Simulate battles between custom teams.
 - **More Filters**: Add advanced filtering options for better team building.
 - **Build Teams**: Build a team and let AI anaylze it for you.
 
