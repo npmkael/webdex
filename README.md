@@ -36,7 +36,6 @@ To run the project locally:
 
 - Browse the Pokédex to view detailed Pokémon stats.
 - Use the search and filter options to find specific Pokémon.
-- Build a team and get AI-powered feedback on strengths and weaknesses.
 
 ## Future Enhancements
 
