@@ -326,12 +326,12 @@ const PokemonMainStat = () => {
               >
                 <ChevronLeft color="#85888b" size={18} />
                 <img
-                  src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${
+                  src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
                     pokemonAdjacent ? pokemonAdjacent[0].id : ""
-                  }.gif`}
+                  }.png`}
                   alt={`${pokemonAdjacent ? pokemonAdjacent[0].name : ""}`}
-                  width={20}
-                  height={20}
+                  width={30}
+                  height={30}
                 />
                 <span className="pokemon-navigation__name">
                   {pokemonAdjacent
@@ -375,12 +375,12 @@ const PokemonMainStat = () => {
                     : "N/A"}
                 </span>
                 <img
-                  src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${
+                  src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
                     pokemonAdjacent ? pokemonAdjacent[1].id : ""
-                  }.gif`}
+                  }.png`}
                   alt={`${pokemonAdjacent ? pokemonAdjacent[1].name : ""}`}
-                  width={20}
-                  height={20}
+                  width={30}
+                  height={30}
                 />
                 <ChevronRight color="#85888b" size={18} />
               </button>
