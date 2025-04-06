@@ -1,6 +1,8 @@
+import { formatCapital } from "../utils/utils";
+
 type Props = { type: string };
 
-function checkType(type: string) {
+export function checkType(type: string) {
   switch (type) {
     case "normal":
       return "c";
@@ -44,7 +46,15 @@ function checkType(type: string) {
 const PokemonType = ({ type }: Props) => {
   return (
     <div>
-      <span className="pokemon-icon">{checkType(type)}</span>
+      <span
+        className="pokemon-type-bg"
+        style={{
+          backgroundImage: `linear-gradient(105deg, var(--type-${type}) 30px, #5A5A5A 31px, #5A5A5A)`,
+        }}
+      >
+        <span className="pokemon-icon">{checkType(type)}</span>
+        <span className="pokemon-type-name">{formatCapital(type)}</span>
+      </span>
     </div>
   );
 };

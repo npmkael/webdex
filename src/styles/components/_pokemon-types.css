@@ -170,3 +170,21 @@
 .pokemon-type__text--fairy {
   color: var(--type-fairy-text);
 }
+
+.pokemon-type-bg {
+  background-color: #5a5a5a;
+  padding: 2px 2px 2px 4px;
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  white-space: nowrap;
+  align-items: center;
+  color: #fff;
+}
+
+.pokemon-type-name {
+  margin: 0 5px 0 10px;
+  display: inline-block;
+  min-width: 50px;
+  text-align: center;
+  font-size: 0.85rem;
+}

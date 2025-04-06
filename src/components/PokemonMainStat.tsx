@@ -16,7 +16,7 @@ import {
 import { formatCapital } from "../utils/utils";
 import { getFlavorText } from "../utils/utils";
 import { formatPokemonHeight } from "../utils/utils";
-import PokemonType from "./PokemonType";
+import PokemonType, { checkType } from "./PokemonType";
 import PokemonStat from "./PokemonStat";
 import PokemonEvolutionChain from "./PokemonEvolutionChain";
 import { PokeAPIResponse } from "../types/pokeApi";
@@ -162,7 +162,7 @@ const PokemonMainStat = () => {
           transition={{
             duration: 0.5,
             ease: "circInOut",
-            type: "tween"
+            type: "tween",
           }}
         >
           <div className="pokemon-details__image">
@@ -267,7 +267,9 @@ const PokemonMainStat = () => {
                   <h3 className="pokemon-details__section-title">Weaknesses</h3>
                   <div className="pokemon-details__weakness">
                     {pokemonWeakness?.map((pw, index) => (
-                      <PokemonType type={pw} key={index} />
+                      <span className="pokemon-icon" key={index}>
+                        {checkType(pw)}
+                      </span>
                     ))}
                   </div>
                 </div>

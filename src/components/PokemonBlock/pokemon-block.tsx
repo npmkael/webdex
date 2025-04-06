@@ -1,6 +1,7 @@
 import { usePokemon } from "../../context/PokemonContext";
 import { Sprites, Type } from "../../types/pokeApi";
 import { formatPokemonId } from "../../utils/utils";
+import PokemonType from "../PokemonType";
 
 type Props = {
   id: number;
@@ -31,16 +32,7 @@ const PokemonBlock = ({ id, name, types, sprites }: Props) => {
         </p>
         <div className="pokemon-card__types">
           {types.map((pokeType) => (
-            <div
-              className={`pokemon-type pokemon-type--${pokeType.type.name}`}
-              key={pokeType.type.name}
-            >
-              <span
-                className={`pokemon-type__text pokemon-type__text--${pokeType.type.name}`}
-              >
-                {pokeType.type.name}
-              </span>
-            </div>
+            <PokemonType type={pokeType.type.name} />
           ))}
         </div>
       </div>
