@@ -16,7 +16,7 @@ import {
 import { formatCapital } from "../utils/utils";
 import { getFlavorText } from "../utils/utils";
 import { formatPokemonHeight } from "../utils/utils";
-import PokemonType, { checkType } from "./PokemonType";
+import { checkType } from "./PokemonType";
 import PokemonStat from "./PokemonStat";
 import PokemonEvolutionChain from "./PokemonEvolutionChain";
 import { PokeAPIResponse } from "../types/pokeApi";
@@ -36,7 +36,6 @@ const PokemonMainStat = () => {
     evolutionChain,
     fetchSpeciesPokemon,
     pagination,
-    setPagination,
   } = usePokemon();
   const { isMobileView } = useViewport();
 

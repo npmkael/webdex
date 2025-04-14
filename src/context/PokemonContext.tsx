@@ -2,7 +2,6 @@ import { createContext, useState, useEffect, useContext } from "react";
 import { PokeAPIResponse, TypeData } from "../types/pokeApi";
 import {
   EvolutionChain,
-  EvolutionChainLink,
   ItemData,
   PokemonEvolution,
   PokemonSpecies,
@@ -38,7 +37,7 @@ type PokemonContextType = {
     label: string;
   };
   singlePokemon: PokeAPIResponse | null;
-  pokemonNav: PokeAPIResponse[];
+  // pokemonNav: PokeAPIResponse[];
 };
 
 const PokemonContext = createContext<PokemonContextType | undefined>(undefined);
@@ -59,10 +58,9 @@ export const PokemonProvider = ({
   children: React.ReactNode;
 }) => {
   const [pokemon, setPokemon] = useState<PokeAPIResponse[]>([]);
-  const [pokemonNav, setPokemonNav] = useState<PokeAPIResponse[]>([]);
+  // const [pokemonNav, setPokemonNav] = useState<PokeAPIResponse[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [nextUrl, setNextUrl] = useState<string | null>(null);
 
   const [pokemonSpecies, setPokemonSpecies] = useState<PokemonSpecies | null>(
     null
@@ -103,10 +101,8 @@ export const PokemonProvider = ({
       }
 
       const data: {
-        next: string;
         results: Array<{ name: string; url: string }>;
       } = await response.json();
-      setNextUrl(data.next);
 
       const pokemonDetails = await Promise.all(
         data.results.map(async (pokemon) => {
@@ -298,7 +294,6 @@ export const PokemonProvider = ({
         setPagination,
         pagination,
         singlePokemon,
-        pokemonNav,
       }}
     >
       {children}

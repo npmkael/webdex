@@ -43,7 +43,6 @@ const PokemonGrid = () => {
         <PokemonBlock
           id={poke.id}
           name={poke.name}
-          sprites={poke.sprites}
           types={poke.types}
           key={poke.id}
         />

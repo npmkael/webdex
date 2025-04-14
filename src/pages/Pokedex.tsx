@@ -17,7 +17,7 @@ import Dropdown from "../components/Dropdown/Dropdown";
 import { usePokemon } from "../context/PokemonContext";
 import PaginationDropdown from "../components/Pagination/PaginationDropdown";
 import { useSelect } from "../context/SelectContext";
-import { useViewport } from "../context/ViewportContext";
+// import { useViewport } from "../context/ViewportContext";
 
 const Pokedex = () => {
   const { selectType, selectSort, setSelectType, setSelectSort } = useSelect();
@@ -25,7 +25,7 @@ const Pokedex = () => {
   const { pagination, setPagination, pokemonSpecies, setPokemonSpecies } =
     usePokemon();
 
-  const { isMobileView } = useViewport();
+  // const { isMobileView } = useViewport();
 
   const resetSelect = () => {
     setSelectType(null);

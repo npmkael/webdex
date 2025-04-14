@@ -13,7 +13,7 @@ html {
 body {
   background-color: var(--bg-primary);
   font-family: var(--font-primary);
-  background-image: url("/public/pokeball-bg-icon.png");
+  background-image: url("/pokeball-bg-icon.png");
   background-repeat: no-repeat;
   background-position-x: -180px;
   background-position-y: -80px;
