@@ -6,7 +6,6 @@ WebDex is a Pokédex web application built with React and TypeScript. It allows 
 
 - **Pokédex**: Browse a complete list of Pokémon with their stats, abilities, and types.
 - **Search & Filter**: Quickly find Pokémon by name, type, or other attributes.
-- **Team Builder**: Create a custom team of Pokémon and receive AI-generated feedback on strengths and weaknesses.
 - **Responsive Design**: Optimized for both desktop and mobile devices.
 
 ## Technologies Used
